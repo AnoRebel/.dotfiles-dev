@@ -1,0 +1,9 @@
+{
+  "coc-eslint|global": {
+    "eslintLibraries": {
+      "libs": {
+        "/home/dev/Documents/Code/pcsweb/node_modules/eslint/lib/api.js": true
+      }
+    }
+  }
+}
