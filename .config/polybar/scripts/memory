@@ -1,0 +1,11 @@
+#!/bin/bash
+
+used_mem=$(free | awk '/^Mem:/ {print int($3 / $2 * 100 + 0.5)}');
+used_swap=$(free | awk '/^Swap:/ {print int($3 / $2 * 100 + 0.5)}');
+
+label="Mem: ${used_mem}% - Swap: ${used_swap}%"
+echo "$label"
+
+if [[ ${used_mem} -gt 90 || ${used_swap} -gt 80 ]]; then
+  exit 33
+fi

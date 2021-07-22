@@ -1,0 +1,16 @@
+#!/bin/bash
+
+. $HOME/.config/polybar/scripts/set-font
+. $HOME/.config/polybar/scripts/get-color
+
+icon=$HOME/.config/icons/calendar.png
+today=`date '+%e'`
+fg=`get-color i3.bgrnd`
+bg=`get-color wht`
+#calendar=`set-font "$(ncal -bh)"`
+calendar=`set-font "$(cal)"`
+
+# replace today with colored today
+calendar=${calendar/" $today "/" </span><span font-family='monospace' background='$bg' color='$fg'>$today</span><span font-family='monospace'> "}
+
+notify-send "Calendar" "$calendar" -i "$icon"

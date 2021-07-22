@@ -1,0 +1,28 @@
+#
+# ~/.dmenurc
+#
+
+## define the font for dmenu to be used
+DMENU_FN="Fira Code:bold:pixelsize=12"
+
+## background colour for unselected menu-items
+DMENU_NB="#191919"
+
+## textcolour for unselected menu-items
+DMENU_NF="#FEA63C"
+
+## background colour for selected menu-items
+DMENU_SB="#00695C"
+
+## textcolour for selected menu-items
+DMENU_SF="#ECECEC"
+
+## command for the terminal application to be used:
+TERMINAL_CMD="kitty -e"
+
+## options
+DMENU_OPTIONS="-h 26 -fn $DMENU_FN -nb $DMENU_NB -nf $DMENU_NF -sf $DMENU_SF -sb $DMENU_SB"
+
+## export our variables
+export DMENU_FN DMENU_NB DMENU_NF DMENU_SF DMENU_SB TERMINAL_CMD DMENU_OPTIONS
+

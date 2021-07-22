@@ -1,0 +1,9 @@
+#!/bin/bash
+
+. $HOME/.config/i3blocks/scripts/get-color
+
+function set-label () {
+  echo ${1}
+  echo ${1}
+  echo $(get-color ${2})
+}

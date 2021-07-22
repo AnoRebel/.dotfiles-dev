@@ -1,0 +1,85 @@
+--[[
+#=====================================================================================
+#                               aureola
+# Date    : 21/07/2017
+# Version : v2.0.1
+# Author  : Erik Dubois at http://www.erikdubois.be
+# License : Distributed under the terms of GNU GPL version 2 or later
+# Documentation : http://erikdubois.be/category/linux/aureola/
+#======================================================================================
+#########               d8888 8888888b.         ###########
+#########              d88888 888   Y88b        ###########
+#########             d88P888 888    888        ###########
+#########            d88P 888 888   d88P        ###########
+#########           d88P  888 8888888P"         ###########
+#########          d88P   888 888 T88b          ###########
+#########         d8888888888 888  T88b         ###########
+#########        d88P     888 888   T88b        ###########
+###########################################################
+]]
+
+
+conky.config = {
+	alignment = 'middle_right',
+	background = true,
+	border_inner_margin = 5,
+	border_outer_margin = 5,
+	cpu_avg_samples = 2,
+	default_color = 'ECECEC',
+	double_buffer = true,
+	font = 'FiraCode Nerd Font:size=10',
+	gap_x = 25,
+	gap_y = 40,
+	minimum_width = 250,
+	no_buffers = true,
+	own_window = true,
+	own_window_argb_value = 180,
+	own_window_argb_visual = true,
+	own_window_class = 'Conky',
+	own_window_colour = '#222831',
+	own_window_transparent = false,
+	own_window_hints = 'undecorated,below,above,sticky,skip_taskbar,skip_pager',
+	own_window_type = 'override',
+	update_interval = 1.0,
+	use_xft = true,
+	color1 = '19F409',
+	color2 = 'ECECEC',
+	color3 = '00FF33',
+}
+conky.text = [[
+            ${color2}default ${color1}mod=<Super Key>
+
+${color2}open new terminal                  - ${color1}mod+Alt+t
+${color2}open file manager                  - ${color1}mod+e
+${color2}kill focused                       - ${color1}mod+Shift+q
+${color2}toggle bar                         - ${color1}mod+b
+${color2}resize mode                        - ${color1}Alt+r
+${color2}dmenu                              - ${color1}mod+d
+${color2}Rofi                               - ${color1}mod+r
+${color2}Morc Menu                          - ${color1}mod+m
+${color2}switch to workspace 1-7            - ${color1}mod+1-7
+${color2}move and switch to workspace 1-7   - ${color1}mod+Shift+1-7
+${color2}move window to workspace 1-7       - ${color1}mod+Control+1-7
+${color2}move floating window               - ${color1}mod+Left Mouse
+${color2}resize floating window             - ${color1}mod+Right Mouse
+${color2}toggle workspaces                  - ${color1}Alt+Tab
+${color2}navigate workspaces                - ${color1}Alt+Control+(Left/Right)
+${color2}toggle floating                    - ${color1}mod+Space
+${color2}toggle focus                       - ${color1}mod+Shift+Space
+${color2}tile vertically                    - ${color1}mod+v
+${color2}tile horizontally                  - ${color1}mod+h
+${color2}split toggle                       - ${color1}mod+q
+${color2}toggle stacked                     - ${color1}mod+s
+${color2}toggle tabbed                      - ${color1}mod+z
+${color2}toggle layout split                - ${color1}mod+c
+${color2}toggle fullscreen                  - ${color1}mod+f
+${color2}Settings                           - ${color1}Ctrl+Alt+m
+${color2}edit config                        - ${color1}mod+Shift+o
+${color2}cmus                               - ${color1}mod+Shift+n
+${color2}reload WM                          - ${color1}mod+Shift+r
+${color2}restart WM                         - ${color1}mod+Control+r
+${color2}XKILL                              - ${color1}mod+Control+x
+${color2}lock WM                            - ${color1}Control+Alt+k
+${color2}System                             - ${color1}mod+x
+${color2}Exit WM                            - ${color1}mod+Shift+e
+]]

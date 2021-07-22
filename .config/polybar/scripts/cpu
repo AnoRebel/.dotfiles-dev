@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#used_cpu_arr=($(mpstat 2 1 -P ALL | awk '$1 ~ /Average/ && $2 ~ /[0-9]+/ {print int(100 - $12 + 0.5)}'));
+# Alternative all
+#used_cpu_all=($(mpstat 2 1 -P ALL | awk '$1 ~ /Average/ && $2 ~ /all/ {print int(100 - $12 + 0.5)}'));
+used_cpu_all=($(mpstat 1 1 -P ALL | awk '$1 ~ /Average/ && $2 ~ /all/ {print int(100 - $12)}'));
+label="${used_cpu_all}%"
+echo "$label"
+
+if [[ ${used_cpu_all} -gt 90 ]]; then
+  exit 33
+fi

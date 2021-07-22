@@ -1,0 +1,510 @@
+;###########################################################
+;#########               d8888 8888888b.         ###########
+;#########              d88888 888   Y88b        ###########
+;#########             d88P888 888    888        ###########
+;#########            d88P 888 888   d88P        ###########
+;#########           d88P  888 8888888P"         ###########
+;#########          d88P   888 888 T88b          ###########
+;#########         d8888888888 888  T88b         ###########
+;#########        d88P     888 888   T88b        ###########
+;###########################################################
+
+;====Global Settings=======================================
+[global/wm]
+; Used for top aligned bars
+margin-bottom = 0
+
+; Used for bottom aligned bars
+;margin-top = 0
+
+;====General Settings======================================
+[colors]
+bg = #222D32
+fg = #CFD8DC
+primary = #ffb52a
+background-alt = #444
+foreground-alt = #555
+alert = #bd2c40
+adapta-cyan = #00BCD4
+adapta-red = #FF5252
+adapta-yellow = #C9BC0E
+adapta-lightgreen = #4DB6AC
+adapta-green = #009688
+adapta-grey = #475359
+bright-green = #4bffdc
+
+[margin]
+for-modules = 1
+
+[bar/bspwm_hdmi]
+width = 100%
+height = 26
+fixed-center = true
+background = ${colors.bg}
+foreground = ${colors.fg}
+font-0 = "Font Awesome 5 Free Solid:pixelsize=10;3"
+font-1 = "FiraCode Nerd Font:pixelsize=14;3"
+font-2 = FontAwesome:pixelsize=11;1
+font-3 = "Noto Sans Symbols2:pixelsize=12;5"
+font-4 = "Anonymice Nerd Font:pixelsize=12;2"
+cursor-click = pointer
+
+monitor = HDMI-1
+
+bottom = false
+offset-x = 0
+offset-y = 0
+
+; Under-/overline pixel size and argb color
+; Individual values can be defined using:
+;   {overline,underline}-size
+;   {overline,underline}-color
+line-size = 2
+line-color = ${colors.adapta-green}
+
+override-redirect = true
+wm-restack = bspwm
+enable-ipc = true
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+;====System tray apps======================================
+tray-position = right
+tray-detached = false
+;tray-maxsize = 16
+tray-background = ${colors.bg}
+;tray-offset-x = 0
+;tray-offset-y = 0
+tray-padding = 2
+;tray-scale = 1.0
+screenchange-reload = true
+;==========================================================
+
+;====Module settings+======================================
+;modules-left = date weather cpu
+modules-left = date
+modules-center = title
+modules-right = bspwm
+;==========================================================
+
+;==========================================================
+[bar/bspwm_vga]
+width = 100%
+height = 26
+fixed-center = true
+background = ${colors.bg}
+foreground = ${colors.fg}
+font-0 = "Font Awesome 5 Free Solid:pixelsize=10;3"
+font-1 = "FiraCode Nerd Font:pixelsize=14;3"
+font-2 = FontAwesome:pixelsize=11;1
+font-3 = "Noto Sans Symbols2:pixelsize=12;5"
+font-4 = "Anonymice Nerd Font:pixelsize=12;2"
+cursor-click = pointer
+
+monitor = VGA-1
+
+bottom = true
+offset-x = 0
+offset-y = 0
+
+; Under-/overline pixel size and argb color
+; Individual values can be defined using:
+;   {overline,underline}-size
+;   {overline,underline}-color
+line-size = 2
+line-color = ${colors.adapta-green}
+
+override-redirect = true
+wm-restack = bspwm
+enable-ipc = true
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+;====System tray apps======================================
+tray-position = left
+tray-detached = false
+;tray-maxsize = 16
+tray-background = ${colors.bg}
+;tray-offset-x = 0
+;tray-offset-y = 0
+tray-padding = 2
+;tray-scale = 1.0
+screenchange-reload = true
+;==========================================================
+
+;====Module settings+======================================
+;modules-left = date weather cpu
+modules-left = player-mpris-tail cpu
+modules-center = title
+modules-right = bspwm mpd
+;==========================================================
+
+;====Left modules==========================================
+[module/bspwm]
+type = internal/bspwm
+; ws-icon-[0-9]+ = <label>;<icon>
+; Note that the <label> needs to correspond with the bspwm workspace name
+; Neither <label> nor <icon> can contain a semicolon (;)
+ws-icon-0 = 1;  
+ws-icon-1 = 2;  
+ws-icon-2 = 3;  
+ws-icon-3 = 4;  
+ws-icon-4 = 5;  
+;ws-icon-5 = 6;  
+;ws-icon-6 = 7;  
+ws-icon-default =   
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(focused|urgent|occupied|empty)>
+;   <label-mode> - gets replaced with <label-(monocle|tiled|fullscreen|floating|locked|sticky|private)>
+; Default: <label-state>
+format = <label-state> <label-mode>
+; Available tokens:
+;   %name%
+; Default: %name%
+label-monitor = %name%
+; The following labels will be used to indicate the layout/mode
+; for the focused workspace. Requires <label-mode>
+;
+; Available tokens:
+;   None
+label-monocle = 
+label-tiled = 
+label-fullscreen = 
+label-floating = 
+label-pseudotiled = P
+label-locked = 
+label-locked-foreground = ${colors.adapta-red}
+label-sticky = 
+label-sticky-foreground = ${colors.adapta-yellow}
+label-private = 
+label-private-foreground = ${colors.primary}
+label-marked = M
+; Only show workspaces defined on the same output as the bar
+; NOTE: The bspwm and XRandR monitor names must match, which they do by default.
+; But if you rename your bspwm monitors with bspc -n this option will no longer
+; behave correctly.
+; Default: true
+pin-workspaces = true
+; Output mode flags after focused state label
+; Default: false
+inline-mode = true
+; Create click handler used to focus workspace
+; Default: true
+enable-click = true
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = true
+; Set the scroll cycle direction 
+; Default: true
+reverse-scroll = false
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-focused = %index%: %icon%
+label-focused-foreground = ${colors.adapta-lightgreen}
+label-focused-background = ${colors.bg}
+label-focused-underline = ${colors.bright-green}
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-occupied = %icon%
+label-occupied-underline = ${colors.adapta-green}
+label-occupied-padding = 1
+;
+label-empty = %icon%
+label-empty-foreground = ${colors.adapta-grey}
+label-empty-padding = 1
+; Separator in between workspaces
+label-separator = • 
+label-separator-padding = 1
+label-separator-foreground = ${colors.adapta-cyan}
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = "%icon%%{F#ff004b}%{T3}%{O-12}  %{T-}%{F-}"
+label-urgent-foreground = ${colors.adapta-red}
+label-urgent-background = ${colors.bg}
+label-urgent-underline = ${colors.adapta-yellow}
+
+[module/ewmh]
+type = internal/xworkspaces
+; icon-[0-9]+ = <desktop-name>;<icon>
+; NOTE: The desktop name needs to match the name configured by the WM
+; You can get a list of the defined desktops using:
+; $ xprop -root _NET_DESKTOP_NAMES
+; Note: Neither <desktop-name> nor <icon> can contain a semicolon (;)
+icon-0 = 1;  
+icon-1 = 2;  
+icon-2 = 3;  
+icon-3 = 4;  
+icon-4 = 5;  
+icon-5 = 6;  
+icon-6 = 7;  
+icon-default =   
+; Only show workspaces defined on the same output as the bar
+; Useful if you want to show monitor specific workspaces
+; on different bars
+; Default: false
+pin-workspaces = true
+; Create click handler used to focus desktop
+; Default: true
+enable-click = true
+; Create scroll handlers used to cycle desktops
+; Default: true
+enable-scroll = true
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(active|urgent|occupied|empty)>
+; Default: <label-state>
+format = <label-state>
+; Available tokens:
+;   %name%
+; Default: %name%
+label-monitor = %name%
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-active = %index%: %icon%
+label-active-foreground = ${colors.adapta-lightgreen}
+label-active-background = ${colors.bg}
+label-active-underline = ${colors.bright-green}
+label-active-padding = 2
+; (unreleased)
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-occupied = %icon%
+label-occupied-underline = ${colors.adapta-green}
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = "%icon%%{F#ff004b}%{T3}%{O-12}  %{T-}%{F-}"
+label-urgent-foreground = ${colors.adapta-red}
+label-urgent-background = ${colors.bg}
+label-urgent-underline = ${colors.adapta-yellow}
+label-urgent-padding = 2
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-empty = %icon%
+label-empty-foreground = ${colors.background-alt}
+label-empty-padding = 1
+
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {:artist:t5:{artist}:}{:artist: - :}{:t4:{title}:}'
+format-background = ${colors.bg}
+format-foreground = ${colors.fg}
+format-padding = 2
+tail = true
+click-middle = ~/.config/polybar/scripts/player-mpris-tail.py previous &
+click-right = ~/.config/polybar/scripts/player-mpris-tail.py next &
+click-left = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
+
+[module/mpd]
+type = internal/mpd
+; Host where mpd is running (either ip or domain name)
+; Can also be the full path to a unix socket where mpd is running.
+host = 127.0.0.1
+port = 6699
+; Seconds to sleep between progressbar/song timer sync
+; Default: 1
+interval = 2
+; Used to display the state of random/repeat/repeatone/single
+; Only applies if <icon-[random|repeat|repeatone|single]> is used
+toggle-on-foreground = #ff
+toggle-off-foreground = #55
+; Available tags:
+;   <label-song> (default)
+;   <label-time>
+;   <bar-progress>
+;   <toggle> - gets replaced with <icon-(pause|play)>
+;   <toggle-stop> - gets replaced with <icon-(stop|play)>
+;   <icon-random>
+;   <icon-repeat>
+;   <icon-repeatone> (deprecated)
+;   <icon-single> - Toggle playing only a single song. Replaces <icon-repeatone>
+;   <icon-consume>
+;   <icon-prev>
+;   <icon-stop>
+;   <icon-play>
+;   <icon-pause>
+;   <icon-next>
+;   <icon-seekb>
+;   <icon-seekf>
+format-online = <toggle>
+format-playing = <icon-prev> <toggle> <icon-next> <label-song>
+format-paused = <toggle>
+format-stopped = <toggle>
+
+; Available tokens:
+;   %artist%
+;   %album-artist%
+;   %album%
+;   %date%
+;   %title%
+; Default: %artist% - %title%
+label-song = 𝄞 %artist% - %title%
+
+; Available tokens:
+;   %elapsed%
+;   %total%
+; Default: %elapsed% / %total%
+;label-time = %elapsed% / %total%
+
+label-offline = None
+
+; Only applies if <icon-X> is used
+icon-play = ⏵
+icon-pause = ⏸
+icon-stop = ⏹
+icon-prev = ⏮
+icon-next = ⏭
+icon-seekb = ⏪
+icon-seekf = ⏩
+icon-random = 🔀
+icon-repeat = 🔁
+icon-repeatone = 🔂
+icon-single = 🔂
+icon-consume = ✀
+;==========================================================
+
+;====Center modules========================================
+[module/title]
+type = internal/xwindow
+label = %title%
+label-maxlen = 30
+format-prefix = "  "
+format-background = ${colors.bg}
+format-foreground = ${colors.fg}
+format-padding = 2
+;label-empty = Empty
+label-empty = 
+label-empty-foreground = ${colors.adapta-grey}
+;==========================================================
+
+;====Right modules=========================================
+[module/cpu]
+type = custom/script
+exec = ~/.config/polybar/scripts/cpu
+interval = 0.5
+format-prefix = " "
+;format-underline = ${colors.adapta-cyan}
+format-margin = ${margin.for-modules}
+format-padding = 1
+label = %output%
+click-right = kitty -e htop
+click-left = ~/.config/polybar/scripts/notify-cpu
+
+[module/cpu-internal]
+type = internal/cpu
+interval = 0.5
+format-prefix = " "
+;format-underline = ${colors.adapta-cyan}
+format-margin = ${margin.for-modules}
+format-padding = 1
+label = %percentage:2%%
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /home
+mount-1 = /
+
+spacing = 4
+
+;label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%% of %total%
+label-mounted = %mountpoint% : %free%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/memory]
+type = custom/script
+exec = ~/.config/polybar/scripts/memory
+interval = 0.1
+format-prefix = "  "
+;format-underline = ${colors.adapta-cyan}
+;format-margin = ${margin.for-modules}
+format-padding = 1
+label = %output%
+click-left = ~/.config/polybar/scripts/notify-memory
+
+[module/memory-internal]
+type = internal/memory
+interval = 0.1
+;format = <label> <bar-used>
+format-prefix = "  "
+;format-underline = ${colors.adapta-cyan}
+;format-margin = ${margin.for-modules}
+format-padding = 1
+label = RAM %percentage_used:2%% - SWAP %percentage_swap_used:2%%
+;label = RAM %gb_used%/%gb_total% - SWAP %gb_swap_used%/%gb_swap_total%
+click-left = ~/.config/polybar/scripts/notify-memory
+
+[module/weather-ipc]
+type = custom/ipc
+format-foreground = ${colors.adapta-yellow}
+format-background = ${colors.bg}
+hook-0 = ~/.config/polybar/scripts/weather
+hook-1 = echo "  "
+initial = 1
+click-right = polybar-msg -p %pid% hook update-weather 1
+click-left = ~/.config/polybar/scripts/notify-date
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/scripts/weather
+exec-if = ping -q -c 1 -W 1 google.com >/dev/null
+label = %output%
+format = <label>
+format-foreground = ${colors.adapta-yellow}
+format-background = ${colors.bg}
+format-underline = ${colors.bright-green}
+format-padding = 1
+interval = 3600
+click-left = ~/.config/polybar/scripts/notify-date
+click-right = ~/.config/polybar/scripts/weather
+
+[module/date]
+type = internal/date
+interval = 1
+label = %date%,  %time%
+label-padding = 1
+;label-background = ${colors.adapta-grey}
+;label-underline = ${colors.adapta-cyan}
+date = %a %b %d
+time = %H:%M
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+date-alt = %A %B %d %Y
+time-alt = %T
+label-margin = ${margin.for-modules}
+click-left = ~/.config/polybar/scripts/notify-date
+;==========================================================
+
+; vim:ft=dosini
+

@@ -1,0 +1,72 @@
+{
+    "84d1da2e-5ae4-4199-b09d-e0a01c6d35d3": {
+        "id": "84d1da2e-5ae4-4199-b09d-e0a01c6d35d3",
+        "name": "Google Search",
+        "keyword": "g",
+        "cmd": "https://google.com/search?q=%s",
+        "icon": "/usr/share/ulauncher/media/google-search-icon.png",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1616566374.2235804
+    },
+    "ad406187-5516-488c-aaaa-36bc24f74b10": {
+        "id": "ad406187-5516-488c-aaaa-36bc24f74b10",
+        "name": "Stack Overflow",
+        "keyword": "so",
+        "cmd": "http://stackoverflow.com/search?q=%s",
+        "icon": "/usr/share/ulauncher/media/stackoverflow-icon.svg",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1616566374.223627
+    },
+    "6912e42d-3208-40ae-aeec-e62f5ab8abff": {
+        "id": "6912e42d-3208-40ae-aeec-e62f5ab8abff",
+        "name": "Wikipedia",
+        "keyword": "wiki",
+        "cmd": "https://en.wikipedia.org/wiki/%s",
+        "icon": "/usr/share/ulauncher/media/wikipedia-icon.png",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1616566374.2236574
+    },
+    "495e54f8-bfe7-4886-88cb-72911fa1e483": {
+        "id": "495e54f8-bfe7-4886-88cb-72911fa1e483",
+        "name": "DuckDuck Go",
+        "keyword": "ddg",
+        "cmd": "https://duckduckgo.com/?q=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1616566463.3798873
+    },
+    "45e11605-1345-4e71-b982-212b42e55ec0": {
+        "id": "45e11605-1345-4e71-b982-212b42e55ec0",
+        "name": "Youtube",
+        "keyword": "yt",
+        "cmd": "https://www.youtube.com/results?search_query=%s",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": true,
+        "added": 1616566546.5127387
+    },
+    "7839acd1-8755-43ce-97d8-d261aecb2665": {
+        "id": "7839acd1-8755-43ce-97d8-d261aecb2665",
+        "name": "Github Users",
+        "keyword": "ghs",
+        "cmd": "https://github.com/search?q=%s&type=users",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1616566625.9042683
+    },
+    "f42f5d98-35c1-4666-8cc7-0f40239db3d4": {
+        "id": "f42f5d98-35c1-4666-8cc7-0f40239db3d4",
+        "name": "Github",
+        "keyword": "gh",
+        "cmd": "https://github.com/search?utf8=%E2%9C%93&q=%s",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1616566655.1157463
+    }
+}
