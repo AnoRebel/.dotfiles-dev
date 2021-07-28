@@ -102,9 +102,14 @@ zsh-completions
 zsh-syntax-highlighting
 dotbare
 bgnotify
-sudo)
+sudo
+pipenv
+zsh-interactive-cd)
 
 source $ZSH/oh-my-zsh.sh
+
+# Dotbare completions
+_dotbare_completion_cmd
 
 # User configuration
 # disable zsh autocorrect
@@ -113,9 +118,6 @@ unsetopt correct_all
 if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found
 fi
-
-autoload -Uz compinit
-compinit
 
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
