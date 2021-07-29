@@ -118,6 +118,7 @@ else
   Plug 'roxma/nvim-yarp'
 endif
 Plug 'dense-analysis/ale'
+"Plug 'codota/tabnine-vim'
 
 call plug#end()
 
