@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if pgrep picom &>/dev/null; then
+    notify-send -i display "Picom" "Switching to Compton"
+    pkill picom &
+    sleep 2
+    /usr/bin/compton &
+    notify-send -i display "Compton" "Running Comtpon"
+elif pgrep compton &>/dev/null; then
+    notify-send -i display "Compton" "Switching to Picom"
+    pkill compton &
+    sleep 2
+    picom --config ~/.config/picom/picom.conf --experimental-backends &
+    notify-send -i display "Picom" "Running Picom"
+else
+    notify-send -i info "Display" "None Runnnig, using Compton"
+    /usr/bin/compton &
+fi
+
+exit 0

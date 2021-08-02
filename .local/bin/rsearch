@@ -1,0 +1,13 @@
+#!/bin/bash
+#Search for files and directories recursivly.
+
+if [ "${#}" -eq 2 ]; then
+  tree --noreport -ifa "${1}" | grep -i --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} "${2}"
+elif [ "${#}" -eq 1 ]; then
+  tree --noreport -ifa "${PWD}" | grep -i --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} "${1}"
+elif [ "${#}" -eq 0 ]; then
+  tree -ifa "${PWD}" 
+else
+ echo "Invalid number of parameters: ${#}"
+ exit 1
+fi

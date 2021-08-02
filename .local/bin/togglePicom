@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if pgrep picom &>/dev/null; then
+    notify-send -i display "Picom" "Shutting down Picom"
+    pkill picom &
+else
+    notify-send -i display "Picom" "Turning on Picom"
+    picom --config ~/.config/picom/picom.conf --experimental-backends &
+fi
+
+exit 0

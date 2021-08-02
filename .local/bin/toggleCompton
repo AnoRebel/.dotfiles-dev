@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if pgrep compton &>/dev/null; then
+    notify-send -i display "Compton" "Shutting down Compton"
+    pkill compton &
+else
+    notify-send -i display "Compton" "Turning on Compton"
+    /usr/bin/compton &
+fi
+
+exit 0
