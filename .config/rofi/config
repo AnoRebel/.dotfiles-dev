@@ -1,2 +1,3 @@
 rofi.font: FiraCode Nerd Font 12
-rofi.theme: /usr/local/share/rofi/themes/lb.rasi
+rofi.theme: ~/.config/rofi/themes/doom-one.rasi
+# rofi.theme: /usr/local/share/rofi/themes/lb.rasi

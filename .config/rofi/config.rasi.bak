@@ -1,0 +1,21 @@
+configuration {
+  terminal: "kitty";
+  modi: "combi,window,drun,ssh,file-browser";
+  combi-modi: "drun,window";
+  font: "Noto Sans Bold 10";
+  show-icons: true;
+  icon-theme: "Tela circle dark";
+  combi-hide-mode-prefix: true;
+  drun-show-actions: true;
+  drun-display-format: "{name}";
+  disable-history: false;
+  fullscreen: false;
+  hide-scrollbar: true;
+  sidebar-mode: false;
+  auto-select: false;
+  theme: "~/.config/rofi/themes/doom-one.rasi";
+}
+
+/*
+ * vim: ft=css sw=2 ts=2
+ */

@@ -21,12 +21,12 @@ case $chosen in
         ~/.config/rofi/scripts/promptmenu.sh --yes-command "reboot" --query "Are you sure want to Reboot?"
         ;;
     $lock)
-        i3lock-fancy
+       betterlockscreen -l dimblur 
         ;;
     $suspend)
         systemctl suspend
         ;;
     $logout)
-        ~/.config/rofi/scripts/promptmenu.sh --yes-command "i3-msg exit" --query "Logout?"
+        ~/.config/rofi/scripts/promptmenu.sh --yes-command "bspc quit" --query "Logout?"
         ;;
 esac

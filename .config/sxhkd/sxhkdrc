@@ -172,7 +172,7 @@ control + shift + Escape
     mate-system-monitor
 
 control + alt + k
-    betterlockscreen -l dimblur
+    betterlockscreen -l dimblur -r 1920x1080
 
 control + alt + u
     mate-volume-control

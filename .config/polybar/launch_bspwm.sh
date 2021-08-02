@@ -9,9 +9,9 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch Bspwm bar
-echo "---" | tee -a /tmp/polybar_bspwm_hdmi.log
-echo "---" | tee -a /tmp/polybar_bspwm_vga.log
-polybar bspwm_hdmi 2>&1 | tee -a /tmp/polybar_bspwm_hdmi.log & disown
-polybar bspwm_vga 2>&1 | tee -a /tmp/polybar_bspwm_vga.log & disown
+echo "---" | tee -a /tmp/polybar_hdmi.log
+echo "---" | tee -a /tmp/polybar_vga.log
+polybar HDMI 2>&1 | tee -a /tmp/polybar_hdmi.log & disown
+polybar VGA 2>&1 | tee -a /tmp/polybar_vga.log & disown
 
 echo "Bspwm bars launched..."

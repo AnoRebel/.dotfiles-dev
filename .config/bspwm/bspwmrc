@@ -8,7 +8,8 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 #feh --bg-fill ~/Pictures/kyojin.jpg &
 
 # Setting up monitors
-xrandr --output VGA-1 --mode 1366x768 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --rotate normal --right-of VGA-1
+#xrandr --output VGA-1 --mode 1366x768 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --rotate normal --right-of VGA-1
+xrandr --output HDMI-1 --mode 1920x1080 --rotate normal --output VGA-1 --primary --mode 1920x1080 --rotate normal --right-of HDMI-1
 
 # Desktops/Workspaces
 bspc monitor HMDI-1 -d 1 2 3 4
@@ -16,14 +17,14 @@ bspc monitor VGA-1 -d 5 6 7 8
 
 # Coloring
 bspc config normal_border_color		      "#282A36"
-bspc config active_border_color	          "#44475A"
+bspc config active_border_color	        "#44475A"
 bspc config focused_border_color	      "#6272A4"
 bspc config presel_feedback_color	      "#5e81ac"
 #bspc config urgent_border_color 	      "#dd2727"
 
 # Config
 #bspc config border_radius                 6
-bspc config border_width                  2
+bspc config border_width                  1
 bspc config window_gap                    6
 bspc config top_padding                   2
 bspc config bottom_padding                2
@@ -48,7 +49,6 @@ bspc config pointer_action3               resize_corner
 bspc rule -a Gimp desktop='^5' state=floating follow=on
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
-bspc rule -a Blueberry.py state=floating
 bspc rule -a Mintstick.py state=floating focus=on
 bspc rule -a Gnome-disks state=floating
 bspc rule -a Gnome-font-viewer state=floating follow=on focus=on
@@ -58,11 +58,8 @@ bspc rule -a Font-manager state=floating focus=on
 bspc rule -a xpad state=floating focus=on sticky=on
 bspc rule -a indicator-stickynotes state=floating focus=on sticky=on
 bspc rule -a qt5ct state=floating
-bspc rule -a Lxappearance state=floating follow=on focus=on
-bspc rule -a Xfce4-settings-manager follow=on focus=on state=floating
 bspc rule -a mate-control-center state=floating follow=on focus=on
 bspc rule -a mate-notification-daemon state=floating
-bspc rule -a Xfce4-taskmanager state=floating focus=on
 bspc rule -a Usb-creator-gtk state=floating
 bspc rule -a Wine state=floating follow=on
 bspc rule -a Lightdm-settings state=floating
@@ -83,11 +80,12 @@ bspc rule -a Simple-scan state=floating
 bspc rule -a Kernels state=floating focus=on follow=on
 bspc rule -a xterm state=floating focus=on
 bspc rule -a urxvt state=floating focus=on
-bspc rule -a ulauncher state=floating border=off focus=on
+bspc rule -a ulauncher state=floating border=off focus=on sticky=on
 
 # Focus
 bspc rule -a Mate-terminal focus=on
 bspc rule -a kitty focus=on
+bspc rule -a alacritty focus=on
 
 # Assign
 bspc rule -a Nemo desktop="^1" follow=on focus=on
@@ -95,8 +93,6 @@ bspc rule -a nemo desktop="^1" follow=on focus=on
 bspc rule -a Caja desktop="^1" follow=on focus=on
 bspc rule -a caja desktop="^1" follow=on focus=on
 bspc rule -a xed desktop="^2" follow=on focus=on
-bspc rule -a Gedit desktop="^2" follow=on focus=on
-bspc rule -a gedit desktop="^2" follow=on focus=on
 bspc rule -a Sublime desktop="^2" follow=on focus=on
 bspc rule -a subl desktop="^2" follow=on focus=on
 bspc rule -a Code desktop="^2" follow=on focus=on

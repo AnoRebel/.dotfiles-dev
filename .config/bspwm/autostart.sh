@@ -50,6 +50,6 @@ numlockx on &
 unclutter &
 #ibus-daemon --xim --daemonize $
 
-conky -c ~/.config/bspwm/scripts/system-overview &
-conky -c ~/.config/bspwm/scripts/system-shortcuts &
+# conky -c ~/.config/bspwm/scripts/system-overview &
+# conky -c ~/.config/bspwm/scripts/system-shortcuts &
 
