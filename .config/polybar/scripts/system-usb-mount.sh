@@ -9,7 +9,7 @@ case "$1" in
 
             mountpoint=$(udisksctl mount --no-user-interaction -b $mount)
             mountpoint=$(echo $mountpoint | cut -d " " -f 4- | tr -d ".")
-            kitty -e "bash -lc 'dolphin $mountpoint'" &
+            kitty -e "bash -lc 'caja $mountpoint'" &
         done
         ;;
     --unmount)

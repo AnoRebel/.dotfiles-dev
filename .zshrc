@@ -185,7 +185,7 @@ alias ls='exa --icons --color=automatic --color-scale -F'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias lt='ls --tree'
+alias lt='ls --tree --git-ignore'
 
 function mkcd() {
 	command mkdir -p $1 && cd $1
