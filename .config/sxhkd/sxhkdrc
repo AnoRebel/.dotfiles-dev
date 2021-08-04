@@ -39,17 +39,17 @@ super + c
 # reload sxhkd
 super + shift + k
 	pkill -USR1 -x sxhkd && \
-    notify-send.py --replaces-process "sxhkd config" -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Sxhkd" "Reloaded Key Bindings"
+    notify-send.py -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Sxhkd" "Reloaded Key Bindings"
 
 # restart bspwm
 super + control + r
 	bspc wm -r && \
-    notify-send.py --replaces-process "bspwm config" -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Bspwm" "Restarted WM"
+    notify-send.py -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Bspwm" "Restarted WM"
 
 # restart bspwm
 super + shift + r
 	bsp-layout reload && \
-    notify-send.py --replaces-process "bspwm layouts" -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Bspwm" "Reloaded Layouts"
+    notify-send.py -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Bspwm" "Reloaded Layouts"
 
 # Move to the given desktop
 super + {1-7}
@@ -103,10 +103,10 @@ alt + shift + bracket{left,right}
 
 # expand a window by moving one of its side outward
 alt + r : {h,j,k,l}
-    notify-send.py --replaces-process "bspwm resize" -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Bspwm" "Resizing Window. Press Escape to cancel." && \
+    notify-send.py -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Bspwm" "Resizing Window. Press Escape to cancel." && \
     bspwm_resize {west,south,north,east} 30
 alt + r : {Left,Down,Up,Right}
-    notify-send.py --replaces-process "bspwm resize" -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Bspwm" "Resizing Window. Press Escape to cancel." && \
+    notify-send.py -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Bspwm" "Resizing Window. Press Escape to cancel." && \
     bspwm_resize {west,south,north,east} 30
 #alt + r : {h,j,k,l}
 #	notify-send -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Bspwm" "Expanding Window. Press Escape to cancel." && \
@@ -177,9 +177,6 @@ control + alt + k
 control + alt + u
     mate-volume-control
 
-control + alt + a
-    xfce4-appfinder
-
 super + shift + n
     kitty -e cmus
 
@@ -217,23 +214,11 @@ control + alt + g
 #super + p
 #   vlc
 
-#super + p
-#   celluloid
-
 super + p
-    xplayer
-
-super + F5
-    pix %U
-    
-super + i
-    eog %U
+   celluloid
 
 super + F5
    gimp
-
-control + alt + e
-   thunderbird
 
 #control + alt + e
 #    geary
@@ -244,46 +229,43 @@ control + alt + s
 super + {_,control + }b
     polybar-msg -p $(pidof polybar) cmd {toggle,restart}
 
-Print
+control + Print
     scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $(xdg-user-dir PICTURES)' && \
     paplay /usr/share/sounds/freedesktop/stereo/camera-shutter.oga && \
-    notify-send.py --replaces-process "screenshot" -u low -i camera 'Screenshot saved in Pictures folder'
+    notify-send.py -u low -i camera 'Screenshot saved in Pictures folder'
 
-control + Print
+Print
     mate-screenshot && paplay /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
-
-control + shift + Print
-    shutter
 
 shift + Print
     mate-screenshot -i
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
     amixer -D pulse set Master {5%+ && \
-    notify-send.py --replaces-process "volume control" -u low -i audio-volume-medium 'Audio' 'Volume Increased',5%- && \
-    notify-send.py --replaces-process "volume control" -u low -i audio-volume-medium 'Audio' 'Volume Decreased',toggle && \
-    notify-send.py --replaces-process "volume control" -u low -i audio-volume-medium 'Audio' 'Volume Toggled'}
+    notify-send.py -u low -i audio-volume-medium 'Audio' 'Volume Increased',5%- && \
+    notify-send.py -u low -i audio-volume-medium 'Audio' 'Volume Decreased',toggle && \
+    notify-send.py -u low -i audio-volume-medium 'Audio' 'Volume Toggled'}
 
 # https://github.com/acrisci/playerctl/
 XF86Audio{Play,Next,Prev,Stop}
     playerctl {play-pause && \
-    notify-send.py --replaces-process "playback control" -u low -i media-playback-start 'Player' 'Play/Pause Toggled',next && \
-    notify-send.py --replaces-process "playback control" -u low -i media-playback-forward 'Player' 'Next',previous && \
-    notify-send.py --replaces-process "playback control" -u low -i media-playback-backward 'Player' 'Previous',stop && \
-    notify-send.py --replaces-process "playback control" -u low -i media-playback-stop 'Player' 'Stopped'}
+    notify-send.py "playback control" -u low -i media-playback-start 'Player' 'Play/Pause Toggled',next && \
+    notify-send.py -u low -i media-playback-forward 'Player' 'Next',previous && \
+    notify-send.py -u low -i media-playback-backward 'Player' 'Previous',stop && \
+    notify-send.py -u low -i media-playback-stop 'Player' 'Stopped'}
 
 XF86MonBrightness{Up,Down}
     xbacklight {-inc 20 && \
-    notify-send.py --replaces-process "brightness control" -u low -i display 'Display' 'Brightness Increased',-dec 20 && \
-    notify-send.py --replaces-process "brightness control" -u low -i display 'Display' 'Brightness Decreased'}
+    notify-send.py -u low -i display 'Display' 'Brightness Increased',-dec 20 && \
+    notify-send.py -u low -i display 'Display' 'Brightness Decreased'}
 
 XF86Reload
     bspc wm -r && \
-    notify-send.py --replaces-process "bspwm config" -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Bspwm" "Restarted WM"
+    notify-send.py -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Bspwm" "Restarted WM"
 
 XF86TouchpadToggle
     toggleTouchpad && \
-    notify-send.py --replaces-process "toggle touchpad" -u low -i mouse 'TouchPad' 'TouchPad Toggled'
+    notify-send.py -u low -i mouse 'TouchPad' 'TouchPad Toggled'
 
 XF86{Close,Display}
     {bspc node -c,displayselect}

@@ -76,7 +76,7 @@ scroll-down = bspwm.prev
 
 modules-left = left-menu menu right-menu
 modules-center = left-date date right-date
-modules-right = left-powermenu powermenu right-powermenu
+modules-right = left-bspwm bspwm right-bspwm left-powermenu powermenu right-powermenu
 
 [bar/VGA]
 width = 100%
