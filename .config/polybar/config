@@ -45,7 +45,7 @@ white-alt   = #c8ccd4
 margin-top = 0
 margin-bottom = 0
 
-[bar/HDMI]
+[bar/HDMI-1]
 width = 100%
 height = 28
 offset-x = 0%
@@ -55,7 +55,7 @@ fixed-center = true
 line-size = 1
 line-color = ${colors.green}
 wm-restack = bspwm
-monitor = HDMI-1
+monitor = ${env:MONITOR:HDMI-1}
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -71,14 +71,17 @@ font-4 = "Anonymice Nerd Font:pixelsize=13;2"
 enable-ipc = true
 cursor-click = pointer
 
-scroll-up = bspwm.next
-scroll-down = bspwm.prev
+scroll-up = #bspwm.next
+scroll-down = #bspwm.prev
+
+screenchange = true
+screenchange-reload = true
 
 modules-left = left-menu menu right-menu
 modules-center = left-date date right-date
 modules-right = left-bspwm bspwm right-bspwm left-powermenu powermenu right-powermenu
 
-[bar/VGA]
+[bar/VGA-1]
 width = 100%
 height = 28
 offset-x = 0%
@@ -88,7 +91,7 @@ fixed-center = true
 line-size = 2
 line-color = ${colors.green-alt}
 wm-restack = bspwm
-monitor = VGA-1
+monitor =${env:MONITOR:VGA-1}
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -111,6 +114,7 @@ tray-position = left
 tray-detached = false
 tray-background = ${colors.background}
 tray-padding = 2
+screenchange = true
 screenchange-reload = true
 
 modules-left = system-usb-mount left-cpu cpu right-cpu
@@ -192,8 +196,8 @@ type = internal/bspwm
 
 enable-click = true
 enable-scroll = true
-reverse-scroll = false
-pin-workspaces = false
+reverse-scroll = true
+pin-workspaces = true
 inline-mode = true
 fuzzy-match = true
 
@@ -202,6 +206,9 @@ icon-1 = 2; 
 icon-2 = 3; 
 icon-3 = 4; 
 icon-4 = 5; 
+icon-5 = 6; 
+icon-6 = 7; 
+icon-7 = 8; 
 icon-default = 
 
 format = <label-state>

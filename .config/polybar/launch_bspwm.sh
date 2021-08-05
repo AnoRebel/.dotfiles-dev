@@ -11,7 +11,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 # Launch Bspwm bar
 echo "---" | tee -a /tmp/polybar_hdmi.log
 echo "---" | tee -a /tmp/polybar_vga.log
-polybar HDMI 2>&1 | tee -a /tmp/polybar_hdmi.log & disown
-polybar VGA 2>&1 | tee -a /tmp/polybar_vga.log & disown
+polybar -r HDMI-1 2>&1 | tee -a /tmp/polybar_hdmi.log & disown
+polybar -r VGA-1 2>&1 | tee -a /tmp/polybar_vga.log & disown
 
 echo "Bspwm bars launched..."

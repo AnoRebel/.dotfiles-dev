@@ -10,7 +10,9 @@
     "py",
     "json"
   ],
-  "eslint.enable": true,
+  "explorer.file.showHiddenFiles": true,
+  "explorer.icon.enableVimDevicons": true,
+  "explorer.icon.source": "vim-devicons",
   "eslint.packageManager": "yarn",
   "eslint.autoFixOnSave": true,
   "eslint.format.enable": true,

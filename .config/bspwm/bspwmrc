@@ -7,13 +7,41 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 ~/.config/bspwm/autostart.sh
 #feh --bg-fill ~/Pictures/kyojin.jpg &
 
+# Functions
+multimonitors()
+{
+   start_from=1
+   monitors_connected=$(bspc query -M | wc -l)
+   per_monitor=$(( 8 / monitors_connected ))
+   for monitor in $(bspc query -M); do
+      bspc monitor $monitor -d $(seq $start_from $(( start_from + per_monitor -
+      1)))
+      start_from=$(( start_from + per_monitor ))
+   done
+}
+
+multibar()
+{
+   #pkill polybar
+   #while pgrep -x polybar >/dev/null; do sleep 1; done
+   killall -q polybar
+   while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+   xrandr -q | awk '/ connected / {print $1}' | while read -r monitor _; do
+      #polybar -r "$monitor" &
+      echo "---" | tee -a /tmp/polybar_${monitor}.log
+      polybar -r $monitor 2>&1 | tee -a /tmp/polybar_${monitor}.log & disown
+   done
+}
+
 # Setting up monitors
 #xrandr --output VGA-1 --mode 1366x768 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --rotate normal --right-of VGA-1
-xrandr --output HDMI-1 --mode 1920x1080 --rotate normal --output VGA-1 --primary --mode 1920x1080 --rotate normal --right-of HDMI-1
+xrandr --output HDMI-1 --primary --mode 1920x1080 --rotate normal --output VGA-1 --mode 1920x1080 --rotate normal --right-of HDMI-1
 
 # Desktops/Workspaces
 bspc monitor HMDI-1 -d 1 2 3 4
 bspc monitor VGA-1 -d 5 6 7 8
+#multimonitors
+#multibar &
 
 # Coloring
 bspc config normal_border_color		      "#282A36"
@@ -46,7 +74,7 @@ bspc config pointer_action2               resize_side
 bspc config pointer_action3               resize_corner
 
 # Rules
-bspc rule -a Gimp desktop='^5' state=floating follow=on
+bspc rule -a Gimp state=floating follow=on
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a Mintstick.py state=floating focus=on
@@ -65,7 +93,6 @@ bspc rule -a Wine state=floating follow=on
 bspc rule -a Lightdm-settings state=floating
 bspc rule -a Yad state=floating
 bspc rule -a vlc desktop="^4" follow=on focus=on
-bspc rule -a xplayer desktop="^4" follow=on focus=on
 bspc rule -a Celluloid desktop="^4" follow=on focus=on
 bspc rule -a Copying state=floating
 bspc rule -a Deleting state=floating
@@ -88,35 +115,14 @@ bspc rule -a kitty focus=on
 bspc rule -a alacritty focus=on
 
 # Assign
-bspc rule -a Nemo desktop="^1" follow=on focus=on
-bspc rule -a nemo desktop="^1" follow=on focus=on
-bspc rule -a Caja desktop="^1" follow=on focus=on
-bspc rule -a caja desktop="^1" follow=on focus=on
-bspc rule -a xed desktop="^2" follow=on focus=on
-bspc rule -a Sublime desktop="^2" follow=on focus=on
-bspc rule -a subl desktop="^2" follow=on focus=on
-bspc rule -a Code desktop="^2" follow=on focus=on
-bspc rule -a code desktop="^2" follow=on focus=on
 bspc rule -a Firefox desktop="^3" follow=on focus=on
 bspc rule -a firefox desktop="^3" follow=on focus=on
-bspc rule -a Brave-Browser desktop="^3" follow=on focus=on
-bspc rule -a brave-browser desktop="^3" follow=on focus=on
 bspc rule -a Vlc desktop="^4" follow=on focus=on
 bspc rule -a celluloid desktop="^4" follow=on focus=on
-bspc rule -a Xplayer desktop="^4" follow=on focus=on
-bspc rule -a pinta desktop="^5" follow=on focus=on
-bspc rule -a Pinta desktop="^5" follow=on focus=on
-bspc rule -a Eog desktop="^5" follow=on focus=on
-bspc rule -a eog desktop="^5" follow=on focus=on
-bspc rule -a feh desktop="^5" follow=on focus=on
 bspc rule -a Rhythmbox desktop="^6" follow=on focus=on
 bspc rule -a rhythmbox desktop="^6" follow=on focus=on
-bspc rule -a cmus desktop="^6" follow=on focus=on
-bspc rule -a ncmpcpp desktop="^6" follow=on focus=on
 bspc rule -a Thunderbird desktop="^7" follow=on focus=on
 bspc rule -a thunderbird desktop="^7" follow=on focus=on
-bspc rule -a Geary desktop="^7" follow=on focus=on
-bspc rule -a geary desktop="^7" follow=on focus=on
 
 # Special Rules
 declare -a settings=(Lxappearance Lxtask Lxrandr Arandr \
