@@ -72,6 +72,7 @@ Plug 'stsewd/fzf-checkout.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'fannheyward/telescope-coc.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " General helpers
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -643,10 +644,16 @@ let g:which_key_map.b = {
 " ----------------------------------------------------------------------------
 lua << EOF
 require('telescope').setup{
-    defaults = {
-        prompt_prefix = "$ ",
+  defaults = {
+    prompt_prefix = "$ ",
+  }
+  --[[extensions = {
+    fzf = {
+      fuzzy = true,
     }
+  }]]
 }
+require('telescope').load_extension('fzf')
 require('telescope').load_extension('coc')
 EOF
 
