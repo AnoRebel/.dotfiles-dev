@@ -52,6 +52,8 @@ Plug 'wincent/command-t', {
 
 " Misc
 "Plug 'ascenator/L9', {'name': 'newL9'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'Yggdroot/indentLine'
 
 " Theming
 Plug 'vim-airline/vim-airline'
@@ -60,13 +62,16 @@ Plug 'sjl/badwolf'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'machakann/vim-highlightedyank'
 Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'zenorocha/dracula-theme', { 'rtp': 'vim/' }
 
 " Fuzzy finders
-"Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'fannheyward/telescope-coc.nvim'
 
 " General helpers
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -179,9 +184,19 @@ set splitbelow splitright
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 set errorformat=%f:%l:%c:%*\d:%*\d:%*\s%m
 " Give more space for displaying messages.
-" set cmdheight=2
+set cmdheight=2
 " (default is 4000 ms = 4 s) leads to noticeable delays
 set updatetime=300
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 hi clear SignColumn
 
@@ -385,24 +400,6 @@ let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDToggleCheckAllLines = 1
-
-
-" ----------------------------------------------------------------------------
-"   CtrlP
-" ----------------------------------------------------------------------------
-" let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_show_hidden = 1
-" let g:ctrlp_max_height = 30
-" let g:ctrlp_switch_buffer = 'et'
-" set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-" "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-" let g:ctrlp_custom_ignore = {
-" \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-" \ 'file': '\v\.(exe|so|dll)$',
-" \ 'link': 'some_bad_symbolic_links',
-" \ }
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 
 " ----------------------------------------------------------------------------
@@ -626,8 +623,9 @@ let g:which_key_map.b = {
 
 
 " ----------------------------------------------------------------------------
-"   Indent Guides
+"   Indent Guides + indentLine
 " ----------------------------------------------------------------------------
+" let g:indentLine_setColors = 0
 " let g:indent_guides_guide_size = 1
 " let g:indent_guides_color_change_percent = 3
 " let g:indent_guides_enable_on_vim_startup = 2
@@ -641,12 +639,24 @@ let g:which_key_map.b = {
 
 
 " ----------------------------------------------------------------------------
+"  Telescope
+" ----------------------------------------------------------------------------
+lua << EOF
+require('telescope').setup{
+    defaults = {
+        prompt_prefix = "$ ",
+    }
+}
+require('telescope').load_extension('coc')
+EOF
+
+" ----------------------------------------------------------------------------
 "   Key maps and remaps
 " ----------------------------------------------------------------------------
 " findin the right file and opening on it
 nnoremap <Leader>f :NERDTreeToggle<Enter>
-nnoremap <silent> <Leader>v :SyncTree()<CR>
-"nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+"nnoremap <silent> <Leader>v :SyncTree()<CR>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 " Undo Tree Visualizer
 nnoremap <leader>u :UndotreeShow<CR>
 " Vim Splits Movement
@@ -690,6 +700,22 @@ inoremap <silent><expr> <TAB>
   \ <SID>check_back_space() ? "\<TAB>" :
   \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-z> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 " Use H to show documentation in preview window.
 nnoremap <silent> H :call <SID>show_documentation()<CR>
 " Move selected lines Up or Down
@@ -699,8 +725,11 @@ xnoremap J :move '>+1<CR>gv-gv
 nnoremap <Leader>c :lclose<Enter>
 " FZF
 nnoremap <Leader>o :Files<CR>
-" CtrlP
-"nnoremap <Leader>o :CtrlP<CR>
+" Telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Goyo
 noremap <Leader>g :Goyo<CR>
 " Float Term
@@ -729,7 +758,8 @@ vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 "  Emmet Trigger Key
 " ----------------------------------------------------------------------------
 "let g:user_emmet_mode='a'
-let g:user_emmet_leader_key='<C-Z>'
+" let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_leader_key='<TAB>'
 
 " ----------------------------------------------------------------------------
 "   Coc Explorer
@@ -785,7 +815,7 @@ nnoremap <space>ec :CocCommand explorer --preset cocConfig<CR>
 nnoremap <space>eb :CocCommand explorer --preset buffer<CR>
 
 " List all presets
-nnoremap <space>el :CocList explPresets
+nnoremap <space>el :CocList explPresets<CR>
 
 " Reveal to current buffer for closest coc-explorer
 nnoremap <Leader>er :call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
@@ -795,17 +825,28 @@ nnoremap <Leader>er :call CocAction('runCommand', 'explorer.doAction', 'closest'
 " ----------------------------------------------------------------------------
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
 " For Git Grep
 command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number -- '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
 " For Rip Grep
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
+
 " Custom Rip Grep
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 

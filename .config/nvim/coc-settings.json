@@ -11,7 +11,7 @@
     "json"
   ],
   "explorer.file.showHiddenFiles": true,
-  "explorer.icon.enableVimDevicons": true,
+  "explorer.icon.enableNerdfont": true,
   "explorer.icon.source": "vim-devicons",
   "eslint.packageManager": "yarn",
   "eslint.autoFixOnSave": true,
