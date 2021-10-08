@@ -38,7 +38,7 @@ multibar()
 xrandr --output HDMI-1 --primary --mode 1920x1080 --rotate normal --output VGA-1 --mode 1920x1080 --rotate normal --right-of HDMI-1
 
 # Desktops/Workspaces
-bspc monitor HMDI-1 -d 1 2 3 4
+bspc monitor HDMI-1 -d 1 2 3 4
 bspc monitor VGA-1 -d 5 6 7 8
 #multimonitors
 #multibar &

@@ -165,6 +165,9 @@ export PATH="$PATH:$HOME/flutter/bin"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# Opt-out of DOTNET Telemetry
+export DOTNET_CLI_TELEMETRY_OPTOUT=true
+
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin

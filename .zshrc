@@ -96,9 +96,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git 
-zsh-autosuggestions 
-zsh-completions 
+plugins=(git
+zsh-autosuggestions
+zsh-completions
 zsh-syntax-highlighting
 dotbare
 bgnotify
@@ -213,6 +213,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Opt-out of DOTNET Telemetry
+export DOTNET_CLI_TELEMETRY_OPTOUT=true
 
 # Cargo installation
 export PATH="$HOME/.cargo/bin:$PATH"

@@ -64,7 +64,7 @@ border-color = ${colors.background}
 
 font-0 = "Font Awesome 5 Free Solid:pixelsize=13;3"
 font-1 = "FiraCode Nerd Font:pixelsize=18;4"
-font-2 = FontAwesome:pixelsize=13;1
+font-2 = "FontAwesome:pixelsize=13;1"
 font-3 = "Noto Sans Symbols2:pixelsize=13;5"
 font-4 = "Anonymice Nerd Font:pixelsize=13;2"
 
@@ -123,7 +123,7 @@ modules-right = left-bspwm bspwm right-bspwm
 
 [module/menu]
 type = custom/text
-content = " "
+content =  
 ;alt icons =   
 ;content-padding = 2
 content-background = ${colors.background}
