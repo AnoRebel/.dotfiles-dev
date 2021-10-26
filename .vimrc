@@ -77,15 +77,13 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " General helpers
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle'}
-Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors' " Ctrl + N on selected
 Plug 'easymotion/vim-easymotion'
 Plug 'bling/vim-bufferline'
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround' " ysw-)}]
 Plug 'tpope/vim-repeat'
 Plug 'henrik/vim-indexed-search'
-Plug 'itchyny/calendar.vim'
 Plug 'junegunn/vim-peekaboo'
-Plug 'vimwiki/vimwiki'
 Plug 'mhinz/vim-startify'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
@@ -96,6 +94,7 @@ Plug 'spf13/vim-autoclose'
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdcommenter'
+Plug 'preservim/tagbar'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
 Plug 'mbbill/undotree'
@@ -760,6 +759,8 @@ nmap <leader>\g :FloatermNew! EDITOR=floaterm zsh -c 'lazygit'; exit<CR>
 " Map leader to which_key
 nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " ----------------------------------------------------------------------------
 "  Emmet Trigger Key
