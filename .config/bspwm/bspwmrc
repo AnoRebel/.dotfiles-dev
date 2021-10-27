@@ -35,10 +35,10 @@ multibar()
 
 # Setting up monitors
 #xrandr --output VGA-1 --mode 1366x768 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --rotate normal --right-of VGA-1
-xrandr --output HDMI-1 --primary --mode 1920x1080 --rotate normal --output VGA-1 --mode 1920x1080 --rotate normal --right-of HDMI-1
+xrandr --output DP-1 --primary --mode 1920x1080 --rotate normal --output VGA-1 --mode 1920x1080 --rotate normal --right-of DP-1
 
 # Desktops/Workspaces
-bspc monitor HDMI-1 -d 1 2 3 4
+bspc monitor DP-1 -d 1 2 3 4
 bspc monitor VGA-1 -d 5 6 7 8
 #multimonitors
 #multibar &
@@ -57,7 +57,7 @@ bspc config window_gap                    6
 bspc config top_padding                   2
 bspc config bottom_padding                2
 bspc config -m VGA-1 bottom_padding       30
-bspc config -m HDMI-1 top_padding         30
+bspc config -m DP-1 top_padding         30
 bspc config left_padding                  2
 bspc config right_padding                 2
 bspc config single_monocle                true

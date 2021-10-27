@@ -45,7 +45,8 @@ white-alt   = #c8ccd4
 margin-top = 0
 margin-bottom = 0
 
-[bar/HDMI-1]
+# [bar/HDMI-1]
+[bar/DP-1]
 width = 100%
 height = 28
 offset-x = 0%
@@ -55,7 +56,7 @@ fixed-center = true
 line-size = 1
 line-color = ${colors.green}
 wm-restack = bspwm
-monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:DP-1}
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -123,7 +124,7 @@ modules-right = left-bspwm bspwm right-bspwm
 
 [module/menu]
 type = custom/text
-content =  
+content = 
 ;alt icons =   
 ;content-padding = 2
 content-background = ${colors.background}
