@@ -100,6 +100,7 @@ Plug 'yardnsm/vim-import-cost', { 'do': 'yarn install' }
 Plug 'mbbill/undotree'
 Plug 'ap/vim-css-color'
 Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
+Plug 'rodrigore/coc-tailwind-intellisense', {'do': 'yarn install'}
 " Html
 Plug 'rstacruz/sparkup', {'rtp': '/vim'}
 
@@ -156,6 +157,7 @@ syntax on
 set clipboard+=unnamedplus
 set mouse=a
 set number
+set numberwidth=4
 set relativenumber
 set autoread
 set autoindent
@@ -167,6 +169,8 @@ set hlsearch
 set incsearch
 set smartcase
 set t_Co=256
+set list
+set listchars=tab:▸\ ,trail:·
 set smarttab
 set expandtab
 set tabstop=4
@@ -199,6 +203,7 @@ else
 endif
 
 hi clear SignColumn
+let g:plug_window = 'noautocmd vertical topleft new'
 
 
 " ----------------------------------------------------------------------------
@@ -462,6 +467,8 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Startify | NERDTree | endif
 " Auto close Nerdtree on open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" If more than one window and previous buffer was NERDTree, go back to it
+autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 "autocmd CursorHold * silent call CocActionAsync('doHover')
@@ -660,9 +667,10 @@ EOF
 "   Key maps and remaps
 " ----------------------------------------------------------------------------
 " findin the right file and opening on it
-nnoremap <Leader>f :NERDTreeToggle<Enter>
+" nnoremap <Leader>f :NERDTreeToggle<Enter>
+nnoremap <expr> <Leader>f g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<CR>'
 "nnoremap <silent> <Leader>v :SyncTree()<CR>
-nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+nnoremap <silent> <Leader>F :NERDTreeFind<CR>
 " Undo Tree Visualizer
 nnoremap <leader>u :UndotreeShow<CR>
 " Vim Splits Movement
@@ -761,6 +769,23 @@ nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" Keep it centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Allow gf to open non-existent files
+map gf :edit <cfile><cr>
+
+" Open the current file in the default program
+nmap <leader>x :!xdg-open %<cr><cr>
+
+" Easy insertion of a trailing ; or , from insert mode
+imap ;; <Esc>A;<Esc>
+imap ,, <Esc>A,<Esc>
+
+cmap w!! %!sudo tee > /dev/null %
 
 " ----------------------------------------------------------------------------
 "  Emmet Trigger Key

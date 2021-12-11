@@ -191,6 +191,13 @@ function mkcd() {
 	command mkdir -p $1 && cd $1
 }
 
+# Fucking irritating, had to script
+function psvn() {
+  git stash
+  gsr
+  git stash pop
+}
+
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 export PATH=$PATH:/usr/local/go/bin
