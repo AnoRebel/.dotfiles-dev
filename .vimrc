@@ -667,8 +667,8 @@ EOF
 "   Key maps and remaps
 " ----------------------------------------------------------------------------
 " findin the right file and opening on it
-" nnoremap <Leader>f :NERDTreeToggle<Enter>
-nnoremap <expr> <Leader>f g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<CR>'
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+" nnoremap <expr> <Leader>f g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<CR>'
 "nnoremap <silent> <Leader>v :SyncTree()<CR>
 nnoremap <silent> <Leader>F :NERDTreeFind<CR>
 " Undo Tree Visualizer
@@ -699,6 +699,8 @@ map <leader>t<leader> :tabnext
 " Better tabbing
 vnoremap < <gv
 vnoremap > >gv
+" Coc Rest Client
+noremap <leader>0 :CocCommand rest-client.request <CR>
 " Coc Explorer
 nmap <space>e :CocCommand explorer<CR>
 nmap <space>f :CocCommand explorer --preset floating<CR>
