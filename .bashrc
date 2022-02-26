@@ -5,6 +5,7 @@ alias pgadmin='cd ~/adminer ; nohup php -S 127.0.0.1:3066 &>logs & ;
 brave-browser 127.0.0.1:3066 & ; cd'
 
 alias lampp='sudo /opt/lampp/./manager-linux-x64.run'
+# alias lampp="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY/opt/lampp/manager-linux-x64.run &"
 
 alias py='python3'
 alias py2='python2'
@@ -177,6 +178,9 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Fix NVM path error
+export NODE_PATH=$NODE_PATH:`npm root -g`
 
 # Cargo installation
 export PATH="$HOME/.cargo/bin:$PATH"
