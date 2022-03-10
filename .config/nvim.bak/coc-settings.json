@@ -1,0 +1,66 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "js",
+    "jsx",
+    "php",
+    "css",
+    "markdown",
+    "html",
+    "py",
+    "json"
+  ],
+  "explorer.file.showHiddenFiles": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.icon.source": "vim-devicons",
+  "eslint.packageManager": "yarn",
+  "eslint.autoFixOnSave": true,
+  "eslint.format.enable": true,
+  "tailwindCSS.emmetCompletions": true,
+  "coc.preferences.colorSupport": true,
+  "highlight.colors.enable": true,
+  "highlight.colorNames.enable": true,
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"]
+    },
+    "dart": {
+      "command": "dart",
+      "args": [
+        "/home/dev/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot",
+        "--lsp",
+        "--client-id",
+        "vim",
+        "--client-version",
+        "coc.nvim"
+      ],
+      "filetypes": ["dart"],
+      "trace.server": "verbose"
+    },
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "disableWorkspaceFolders": true,
+      "filetypes": ["go"]
+    },
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    },
+    "intelephense": {
+      "command": "intelephense",
+      "args": ["--stdio"],
+      "filetypes": ["php"],
+      "initializationOptions": {
+        "storagePath": "/tmp/intelephense"
+      }
+    },
+    "sql": {
+      "command": "sql-language-server",
+      "args": ["up", "--method", "stdio"],
+      "filetypes": ["sql", "mysql", "mssql"]
+    }
+  }
+}
