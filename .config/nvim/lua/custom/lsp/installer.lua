@@ -54,9 +54,9 @@ lsp_installer.on_server_ready(function(server)
       opts.settings = require('custom.lsp.servers.json').settings
     end
 
-    -- if server.name == "sumneko_lua" then
-    --   opts.settings = require('lsp.servers.lua').settings
-    -- end
+    if server.name == "sumneko_lua" then
+      opts.settings = require("custom.lsp.servers.lua").settings
+    end
 
     -- if server.name == "tsserver" then
       -- opts.capabilities = require("custom.lsp.servers.tsserver").capabilities
