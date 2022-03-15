@@ -32,6 +32,7 @@ lsp_installer.on_server_ready(function(server)
     end
 
     if server.name == "eslint" then
+        opts.root_dir = require"lspconfig".util.root_pattern(".eslintrc", ".eslintrc.js", ".eslintrc.json")
         opts.on_attach = function (client, bufnr)
             -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
             -- the resolved capabilities of the eslint server ourselves!
@@ -68,6 +69,10 @@ lsp_installer.on_server_ready(function(server)
       opts.init_options = require("custom.lsp.servers.volar").init_options
     end
 
+    -- if server.name == "pyright" then
+    --   opts.filetypes = require("custom.lsp.servers.volar").filetypes
+    --   opts.init_options = require("custom.lsp.servers.volar").init_options
+    -- end
 
     -- (How to) Customize the options passed to the server
     -- if server.name == "tsserver" then

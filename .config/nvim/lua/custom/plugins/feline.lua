@@ -384,6 +384,15 @@ default.current_line = {
    },
 }
 
+default.location = {
+  provider = function()
+    return gps.get_location()
+  end,
+  enabled = function()
+    return gps.is_available()
+  end
+}
+
 local function add_table(a, b)
    table.insert(a, b)
 end
@@ -409,15 +418,7 @@ M.setup = function(override_flag)
    add_table(default.left, default.diagnostic.warning)
    add_table(default.left, default.diagnostic.hint)
    add_table(default.left, default.diagnostic.info)
-
-   add_table(default.left, {
-     provider = function()
-       return gps.get_location()
-     end,
-     enabled = function()
-       return gps.is_available()
-     end
-   })
+   add_table(default.left, default.location)
 
   -- center
   add_table(default.middle, default.lsp_progress)

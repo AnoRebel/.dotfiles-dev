@@ -26,6 +26,24 @@ return {
     }
   },
   {
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = "nvim-lua/plenary.nvim"
+  },
+  {
+    "MunifTanjim/eslint.nvim",
+    requires = {
+      "neovim/nvim-lspconfig",
+      "jose-elias-alvarez/null-ls.nvim"
+    }
+  },
+  {
+    "MunifTanjim/prettier.nvim",
+    requires = {
+      "neovim/nvim-lspconfig",
+      "jose-elias-alvarez/null-ls.nvim"
+    }
+  },
+  {
     "David-Kunz/cmp-npm",
     requires = {
       "nvim-lua/plenary.nvim"
