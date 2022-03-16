@@ -27,7 +27,21 @@ return {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    requires = "nvim-lua/plenary.nvim"
+    requires = "nvim-lua/plenary.nvim",
+    after = "nvim-lspconfig",
+    config = function ()
+      require("custom.plugins.null-ls").setup()
+    end
+  },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter"
+    },
+    config = function()
+      require("refactoring").setup({})
+    end
   },
   {
     "MunifTanjim/eslint.nvim",

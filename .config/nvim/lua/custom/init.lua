@@ -9,6 +9,10 @@ map("n", "<leader>te", ":Telescope <CR>")
 map("n", "<leader>fp", ":Telescope media_files <CR>")
 map("n", "<leader>q", ":q <CR>")
 
+-- Refactoring
+map("x", "<leader>.", ":'<,'>Telescope lsp_range_code_actions<CR>") --lua vim.lsp.buf.range_code_action()
+map("v", "<leader>.", ":'<,'>Telescope lsp_range_code_actions<CR>") --lua vim.lsp.buf.range_code_action()
+
 -- Trouble (Better Diagnostics and Errors)
 map("n", "<leader>xx", ":Trouble<CR>", {silent = true, noremap = true})
 map("n", "<leader>xw", ":Trouble workspace_diagnostics<CR>", {silent = true, noremap = true})
