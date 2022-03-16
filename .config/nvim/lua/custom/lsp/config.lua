@@ -33,8 +33,8 @@ end
 
 -- use lsp formatting if it's available (and if it's good)
 -- otherwise, fall back to null-ls
-local preferred_formatting_clients = "eslint_d"
-local fallback_formatting_client = "null-ls"
+local preferred_formatting_clients = "null-ls" -- eslint_d
+local fallback_formatting_client = "eslint_d" -- null-ls
 
 -- prevent repeated lookups
 local buffer_client_ids = {}
@@ -66,22 +66,22 @@ _G.formatting = function(bufnr)
 
     local params = vim.lsp.util.make_formatting_params()
     selected_client.request("textDocument/formatting", params, function(err, res)
-        if err then
-            local err_msg = type(err) == "string" and err or err.message
-            vim.notify("global.lsp.formatting: " .. err_msg, vim.log.levels.WARN)
-            return
-        end
+      if err then
+        local err_msg = type(err) == "string" and err or err.message
+        vim.notify("global.lsp.formatting: " .. err_msg, vim.log.levels.WARN)
+        return
+      end
 
-        if not vim.api.nvim_buf_is_loaded(bufnr) or vim.api.nvim_buf_get_option(bufnr, "modified") then
-            return
-        end
+      if not vim.api.nvim_buf_is_loaded(bufnr) or vim.api.nvim_buf_get_option(bufnr, "modified") then
+        return
+      end
 
-        if res then
-            vim.lsp.util.apply_text_edits(res, bufnr, selected_client.offset_encoding or "utf-16")
-            vim.api.nvim_buf_call(bufnr, function()
-                vim.cmd("silent noautocmd update")
-            end)
-        end
+      if res then
+        vim.lsp.util.apply_text_edits(res, bufnr, selected_client.offset_encoding or "utf-16")
+        vim.api.nvim_buf_call(bufnr, function()
+            vim.cmd("silent noautocmd update")
+        end)
+      end
     end, bufnr)
 end
 
@@ -96,6 +96,7 @@ end
 -- require('lsp.servers.html')
 -- require('lsp.servers.json')
 -- require('lsp.servers.lua')
+-- require('lsp.servers.pyright')
 -- require('lsp.servers.tailwind')
 -- require('lsp.servers.tsserver')
--- require('lsp.servers.vue2')
+-- require('lsp.servers.volar')
