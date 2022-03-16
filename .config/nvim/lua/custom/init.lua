@@ -49,3 +49,6 @@ map("n", "<F8>", ":SymbolsOutline<CR>")
 map("n", "<leader>p", ":Glow<CR>")
 
 -- NOTE: the 4th argument in the map function is be a table i.e options but its most likely un-needed so dont worry about it
+
+-- Stop sourcing filetype.vim
+vim.g.did_load_filetypes = 1

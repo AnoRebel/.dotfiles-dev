@@ -25,7 +25,7 @@ end
 local source_mapping = {
   buffer      = icons.buffer .. '[BUF]',
   calc        = icons.calculator,
-  cmp_tabnine = icons.light,
+  cmp_tabnine = icons.light .. '[TB9]',
   luasnip     = icons.snippet,
   npm         = icons.terminal .. '[NPM]',
   nvim_lsp    = icons.paragraph .. '[LSP]',

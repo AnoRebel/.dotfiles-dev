@@ -5,7 +5,7 @@ local M = {}
 -- make sure you maintain the structure of `core/default_config.lua` here,
 -- example of changing theme:
 M.ui = {
-   theme = "onedark",
+   theme = "tokyonight",
 }
 
 local userPlugins = require "custom.plugins" -- path to table
@@ -16,8 +16,8 @@ M.plugins = {
     colorizer = true,
   },
   default_plugin_config_replace = {
+    -- feline = "custom.plugins.feline", -- "setup",
     nvim_cmp = "custom.plugins.cmp",
-    feline = "custom.plugins.feline", 
     nvimtree = {
       git = {
         enable = true,

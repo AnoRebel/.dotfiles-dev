@@ -28,6 +28,7 @@ lsp_installer.on_server_ready(function(server)
     end
 
     if server.name == "cssls" then
+      opts.capabilities = require('custom.lsp.servers.css').capabilities
       opts.settings = require('custom.lsp.servers.css').settings
     end
 
@@ -88,7 +89,6 @@ lsp_installer.on_server_ready(function(server)
 
     if server.name == "volar" then
       opts.filetypes = require("custom.lsp.servers.volar").filetypes
-      opts.init_options = require("custom.lsp.servers.volar").init_options
     end
 
     -- (How to) Customize the options passed to the server

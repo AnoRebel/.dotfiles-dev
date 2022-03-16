@@ -390,7 +390,11 @@ default.location = {
   end,
   enabled = function()
     return gps.is_available()
-  end
+  end,
+  hl = {
+      fg = default.colors.grey_fg2,
+      bg = default.colors.statusline_bg,
+   },
 }
 
 local function add_table(a, b)
