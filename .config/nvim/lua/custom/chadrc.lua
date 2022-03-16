@@ -16,7 +16,7 @@ M.plugins = {
     colorizer = true,
   },
   default_plugin_config_replace = {
-    -- feline = "custom.plugins.feline", -- "setup",
+    feline = function() require("custom.plugins.feline").setup() end,
     nvim_cmp = "custom.plugins.cmp",
     nvimtree = {
       git = {
