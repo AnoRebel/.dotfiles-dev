@@ -48,14 +48,20 @@ return {
     requires = {
       "neovim/nvim-lspconfig",
       "jose-elias-alvarez/null-ls.nvim"
-    }
+    },
+    -- config = function()
+    --   require("custom.plugins.eslint")
+    -- end
   },
   {
     "MunifTanjim/prettier.nvim",
     requires = {
       "neovim/nvim-lspconfig",
       "jose-elias-alvarez/null-ls.nvim"
-    }
+    },
+    -- config = function()
+    --   require("custom.plugins.prettier")
+    -- end
   },
   {
     "David-Kunz/cmp-npm",
