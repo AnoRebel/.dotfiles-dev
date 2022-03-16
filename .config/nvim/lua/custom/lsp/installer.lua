@@ -55,24 +55,41 @@ lsp_installer.on_server_ready(function(server)
       opts.settings = require('custom.lsp.servers.json').settings
     end
 
+    if server.name == "pyright" then
+      opts.filetypes = require("custom.lsp.servers.pyright").settings
+    end
+
     if server.name == "sumneko_lua" then
       opts.settings = require("custom.lsp.servers.lua").settings
     end
 
-    -- if server.name == "tsserver" then
-      -- opts.capabilities = require("custom.lsp.servers.tsserver").capabilities
-      -- opts.settings = require("custom.lsp.servers.tsserver").settings
-    -- end
+    if server.name == "tsserver" then
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+      capabilities.textDocument.completion.completionItem.preselectSupport = true
+      capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+      capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+      capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+      capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+      capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+      capabilities.textDocument.completion.completionItem.resolveSupport = {
+        properties = {
+          'documentation',
+          'detail',
+          'additionalTextEdits',
+        }
+      }
+      opts.capabilities = capabilities
+      opts.on_attach = function(client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        on_attach(client, bufnr)
+      end
+    end
 
     if server.name == "volar" then
       opts.filetypes = require("custom.lsp.servers.volar").filetypes
       opts.init_options = require("custom.lsp.servers.volar").init_options
     end
-
-    -- if server.name == "pyright" then
-    --   opts.filetypes = require("custom.lsp.servers.volar").filetypes
-    --   opts.init_options = require("custom.lsp.servers.volar").init_options
-    -- end
 
     -- (How to) Customize the options passed to the server
     -- if server.name == "tsserver" then
