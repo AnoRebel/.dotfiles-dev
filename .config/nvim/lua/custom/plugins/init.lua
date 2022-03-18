@@ -7,6 +7,9 @@ return {
     end
   },
   {
+    "antoinemadec/FixCursorHold.nvim"
+  },
+  {
     "williamboman/nvim-lsp-installer",
     requires = "neovim/nvim-lspconfig",
     config = function()
@@ -24,6 +27,20 @@ return {
     after = {
       "nvim-treesitter"
     }
+  },
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      require("custom.plugins.notify").setup()
+    end,
+    event = "BufRead",
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    event = "BufWinEnter",
+    config = function()
+      require("custom.plugins.terminal").setup()
+    end,
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
@@ -93,6 +110,13 @@ return {
     end
   },
   {
+    "folke/which-key.nvim",
+    config = function()
+      require("custom.plugins.which-key").setup()
+    end,
+    event = "BufWinEnter",
+  },
+  {
     "mattn/emmet-vim"
   },
   {
@@ -125,7 +149,16 @@ return {
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
-    run = "make"
+    run = "make",
+    config = function()
+      require("telescope").load_extension("fzf")
+    end
+  },
+  {
+    "xiyaowong/telescope-emoji.nvim",
+    config = function()
+      require("telescope").load_extension("emoji")
+    end
   },
   {
     "nvim-lua/popup.nvim"
@@ -137,15 +170,7 @@ return {
       "nvim-telescope/telescope-media-files.nvim",
       after = "telescope.nvim",
       config = function()
-         require("telescope").setup {
-            extensions = {
-               media_files = {
-                  filetypes = { "png", "webp", "jpg", "jpeg" },
-               },
-               -- fd is needed
-            },
-         }
-         require("telescope").load_extension "media_files"
+         require("telescope").load_extension("media_files")
       end,
    },
    {
@@ -177,7 +202,6 @@ return {
      config = function()
        require("twilight").setup {}
      end,
-     -- disable = not EcoVim.plugins.zen.enabled
    },
    {
     "karb94/neoscroll.nvim",

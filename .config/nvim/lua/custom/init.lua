@@ -1,7 +1,7 @@
 -- Please check NvChad docs if you're totally new to nvchad + dont know lua!!
 -- This is an example init file in /lua/custom/
 -- this init.lua can load stuffs etc too so treat it like your ~/.config/nvim/
-
+--
 -- MAPPINGS
 local map = require("core.utils").map
 
@@ -27,10 +27,17 @@ map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
 map("n", "<leader>sl", "<cmd>lua vim.diagnostic.setloclist()<CR>")
 map("n", "<leader>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+map("n", "<leader>li", ":LspInfo<CR>")
+map("n", "<leader>lI", ":LspInstallInfo<CR>")
+map("n", "<leader>ll", ":lua vim.lsp.codelens.run()<CR>")
+map("n", "<leader>lpd", ":lua require('custom.lsp.peek').Peek('definition')<CR>")
+map("n", "<leader>lpt", ":lua require('custom.lsp.peek').Peek('typeDefinition')<CR>")
+map("n", "<leader>lpi", ":lua require('custom.lsp.peek').Peek('implementation')<CR>")
 
 -- Refactoring
 map("x", "<leader>.", ":'<,'>Telescope lsp_range_code_actions<CR>") --lua vim.lsp.buf.range_code_action()
 map("v", "<leader>.", ":'<,'>Telescope lsp_range_code_actions<CR>") --lua vim.lsp.buf.range_code_action()
+map("n", "<leader>,", ":lua require('custom.plugins.telescope').code_actions()<CR>")
 
 -- Trouble (Better Diagnostics and Errors)
 map("n", "<leader>xx", ":Trouble<CR>", {silent = true, noremap = true})
@@ -43,8 +50,16 @@ map("n", "gR", ":Trouble lsp_references<CR>", {silent = true, noremap = true})
 -- Move lines Up and Down
 -- map("x", "<C-Up>", ":move '<-2<CR>gv-gv", { noremap = true })
 -- map("x", "<C-Down>", ":move '>+1<CR>gv-gv", { noremap= true })
+-- map("v", "<A-k>", ":move '<-2<CR>gv-gv", { noremap = true, silent = true })
+-- map("v", "<A-j>", ":move '>+1<CR>gv-gv", { noremap = true, silent = true })
+map("x", "<A-k>", ":move '<-2<CR>gv-gv", { noremap = true, silent = true })
+map("x", "<A-j>", ":move '>+1<CR>gv-gv", { noremap = true, silent = true })
 map("x", "K", ":move '<-2<CR>gv-gv", { noremap = true, silent = true })
 map("x", "J", ":move '>+1<CR>gv-gv", { noremap = true, silent = true })
+map("n", "<A-j>", ":move .+1<CR>==", { noremap = true, silent = true })
+map("n", "<A-k>", ":move .-2<CR>==", { noremap = true, silent = true })
+map("i", "<A-j>", "<Esc>:move .+1<CR>==gi", { noremap = true, silent = true })
+map("i", "<A-k>", "<Esc>:move .-2<CR>==gi", { noremap = true, silent = true })
 
 -- Save file by CTRL-S
 map("i", "<C-s>", "<ESC> :w<CR>", { noremap = true, silent = true })
@@ -67,7 +82,34 @@ map("n", "<F8>", ":SymbolsOutline<CR>")
 -- Glow
 map("n", "<leader>p", ":Glow<CR>")
 
+-- Term nav
+map("t", "<C-h>", "<C-\\><C-n><C-w>h", { silent = true })
+map("t", "<C-j>", "<C-\\><C-n><C-w>j", { silent = true })
+map("t", "<C-k>", "<C-\\><C-n><C-w>k", { silent = true })
+map("t", "<C-l>", "<C-\\><C-n><C-w>l", { silent = true })
+map("i", "<C-h>", "<C-\\><C-n><C-w>h", { silent = true })
+map("i", "<C-j>", "<C-\\><C-n><C-w>j", { silent = true })
+map("i", "<C-k>", "<C-\\><C-n><C-w>k", { silent = true })
+map("i", "<C-l>", "<C-\\><C-n><C-w>l", { silent = true })
+map("t", "jk", "<C-\\><C-n>", { silent = true })
+map("n", "<leader>ta", ":ToggleTermToggleAll<CR>")
+map("n", "<leader>v", ":lua require('toggleterm').right_toggle()<CR>", { noremap = true, silent = true })
+map("n", "<leader>h", ":lua require('toggleterm').bottom_toggle()<CR>", { noremap = true, silent = true })
+map("n", "<leader>gg", ":lua require('toggleterm').gitui_toggle()<CR>", { noremap = true, silent = true })
+map("n", "<leader>lg", ":lua require('toggleterm').lazygit_toggle()<CR>", { noremap = true, silent = true })
+
+-- Misc
+map("i", "kj", "<ESC>") -- { noremap = true, silent = true }
+-- Resize
+map("n", "<A-Up>", ":resize +2<CR>")
+map("n", "<A-Down>", ":resize -2<CR>")
+map("n", "<A-Left>", ":vertical resize +2<CR>")
+map("n", "<A-Right>", ":vertical resize -2<CR>")
+
 -- NOTE: the 4th argument in the map function is be a table i.e options but its most likely un-needed so dont worry about it
 
 -- Stop sourcing filetype.vim
 vim.g.did_load_filetypes = 1
+
+-- Manually set Floating notifications
+-- vim.notify = require("notify")

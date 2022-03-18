@@ -16,13 +16,12 @@ M.plugins = {
     colorizer = true,
   },
   default_plugin_config_replace = {
+    nvimtree = function () require("custom.plugins.nvimtree").setup() end,
     feline = function() require("custom.plugins.feline").setup() end,
+    telescope = function () require("custom.plugins.telescope").setup() end,
+    gitsigns = function () require("custom.plugins.gitsigns").setup() end,
+    lspconfig = function () require("custom.lsp.config").setup() end,
     nvim_cmp = "custom.plugins.cmp",
-    nvimtree = {
-      git = {
-        enable = true,
-      },
-    }
   },
   install = userPlugins,
 }

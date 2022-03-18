@@ -1,5 +1,7 @@
 require('dressing').setup({
   input = {
+    enabled = true,
+
     -- Default prompt string
     default_prompt = "➤ ",
 
@@ -25,14 +27,16 @@ require('dressing').setup({
     get_config = nil,
   },
   select = {
+    enabled = true,
+
     -- Priority list of preferred vim.select implementations
     backend = { "telescope", "nui", "fzf", "builtin" },
 
     -- Options for telescope selector
-    telescope = {
-      -- can be 'dropdown', 'cursor', or 'ivy'
-      theme = "dropdown",
-    },
+    telescope = nil, -- {
+      -- -- can be 'dropdown', 'cursor', or 'ivy'
+      -- theme = "dropdown",
+    -- },
 
     -- Options for fzf selector
     fzf = {

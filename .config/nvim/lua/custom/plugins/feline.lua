@@ -4,6 +4,7 @@ if not present then
 end
 
 local gps = require("nvim-gps")
+local package = require("package-info")
 
 local default = {
    colors = require("colors").get(),
@@ -397,6 +398,19 @@ default.location = {
    },
 }
 
+default.package_info = {
+  provider = function()
+    return package.get_status()
+  end,
+  hl = {
+    fg = default.colors.grey_fg2,
+    bg = default.colors.statusline_bg,
+    style = "bold",
+  },
+  -- left_sep = "  ",
+  -- right_sep = " ",
+}
+
 local function add_table(a, b)
    table.insert(a, b)
 end
@@ -426,6 +440,7 @@ M.setup = function(override_flag)
 
   -- center
   add_table(default.middle, default.lsp_progress)
+  add_table(default.middle, default.package_info)
 
    -- right
    add_table(default.right, default.lsp_icon)
@@ -444,11 +459,11 @@ M.setup = function(override_flag)
    default.components.active[3] = default.right
 
    feline.setup {
-      theme = {
-         bg = default.colors.statusline_bg,
-         fg = default.colors.fg,
-      },
-      components = default.components,
+    theme = {
+     bg = default.colors.statusline_bg,
+     fg = default.colors.fg,
+    },
+    components = default.components,
    }
 end
 
