@@ -85,6 +85,7 @@ return {
     requires = {
       "nvim-lua/plenary.nvim"
     },
+    after = "nvim-cmp",
     config = function()
       require("custom.plugins.cmp-npm")
     end
