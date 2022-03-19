@@ -16,7 +16,7 @@ M.plugins = {
     colorizer = true,
   },
   default_plugin_config_replace = {
-    nvimtree = function () require("custom.plugins.nvimtree").setup() end,
+    nvim_tree = function () require("custom.plugins.nvimtree").setup() end,
     feline = function() require("custom.plugins.feline").setup() end,
     telescope = function () require("custom.plugins.telescope").setup() end,
     gitsigns = function () require("custom.plugins.gitsigns").setup() end,

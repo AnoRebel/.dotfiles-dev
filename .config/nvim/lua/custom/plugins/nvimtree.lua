@@ -67,6 +67,7 @@ local nvimtree = {
           custom_only = false,
           list = {
             { key = "C", action = "cd" },
+            { key = "v", action = "vsplit" },
             { key = "gtf", action = "telescope_find_files", action_cb = telescope_find_files },
             { key = "gtg", action = "telescope_live_grep", action_cb = telescope_live_grep },
           },
