@@ -94,7 +94,7 @@ local which_k = {
     c = {
       name = "Telescope and Code Actions",
       m = { ":Telescope git_commits <CR>", "Git Commits" },
-      a = { ":lua vim.lsp.buf.code_actions()<CR>", "Code Actions" },
+      a = { ":lua vim.lsp.buf.code_action()<CR>", "Code Actions" },
       h = { ":lua require('nvchad.cheatsheet').show() <CR>", "Cheatsheet" }
     },
     r = {
