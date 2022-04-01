@@ -1,0 +1,15 @@
+[submodule ".config/leftwm/themes/Amber"]
+	path = .config/leftwm/themes/Amber
+	url = https://github.com/di-effe/amber
+[submodule ".config/leftwm/themes/Dracula"]
+	path = .config/leftwm/themes/Dracula
+	url = https://github.com/AethanFoot/leftwm-theme-dracula-rounded
+[submodule ".config/leftwm/themes/Epitaph"]
+	path = .config/leftwm/themes/Epitaph
+	url = https://github.com/VentGrey/Epitaph
+[submodule ".config/leftwm/themes/Garden"]
+	path = .config/leftwm/themes/Garden
+	url = https://github.com/taylor85345/leftwm-theme-garden
+[submodule ".config/leftwm/themes/Soothe"]
+	path = .config/leftwm/themes/Soothe
+	url = https://github.com/b4skyx/leftwm-soothe
