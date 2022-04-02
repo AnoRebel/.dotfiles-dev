@@ -78,7 +78,7 @@ local nvimtree = {
         signcolumn = "yes",
       },
       filters = {
-        dotfiles = true,
+        dotfiles = false,
         custom = { "node_modules", ".cache" },
       },
       trash = {
