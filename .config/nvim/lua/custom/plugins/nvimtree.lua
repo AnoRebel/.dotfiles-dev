@@ -62,7 +62,7 @@ local nvimtree = {
         hide_root_folder = false,
         side = "left",
         auto_resize = false,
-        allow_resize = false,
+        allow_resize = true,
         mappings = {
           custom_only = false,
           list = {
@@ -78,7 +78,7 @@ local nvimtree = {
         signcolumn = "yes",
       },
       filters = {
-        dotfiles = false,
+        dotfiles = true,
         custom = { "node_modules", ".cache" },
       },
       trash = {
