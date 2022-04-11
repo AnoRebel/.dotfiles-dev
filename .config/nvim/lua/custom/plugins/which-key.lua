@@ -58,6 +58,7 @@ local which_k = {
         -- see https://neovim.io/doc/user/map.html#:map-cmd
         vmappings = {
                 ["/"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+                ["s"] = { ":lua require('spectre').open_visual()<CR>", "Spectre Visual" },
         },
         mappings = {
                 ["q"] = { "<cmd>q<CR>", "Quit" },
@@ -68,6 +69,7 @@ local which_k = {
                 ["h"] = { ":lua require('toggleterm').bottom_toggle() <CR>", "Horizontal Terminal" },
                 ["v"] = { ":lua require('toggleterm').right_toggle() <CR>", "Vertical Terminal" },
                 ["p"] = { ":Glow<CR>", "Glow" },
+                ["S"] = { ":lua require('spectre').open()<CR>", "Spectre" },
                 ["W"] = { ":Telescope terms <CR>", "List and Select Open Terminals" },
                 n = {
                         name = "Misc and Package Info",
@@ -110,8 +112,10 @@ local which_k = {
                         r = { ":lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove Workspace Folder" }
                 },
                 s = {
-                        name = "Diagnostic",
-                        l = { ":lua vim.diagnostics.setloclist()<CR>", "LSP Set Loclist" }
+                        name = "Diagnostic and Spectre",
+                        l = { ":lua vim.diagnostics.setloclist()<CR>", "LSP Set Loclist" },
+                        p = { ":lua require('spectre').open_file_search()<CR>", "Spectre File Search" },
+                        w = { ":lua require('spectre').open_visual({select_word=true})<CR>", "Spectre Visual Selected Word" }
                 },
                 t = {
                         name = "Telescope and Toggle Terminal",

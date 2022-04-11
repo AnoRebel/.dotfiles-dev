@@ -119,6 +119,13 @@ return {
                 end
         },
         {
+          "windwp/nvim-spectre",
+          requires = "nvim-lua/planery.nvim",
+          config = function ()
+            require("spectre").setup()
+          end
+        },
+        {
                 "folke/todo-comments.nvim",
                 requires = "nvim-lua/plenary.nvim",
                 config = function()

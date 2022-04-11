@@ -18,6 +18,15 @@ map("n", "<leader>to", ":FlutterOutlineToggle<CR>", opts)
 map("n", "<leader>tq", ":TodoQuickFix<CR>", opts)
 map("n", "<leader>td", ":TodoTelescope<CR>", opts)
 
+-- Spectre
+map("n", "<leader>S", ":lua require('spectre').open()<CR>", opts)
+-- search current word
+map("n", "<leader>sw", ":lua require('spectre').open_visual({select_word=true})<CR>", opts)
+map("v", "<leader>s", ":lua require('spectre').open_visual()<CR>", opts)
+--  search in current file
+map("n", "<leader>sp", "viw:lua require('spectre').open_file_search()<CR>", opts)
+-- run command :Spectre
+
 -- Trouble (Better Diagnostics and Errors)
 map("n", "<leader>xx", ":Trouble<CR>", opts)
 map("n", "<leader>xw", ":Trouble workspace_diagnostics<CR>", opts)
