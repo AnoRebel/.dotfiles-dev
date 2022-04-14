@@ -231,6 +231,9 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=true
 # Cargo installation
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Deta
+export PATH="$HOME/.deta/bin:$PATH"
+
 . $HOME/z/z.sh
 
 eval "$(pipenv --completion)"

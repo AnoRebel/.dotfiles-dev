@@ -25,8 +25,8 @@ alias aptinstall="sudo apt install"
 alias aptremove="sudo apt remove"
 
 # Markdown reader
-mdr () {
-  pandoc $1 | lynx -stdin
+mdr() {
+	pandoc $1 | lynx -stdin
 }
 
 # User Functions
@@ -37,26 +37,25 @@ mkcd() {
 #
 # # ex - archive extractor
 # # usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+ex() {
+	if [ -f $1 ]; then
+		case $1 in
+		*.tar.bz2) tar xjf $1 ;;
+		*.tar.gz) tar xzf $1 ;;
+		*.bz2) bunzip2 $1 ;;
+		*.rar) unrar x $1 ;;
+		*.gz) gunzip $1 ;;
+		*.tar) tar xf $1 ;;
+		*.tbz2) tar xjf $1 ;;
+		*.tgz) tar xzf $1 ;;
+		*.zip) unzip $1 ;;
+		*.Z) uncompress $1 ;;
+		*.7z) 7z x $1 ;;
+		*) echo "'$1' cannot be extracted via ex()" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
 }
 
 #[[ $- == *i* ]] && source $HOME/ble.sh/out/ble.sh --noattach
@@ -73,9 +72,9 @@ OSH_THEME="agnoster"
 # Example format: completions=(ssh git bundler gem pip pip3)
 # Add wisely, as too many completions slow down shell startup.
 completions=(
-  git
-  composer
-  ssh
+	git
+	composer
+	ssh
 )
 
 # Which aliases would you like to load? (aliases can be found in ~/.oh-my-bash/aliases/*)
@@ -83,7 +82,7 @@ completions=(
 # Example format: aliases=(vagrant composer git-avh)
 # Add wisely, as too many aliases slow down shell startup.
 aliases=(
-  general
+	general
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -91,9 +90,9 @@ aliases=(
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  battery
-  progress
+	git
+	battery
+	progress
 )
 
 source $OSH/oh-my-bash.sh
@@ -101,7 +100,7 @@ source $OSH/oh-my-bash.sh
 # User configuration
 
 if [ -f /etc/bash.command-not-found ]; then
-    . /etc/bash.command-not-found
+	. /etc/bash.command-not-found
 fi
 
 source <(kitty + complete setup bash)
@@ -176,14 +175,17 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/emulator
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # Fix NVM path error
-export NODE_PATH=$NODE_PATH:`npm root -g`
+export NODE_PATH=$NODE_PATH:$(npm root -g)
 
 # Cargo installation
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Deta
+export PATH="$HOME/.deta/bin:$PATH"
 
 . $HOME/z/z.sh
 
@@ -191,11 +193,16 @@ eval "$(pipenv --completion)"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-PATH="/home/dev/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/dev/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/dev/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/dev/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/dev/perl5"; export PERL_MM_OPT;
+PATH="/home/dev/perl5/bin${PATH:+:${PATH}}"
+export PATH
+PERL5LIB="/home/dev/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+export PERL5LIB
+PERL_LOCAL_LIB_ROOT="/home/dev/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+export PERL_LOCAL_LIB_ROOT
+PERL_MB_OPT="--install_base \"/home/dev/perl5\""
+export PERL_MB_OPT
+PERL_MM_OPT="INSTALL_BASE=/home/dev/perl5"
+export PERL_MM_OPT
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f "/home/dev/.ghcup/env" ] && source "/home/dev/.ghcup/env" # ghcup-env

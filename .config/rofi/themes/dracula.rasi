@@ -1,123 +1,183 @@
-/*Dracula theme based on the Purple official rofi theme*/
-
+/**
+ * rofi -dump-theme output.
+ * Rofi version: 1.7.0
+ **/
 * {
-    font: "SF Pro Display Regular 12";
-    foreground: #f8f8f2;
-    background-color: #282a36;
-    active-background: #6272a4;
-    urgent-background: #ff5555;
-    selected-background: @active-background;
-    selected-urgent-background: @urgent-background;
-    selected-active-background: @active-background;
-    separatorcolor: @active-background;
-    bordercolor: @active-background;
-}
+    bg:        #282A35;
+    fg:        #D8DEE9;
+    black0:    #21222c;
+    black1:    #6272a4;
+    red0:      #ff5555;
+    red1:      #ff6e6e;
+    green0:    #50fa7b;
+    green1:    #69ff94;
+    yellow0:   #f1fa8c;
+    yellow1:   #ffffa5;
+    blue0:     #bd93f9;
+    blue1:     #d6acff;
+    magenta0:  #ff79c6;
+    magenta1:  #ff92df;
+    cyan0:     #8be9fd;
+    cyan1:     #a4ffff;
+    white0:    #f8f8f2;
+    white1:    #ffffff;
 
-#window {
-    background-color: @background;
-    border:           1;
-    border-radius: 6;
-    border-color: @bordercolor;
-    padding:          5;
+
+
+    dark-yellow-dark:    rgba ( 215, 153, 33, 100 % );
+    dark-yellow-light:   rgba ( 250, 189, 47, 100 % );
+    dark-gray:           rgba ( 168, 153, 132, 100 % );
+    dark-fg1:            rgba ( 235, 219, 178, 100 % );
+    dark-red-dark:       rgba ( 204, 36, 29, 100 % );
+    dark-fg0:            rgba ( 251, 241, 199, 100 % );
+    dark-bg3:            rgba ( 102, 92, 84, 100 % );
+    dark-red-light:      rgba ( 251, 73, 52, 100 % );
+    dark-bg1:            rgba ( 60, 56, 54, 100 % );
+
+    background:                  var(bg);
+    background-color:            var(background);
+    normal-background:           var(background);
+
+    foreground:                  var(fg);
+    selected-normal-background:  var(blue0);
+    selected-normal-foreground:  var(black0);
+    normal-foreground:           var(fg);
+    alternate-normal-foreground: var(fg);
+    alternate-active-foreground: var(yellow0);
+    border-color:                var(black1);
+    active-foreground:           var(bg);
+
+    separatorcolor:              var(bg);
+    scrollbar:                   true;
+    scrollbar-handle:            var(bg);
+
+    selected-active-background:  var(yellow0);
+    alternate-urgent-background: var(urgent-background);
+    selected-urgent-foreground:  var(urgent-foreground);
+    highlight:                   bold italic ;
+    urgent-foreground:           var(bg);
+    alternate-urgent-foreground: var(urgent-foreground);
+    selected-active-foreground:  var(active-foreground);
+    selected-urgent-background:  var(dark-red-light);
+    alternate-active-background: var(active-background);
+    active-background:           var(dark-yellow-dark);
+    alternate-normal-background: var(bg);
+    urgent-background:           var(dark-red-dark);
 }
-#mainbox {
+window {
+    padding:          2;
+    background-color: var(background);
+    border:           2;
+    width:            600;
+}
+mainbox {
+    padding: 30;
     border:  0;
-    padding: 0;
 }
-#message {
-    border:       1px dash 0px 0px ;
-    border-color: @separatorcolor;
+message {
     padding:      1px ;
+    border-color: var(separatorcolor);
+    border:       2px 0px 0px ;
 }
-#textbox {
-    text-color: @foreground;
+textbox {
+    highlight:  var(highlight);
+    text-color: var(foreground);
 }
-#listview {
-    fixed-height: 0;
-    border:       2px dash 0px 0px ;
-    border-color: @bordercolor;
-    spacing:      2px ;
-    scrollbar:    false;
+listview {
     padding:      2px 0px 0px ;
+    scrollbar:    var(scrollbar);
+    border-color: var(separatorcolor);
+    spacing:      2px ;
+    border:       2px 0px 0px ;
 }
-#element {
+element {
+    padding: 6px ;
     border:  0;
-    padding: 1px ;
 }
-#element.normal.normal {
-    background-color: @background;
-    text-color:       @foreground;
+element normal.normal {
+    background-color: var(normal-background);
+    text-color:       var(normal-foreground);
 }
-#element.normal.urgent {
-    background-color: @urgent-background;
-    text-color:       @urgent-foreground;
+element normal.urgent {
+    background-color: var(urgent-background);
+    text-color:       var(urgent-foreground);
 }
-#element.normal.active {
-    background-color: @active-background;
-    text-color:       @foreground;
+element normal.active {
+    background-color: var(active-background);
+    text-color:       var(active-foreground);
 }
-#element.selected.normal {
-    background-color: @selected-background;
-    text-color:       @foreground;
+element selected.normal {
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
 }
-#element.selected.urgent {
-    background-color: @selected-urgent-background;
-    text-color:       @foreground;
+element selected.urgent {
+    background-color: var(selected-urgent-background);
+    text-color:       var(selected-urgent-foreground);
 }
-#element.selected.active {
-    background-color: @selected-active-background;
-    text-color:       @foreground;
+element selected.active {
+    background-color: var(selected-active-background);
+    text-color:       var(selected-active-foreground);
 }
-#element.alternate.normal {
-    background-color: @background;
-    text-color:       @foreground;
+element alternate.normal {
+    background-color: var(alternate-normal-background);
+    text-color:       var(alternate-normal-foreground);
 }
-#element.alternate.urgent {
-    background-color: @urgent-background;
-    text-color:       @foreground;
+element alternate.urgent {
+    background-color: var(alternate-urgent-background);
+    text-color:       var(alternate-urgent-foreground);
 }
-#element.alternate.active {
-    background-color: @active-background;
-    text-color:       @foreground;
+element alternate.active {
+    background-color: var(alternate-active-background);
+    text-color:       var(alternate-active-foreground);
 }
-#scrollbar {
-    width:        2px ;
-    border:       0;
-    handle-width: 8px ;
+scrollbar {
+    width:        4px ;
     padding:      0;
+    handle-width: 8px ;
+    border:       0;
+    handle-color: var(scrollbar-handle);
 }
-#sidebar {
-    border:       2px dash 0px 0px ;
-    border-color: @separatorcolor;
+mode-switcher {
+    border-color: var(separatorcolor);
+    border:       2px 0px 0px ;
 }
-#button.selected {
-    background-color: @selected-background;
-    text-color:       @foreground;
-}
-#inputbar {
+inputbar {
+    padding:    2px ;
     spacing:    0;
-    text-color: @foreground;
-    padding:    1px ;
+    text-color: var(normal-foreground);
+    children:   [ prompt,textbox-prompt-sep,entry,case-indicator ];
 }
-#case-indicator {
+case-indicator {
     spacing:    0;
-    text-color: @foreground;
+    text-color: var(normal-foreground);
 }
-#entry {
+entry {
     spacing:    0;
-    text-color: @foreground;
+    text-color: var(normal-foreground);
 }
-#prompt {
+prompt {
     spacing:    0;
-    text-color: @foreground;
+    text-color: var(normal-foreground);
 }
-#inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+button {
+    spacing:    0;
+    text-color: var(normal-foreground);
 }
-#textbox-prompt-colon {
+button selected {
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
+}
+textbox-prompt-sep {
+    margin:     0px 0.3000em 0px 0px ;
     expand:     false;
     str:        ":";
-    margin:     0px 0.3em 0em 0em ;
-    text-color: @foreground;
+    text-color: var(normal-foreground);
 }
-
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}

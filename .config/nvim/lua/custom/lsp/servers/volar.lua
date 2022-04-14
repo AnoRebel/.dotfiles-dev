@@ -1,7 +1,7 @@
 local M = {}
 
 -- Auto-install
-local lsp_installer_servers = require 'nvim-lsp-installer.servers'
+local lsp_installer_servers = require "nvim-lsp-installer.servers"
 
 local ok, vue = lsp_installer_servers.get_server("volar")
 if ok then
@@ -12,6 +12,6 @@ end
 
 -- Settings
 
-M.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json', }
+M.filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json", }
 
 return M
