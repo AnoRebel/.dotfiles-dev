@@ -74,6 +74,7 @@ M.setup = function()
     buffer_client_ids[bufnr] = selected_client.id
 
     local params = vim.lsp.util.make_formatting_params()
+    -- vim.lsp.buf_request(bufnr, "textDocument/formatting", { textDocument = { uri = vim.uri_from_bufnr(bufnr) } }, function(err, res)
     selected_client.request("textDocument/formatting", params, function(err, res)
       if err then
         local err_msg = type(err) == "string" and err or err.message

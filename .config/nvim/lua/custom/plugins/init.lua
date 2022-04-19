@@ -103,6 +103,14 @@ return {
                 after = "cmp-path"
         },
         {
+                "hrsh7th/cmp-buffer",
+                requires = "hrsh7th/nvim-cmp"
+        },
+        {
+                "hrsh7th/cmp-cmdline",
+                requires = "hrsh7th/nvim-cmp"
+        },
+        {
                 "tzachar/cmp-tabnine",
                 run = "./install.sh",
                 requires = "hrsh7th/nvim-cmp",
@@ -119,11 +127,11 @@ return {
                 end
         },
         {
-          "windwp/nvim-spectre",
-          requires = "nvim-lua/planery.nvim",
-          config = function ()
-            require("spectre").setup()
-          end
+                "windwp/nvim-spectre",
+                requires = "nvim-lua/plenary.nvim",
+                config = function()
+                        require("spectre").setup()
+                end
         },
         {
                 "folke/todo-comments.nvim",
