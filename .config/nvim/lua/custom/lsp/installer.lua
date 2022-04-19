@@ -55,6 +55,11 @@ lsp_installer.on_server_ready(function(server)
         end
 
         if server.name == "jsonls" then
+                opts.on_attach = function(client, bufnr)
+                        client.resolved_capabilities.document_formatting = false
+                        client.resolved_capabilities.document_range_formatting = false
+                        on_attach(client, bufnr)
+                end
                 opts.settings = require('custom.lsp.servers.json').settings
         end
 
