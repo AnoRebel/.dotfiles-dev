@@ -3,7 +3,7 @@
 # pgrep -x doesn't seem to work for this. No idea why...
 # This is used to make sure that things only get executed once
 is_running() {
-    ps -aux | awk "!/grep/ && /$1/"
+	ps -aux | awk "!/grep/ && /$1/"
 }
 
 feh --bg-fill ~/Pictures/kyojin.jpg &
@@ -50,6 +50,7 @@ numlockx on &
 unclutter &
 #ibus-daemon --xim --daemonize $
 
+[[ $(is_running 'kdeconnect-indicator') ]] || kdeconnect-indicator &
+
 # conky -c ~/.config/bspwm/scripts/system-overview &
 # conky -c ~/.config/bspwm/scripts/system-shortcuts &
-
