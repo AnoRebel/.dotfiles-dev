@@ -5,7 +5,7 @@ local M = {}
 -- make sure you maintain the structure of `core/default_config.lua` here,
 -- example of changing theme:
 M.ui = {
-   theme = "tokyonight",
+  theme = "tokyonight", -- onedark
 }
 
 local userPlugins = require "custom.plugins" -- path to table
@@ -16,11 +16,12 @@ M.plugins = {
     colorizer = true,
   },
   default_plugin_config_replace = {
-    nvim_tree = function () require("custom.plugins.nvimtree").setup() end,
+    nvim_tree = function() require("custom.plugins.nvimtree").setup() end,
     feline = function() require("custom.plugins.feline").setup() end,
-    telescope = function () require("custom.plugins.telescope").setup() end,
-    gitsigns = function () require("custom.plugins.gitsigns").setup() end,
-    lspconfig = function () require("custom.lsp.config").setup() end,
+    telescope = function() require("custom.plugins.telescope").setup() end,
+    gitsigns = function() require("custom.plugins.gitsigns").setup() end,
+    lspconfig = function() require("custom.lsp.config").setup() end,
+    nvim_treesitter = function() require("custom.plugins.treesitter").setup() end,
     nvim_cmp = "custom.plugins.cmp",
   },
   install = userPlugins,

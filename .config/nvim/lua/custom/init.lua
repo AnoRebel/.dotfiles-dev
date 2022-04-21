@@ -35,6 +35,19 @@ map("n", "<leader>xl", ":Trouble loclist<CR>", opts)
 map("n", "<leader>xq", ":Trouble quickfix<CR>", opts)
 map("n", "gR", ":Trouble lsp_references<CR>", opts)
 
+-- Toggle Line Blame
+map("n", "<leader>lb", ":Gitsigns toggle_current_line_blame<CR>", opts);
+
+-- Telescope keymaps
+map("n", "<leader>km", ":Telescope keymaps<CR>", opts);
+
+-- GoTo
+map("n", "gpd", ":lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true });
+map("n", "gpi", ":lua require('goto-preview').goto_preview_implementation()<CR>", { noremap = true });
+map("n", "gP", ":lua require('goto-preview').close_all_win()<CR>", { noremap = true });
+-- Only set if you have telescope installed
+map("n", "gpr", ":lua require('goto-preview').goto_preview_references()<CR>", { noremap = true });
+
 -- Move lines Up and Down
 -- map("x", "<C-Up>", ":move '<-2<CR>gv-gv", { noremap = true })
 -- map("x", "<C-Down>", ":move '>+1<CR>gv-gv", { noremap= true })

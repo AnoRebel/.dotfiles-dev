@@ -57,12 +57,12 @@ local which_k = {
         -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
         -- see https://neovim.io/doc/user/map.html#:map-cmd
         vmappings = {
-                ["/"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+                ["/"] = { "<ESC>:lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
                 ["s"] = { ":lua require('spectre').open_visual()<CR>", "Spectre Visual" },
         },
         mappings = {
                 ["q"] = { "<cmd>q<CR>", "Quit" },
-                ["/"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
+                ["/"] = { ":lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
                 [","] = { ":lua require('custom.plugins.telescope').code_actions()<cr>", "Code Actions" },
                 ["D"] = { ":lua vim.lsp.buf.type_definition()<CR>", "Type Definition" },
                 ["e"] = { ":NvimTreeFocus <CR>", "Focus File" },
@@ -71,6 +71,13 @@ local which_k = {
                 ["p"] = { ":Glow<CR>", "Glow" },
                 ["S"] = { ":lua require('spectre').open()<CR>", "Spectre" },
                 ["W"] = { ":Telescope terms <CR>", "List and Select Open Terminals" },
+                b = {
+                        name = "Line Blame",
+                },
+                k = {
+                        name = "Telescope keymaps",
+                        m = { ":Telescope keymaps<CR>", "Keymaps" },
+                },
                 n = {
                         name = "Misc and Package Info",
                         -- { ":set nu! <CR>", "Toggle Line Number" },
@@ -170,7 +177,8 @@ local which_k = {
                 },
 
                 l = {
-                        name = "LSP and Lazygit",
+                        name = "LSP, Line Blame and Lazygit",
+                        b = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle Line Blame" },
                         g = { ":lua require('toggleterm').lazygit_toggle() <CR>", "Lazygit" },
                         i = { "<cmd>LspInfo<cr>", "Info" },
                         I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
