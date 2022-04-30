@@ -11,20 +11,7 @@ M.ui = {
 local userPlugins = require "custom.plugins" -- path to table
 
 M.plugins = {
-  status = {
-    alpha = true,
-    colorizer = true,
-  },
-  default_plugin_config_replace = {
-    nvim_tree = function() require("custom.plugins.nvimtree").setup() end,
-    feline = function() require("custom.plugins.feline").setup() end,
-    telescope = function() require("custom.plugins.telescope").setup() end,
-    gitsigns = function() require("custom.plugins.gitsigns").setup() end,
-    lspconfig = function() require("custom.lsp.config").setup() end,
-    nvim_treesitter = function() require("custom.plugins.treesitter").setup() end,
-    nvim_cmp = "custom.plugins.cmp",
-  },
-  install = userPlugins,
+  user = userPlugins,
 }
 
 return M

@@ -234,6 +234,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Deta
 export PATH="$HOME/.deta/bin:$PATH"
 
+# Deno
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 . $HOME/z/z.sh
 
 eval "$(pipenv --completion)"
