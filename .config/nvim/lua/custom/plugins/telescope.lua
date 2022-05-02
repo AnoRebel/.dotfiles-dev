@@ -4,7 +4,7 @@ if not present then
    return
 end
 
-local t_scope = {
+local options = {
    defaults = {
       vimgrep_arguments = {
         "rg",
@@ -33,33 +33,33 @@ local t_scope = {
       selection_strategy = "reset",
       sorting_strategy = "descending", -- "ascending",
       layout_strategy = "horizontal",
-      -- layout_config = {
-      --    horizontal = {
-      --       prompt_position = "top",
-      --       preview_width = 0.55,
-      --       results_width = 0.8,
-      --    },
-      --    vertical = {
-      --       mirror = false,
-      --    },
-      --    width = 0.87,
-      --    height = 0.80,
-      --    preview_cutoff = 120,
-      -- },
       layout_config = {
-        width = 0.75,
-        preview_cutoff = 120,
-        horizontal = {
-          preview_width = function(_, cols, _)
-            if cols < 120 then
-              return math.floor(cols * 0.5)
-            end
-            return math.floor(cols * 0.6)
-          end,
-          mirror = false,
-        },
-        vertical = { mirror = false },
+         horizontal = {
+            prompt_position = "top",
+            preview_width = 0.55,
+            results_width = 0.8,
+         },
+         vertical = {
+            mirror = false,
+         },
+         width = 0.87,
+         height = 0.80,
+         preview_cutoff = 120,
       },
+      -- layout_config = {
+      --   width = 0.75,
+      --   preview_cutoff = 120,
+      --   horizontal = {
+      --     preview_width = function(_, cols, _)
+      --       if cols < 120 then
+      --         return math.floor(cols * 0.5)
+      --       end
+      --       return math.floor(cols * 0.6)
+      --     end,
+      --     mirror = false,
+      --   },
+      --   vertical = { mirror = false },
+      -- },
       file_sorter = require("telescope.sorters").get_fuzzy_file,
       file_ignore_patterns = { "node_modules" },
       generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
@@ -90,40 +90,13 @@ local t_scope = {
   },
 }
 
-local M = {}
+telescope.setup(options)
 
-function M.code_actions()
-  local opts = {
-    winblend = 15,
-    layout_config = {
-      prompt_position = "top",
-      width = 80,
-      height = 12,
-    },
-    borderchars = t_scope.defaults.borderchars,
-    border = {},
-    previewer = false,
-    shorten_path = false,
-  }
-  local builtin = require("telescope.builtin")
-  local themes = require("telescope.themes")
-  builtin.lsp_code_actions(themes.get_dropdown(opts))
-end
+-- load extensions
+local extensions = { "themes", "terms" }
 
-M.setup = function(override_flag)
-   if override_flag then
-      t_scope = require("core.utils").tbl_override_req("telescope", t_scope)
-   end
-
-   telescope.setup(t_scope)
-
-   local extensions = { "themes", "terms" }
-
-   pcall(function()
-      for _, ext in ipairs(extensions) do
-         telescope.load_extension(ext)
-      end
-   end)
-end
-
-return M
+pcall(function()
+  for _, ext in ipairs(extensions) do
+     telescope.load_extension(ext)
+  end
+end)

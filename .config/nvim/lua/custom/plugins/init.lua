@@ -14,17 +14,17 @@ return {
       end,
 
       config = function()
-         require("custom.plugins.nvimtree").setup()
+         require("custom.plugins.nvimtree")
       end,
    },
     ["feline-nvim/feline.nvim"] = {
       after = "nvim-web-devicons",
       config = function()
-         require("custom.plugins.feline").setup()
+         require("custom.plugins.feline")
       end,
    },
     ["nvim-telescope/telescope.nvim"] = {
-      module = "telescope",
+      requires = { {"nvim-lua/plenary.nvim"} },
       cmd = "Telescope",
 
       setup = function()
@@ -32,7 +32,7 @@ return {
       end,
 
       config = function()
-         require("custom.plugins.telescope").setup()
+         require("custom.plugins.telescope")
       end,
    },
    ["lewis6991/gitsigns.nvim"] = {
@@ -63,7 +63,7 @@ return {
       event = { "BufRead", "BufNewFile" },
       run = ":TSUpdate",
       config = function()
-         require("custom.plugins.treesitter").setup()
+         require("custom.plugins.treesitter")
       end,
    },
     ["hrsh7th/nvim-cmp"] = {
@@ -94,6 +94,16 @@ return {
     after = {
       "nvim-treesitter"
     }
+  },
+  ["nvim-treesitter/nvim-treesitter-refactor"] = {
+      after = {
+          "nvim-treesitter"
+        }
+    },
+  ["romgrk/nvim-treesitter-context"] = {
+      config = function()
+        require("treesitter-context").setup {}
+      end,
   },
   ["windwp/nvim-ts-autotag"] = {
     
@@ -386,7 +396,7 @@ return {
   ["kosayoda/nvim-lightbulb"] = {
     
     config = function()
-      vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+      -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
       require("nvim-lightbulb").setup {}
     end
   },

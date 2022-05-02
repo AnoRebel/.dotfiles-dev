@@ -121,11 +121,6 @@ map("n", "<leader>lpd", ":lua require('custom.lsp.peek').Peek('definition')<CR>"
 map("n", "<leader>lpt", ":lua require('custom.lsp.peek').Peek('typeDefinition')<CR>")
 map("n", "<leader>lpi", ":lua require('custom.lsp.peek').Peek('implementation')<CR>")
 
--- Refactoring
-map("x", "<leader>.", ":'<,'>Telescope lsp_range_code_actions<CR>") --lua vim.lsp.buf.range_code_action()
-map("v", "<leader>.", ":'<,'>Telescope lsp_range_code_actions<CR>") --lua vim.lsp.buf.range_code_action()
-map("n", "<leader>,", ":lua require('custom.plugins.telescope').code_actions()<CR>")
-
 -- LSP settings (for overriding per client)
 -- Load servers (They will be automatically installed after next "Sync plugins" launch)
 -- Check installed servers by :LspInstallInfo

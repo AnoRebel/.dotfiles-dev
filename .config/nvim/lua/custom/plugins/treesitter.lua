@@ -4,14 +4,121 @@ if not present then
   return
 end
 
-local default = {
+local options = {
   ensure_installed = {
+    "bash",
+    "c",
+    "c_sharp",
+    "comment",
+    "cpp",
+    "css",
+    "dart",
+    "dockerfile",
+    "dot",
+    "elixir",
+    "erlang",
+    "go",
+    "html",
+    "http",
+    "javascript",
+    "json",
+    "json5",
     "lua",
+    "php",
+    "python",
+    "regex",
+    "rust",
+    "scss",
+    "tsx",
+    "typescript",
     "vim",
+    "vue",
+    "yaml",
+  },
+  indent = {
+    -- NOTE: This is an experimental feature
+    enable = true
+  },
+  textsubjects = {
+        enable = true,
+        -- prev_selection = ',', -- (Optional) keymap to select the previous selection
+        -- keymaps = {
+        --     ['.'] = 'textsubjects-smart',
+        --     [';'] = 'textsubjects-container-outer',
+        --     ['i;'] = 'textsubjects-container-inner',
+        -- },
+    },
+  textobjects = {
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      -- keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+      --   ["af"] = "@function.outer",
+      --   ["if"] = "@function.inner",
+      --   ["ac"] = "@class.outer",
+      --   ["ic"] = "@class.inner",
+      -- },
+    },
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      -- goto_next_start = {
+      --   ["]m"] = "@function.outer",
+      --   ["]]"] = "@class.outer",
+      -- },
+      -- goto_next_end = {
+      --   ["]M"] = "@function.outer",
+      --   ["]["] = "@class.outer",
+      -- },
+      -- goto_previous_start = {
+      --   ["[m"] = "@function.outer",
+      --   ["[["] = "@class.outer",
+      -- },
+      -- goto_previous_end = {
+      --   ["[M"] = "@function.outer",
+      --   ["[]"] = "@class.outer",
+      -- },
+    },
+    lsp_interop = {
+      enable = true,
+      border = 'none',
+      -- peek_definition_code = {
+      --   ["<leader>df"] = "@function.outer",
+      --   ["<leader>dF"] = "@class.outer",
+      -- },
+    },
+  },
+  refactor = {
+    highlight_definitions = {
+      enable = true,
+      -- Set to false if you have an `updatetime` of ~100.
+      clear_on_cursor_move = true,
+    },
+    highlight_current_scope = { enable = true },
+    smart_rename = {
+      enable = true,
+      -- keymaps = {
+      --   smart_rename = "grr",
+      -- },
+    },
+    navigation = {
+      enable = true,
+      -- keymaps = {
+      --   goto_definition = "gnd",
+      --   list_definitions = "gnD",
+      --   list_definitions_toc = "gO",
+      --   goto_next_usage = "<a-*>",
+      --   goto_previous_usage = "<a-#>",
+      -- },
+    },
   },
   highlight = {
     enable = true,
-    use_languagetree = true,
+    -- use_languagetree = true,
   },
   context_commentstring = {
     enable = true
@@ -26,12 +133,4 @@ local default = {
   },
 }
 
-local M = {}
-M.setup = function(override_flag)
-  if override_flag then
-    default = require("core.utils").tbl_override_req("nvim_treesitter", default)
-  end
-  ts_config.setup(default)
-end
-
-return M
+ts_config.setup(options)

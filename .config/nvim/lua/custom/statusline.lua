@@ -1,14 +1,12 @@
 local present, feline = pcall(require, "feline")
+
 if not present then
    return
 end
 
-local gps = require("nvim-gps")
-local package = require("package-info")
 local colors = require("colors").get()
 local lsp = require "feline.providers.lsp"
 local lsp_severity = vim.diagnostic.severity
--- local config = require("core.utils").load_config().plugins.options.statusline
 
 local icon_styles = {
    default = {
@@ -51,12 +49,8 @@ local icon_styles = {
    },
 }
 
--- statusline style
-local separator = "default" -- default/round/slant/block/arrow
+local separator = require("core.utils").load_config().plugins.options.statusline.separator_style
 local separator_style = icon_styles[separator]
-
--- show short statusline on small screens
---local shortline = config.shortline == false and true
 
 -- Initialize the components table
 local components = {
@@ -91,9 +85,6 @@ local file_name = {
       end
       return " " .. icon .. " " .. filename .. " "
    end,
-   -- enabled = shortline or function(winid)
-   --    return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 70
-   -- end,
    hl = {
       fg = colors.white,
       bg = colors.lightbg,
@@ -110,10 +101,6 @@ local dir_name = {
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       return "  " .. dir_name .. " "
    end,
-
-   -- enabled = shortline or function(winid)
-   --    return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 80
-   -- end,
 
    hl = {
       fg = colors.grey_fg2,
@@ -159,9 +146,6 @@ local diff = {
 
 local git_branch = {
    provider = "git_branch",
-   -- enabled = shortline or function(winid)
-   --    return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 70
-   -- end,
    hl = {
       fg = colors.grey_fg2,
       bg = colors.statusline_bg,
@@ -240,9 +224,6 @@ local lsp_progress = {
 
       return ""
    end,
-   -- enabled = shortline or function(winid)
-   --    return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 80
-   -- end,
    hl = { fg = colors.green },
 }
 
@@ -254,9 +235,6 @@ local lsp_icon = {
          return ""
       end
    end,
-   -- enabled = shortline or function(winid)
-   --    return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 70
-   -- end,
    hl = { fg = colors.grey_fg2, bg = colors.statusline_bg },
 }
 
@@ -328,9 +306,6 @@ local empty_space2 = {
 
 local separator_right = {
    provider = separator_style.left,
-   -- enabled = shortline or function(winid)
-   --    return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
-   -- end,
    hl = {
       fg = colors.grey,
       bg = colors.one_bg,
@@ -339,9 +314,6 @@ local separator_right = {
 
 local separator_right2 = {
    provider = separator_style.left,
-   -- enabled = shortline or function(winid)
-   --    return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
-   -- end,
    hl = {
       fg = colors.green,
       bg = colors.grey,
@@ -350,9 +322,6 @@ local separator_right2 = {
 
 local position_icon = {
    provider = separator_style.position_icon,
-   -- enabled = shortline or function(winid)
-   --    return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
-   -- end,
    hl = {
       fg = colors.black,
       bg = colors.green,
@@ -373,40 +342,10 @@ local current_line = {
       return " " .. result .. "%% "
    end,
 
-   -- enabled = shortline or function(winid)
-   --    return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
-   -- end,
-
    hl = {
       fg = colors.green,
       bg = colors.one_bg,
    },
-}
-
-local location = {
-  provider = function()
-    return gps.get_location()
-  end,
-  enabled = function()
-    return gps.is_available()
-  end,
-  hl = {
-      fg = colors.grey_fg2,
-      bg = colors.statusline_bg,
-   },
-}
-
-local package_info = {
-  provider = function()
-    return package.get_status()
-  end,
-  hl = {
-    fg = colors.grey_fg2,
-    bg = colors.statusline_bg,
-    style = "bold",
-  },
-  -- left_sep = "  ",
-  -- right_sep = " ",
 }
 
 local function add_table(a, b)
@@ -417,8 +356,6 @@ end
 local left = {}
 local middle = {}
 local right = {}
-
-local M = {}
 
 -- left
 add_table(left, main_icon)
@@ -431,11 +368,8 @@ add_table(left, diagnostic.error)
 add_table(left, diagnostic.warning)
 add_table(left, diagnostic.hint)
 add_table(left, diagnostic.info)
-add_table(left, location)
 
--- center
 add_table(middle, lsp_progress)
-add_table(middle, package_info)
 
 -- right
 add_table(right, lsp_icon)
@@ -454,9 +388,9 @@ components.active[2] = middle
 components.active[3] = right
 
 feline.setup {
-  theme = {
-    bg = colors.statusline_bg,
-    fg = colors.fg,
-  },
-  components = components,
+   theme = {
+      bg = colors.statusline_bg,
+      fg = colors.fg,
+   },
+   components = components,
 }

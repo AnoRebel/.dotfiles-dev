@@ -10,6 +10,10 @@ require "custom.mappings"
 -- Stop sourcing filetype.vim
 vim.g.did_load_filetypes = 1 -- 0 | 1
 
+-- Treesitter folding
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = require "nvim-treesitter"#foldexpr()
+
 -- local api = vim.api
 -- local folding = require("custom.folding")
 -- local current_window = api.nvim_get_current_win()
