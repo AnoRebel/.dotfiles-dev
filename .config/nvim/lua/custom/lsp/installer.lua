@@ -54,12 +54,10 @@ lspconfig.bashls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   handlers = handlers,
-  settings = require('custom.lsp.servers.bash').settings,
 }
 
 lspconfig.cssls.setup {
   on_attach = on_attach,
-  capabilities = capabilities,
   handlers = handlers,
   capabilities = require('custom.lsp.servers.css').capabilities,
   settings = require('custom.lsp.servers.css').settings,
@@ -69,9 +67,9 @@ lspconfig.eslint.setup {
   root_dir = lspconfig.util.root_pattern(".eslintrc", ".eslintrc.js", ".eslintrc.json"),
   on_attach = function(client, bufnr)
     -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
-    -- the resolved capabilities of the eslint server ourselves!
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    -- the server capabilities of the eslint server ourselves!
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
@@ -83,7 +81,6 @@ lspconfig.graphql.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   handlers = handlers,
-  settings = require('custom.lsp.servers.graphql').settings,
 }
 
 lspconfig.html.setup {
@@ -96,8 +93,8 @@ lspconfig.html.setup {
 
 lspconfig.jsonls.setup {
   on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
@@ -109,7 +106,6 @@ lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   handlers = handlers,
-  filetypes = require("custom.lsp.servers.pyright").settings,
 }
 
 lspconfig.sumneko_lua.setup {
@@ -145,8 +141,8 @@ lspconfig.tsserver.setup {
   -- },
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
   end,
   handlers = handlers,
@@ -154,8 +150,8 @@ lspconfig.tsserver.setup {
 
 lspconfig.volar.setup {
   on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,

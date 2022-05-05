@@ -58,7 +58,6 @@ return {
          require("custom.lsp.config").setup()
       end,
    },
-   ["b0o/schemastore.nvim"] = {},
     ["nvim-treesitter/nvim-treesitter"] = {
       event = { "BufRead", "BufNewFile" },
       run = ":TSUpdate",
@@ -66,6 +65,7 @@ return {
          require("custom.plugins.treesitter")
       end,
    },
+   ["b0o/schemastore.nvim"] = {},
     ["hrsh7th/nvim-cmp"] = {
       after = "friendly-snippets",
       config = function()
@@ -73,6 +73,7 @@ return {
       end,
    },
   --
+  ["nathom/filetype.nvim"] = {},
   ["glepnir/dashboard-nvim"] = {
     config = function()
       require("custom.plugins.dashboard")
@@ -368,18 +369,17 @@ return {
       require("custom.plugins.package-info")
     end
   },
-  ["lukas-reineke/virt-column.nvim"] = {
-    
-    config = function()
-      vim.opt.colorcolumn = "120"
-      vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-        pattern = "*",
-        command = "highlight clear colorColumn",
-        desc = "Clear colorcolumn",
-      })
-      require("virt-column").setup()
-    end
-  },
+  -- ["lukas-reineke/virt-column.nvim"] = {
+  --   config = function()
+  --     vim.opt.colorcolumn = "120"
+  --     vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+  --       pattern = "*",
+  --       command = "highlight clear colorColumn",
+  --       desc = "Clear colorcolumn",
+  --     })
+  --     require("virt-column").setup()
+  --   end
+  -- },
   ["dstein64/nvim-scrollview"] = {
     
     config = function()

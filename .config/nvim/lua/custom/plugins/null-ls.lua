@@ -17,7 +17,7 @@ local sources = {
   b.diagnostics.markdownlint,
   -- b.diagnostics.tsc,
   -- b.diagnostics.eslint_d,
-  b.diagnostics.php,
+  -- b.diagnostics.php,
   -- b.diagnostics.zsh,
 
   -- Formatting
@@ -36,6 +36,20 @@ local sources = {
   b.hover.dictionary,
 }
 
+local lsp_formatting = function(bufnr)
+    vim.lsp.buf.format({
+        filter = function(clients)
+            -- filter out clients that you don't want to use
+            return vim.tbl_filter(function(client)
+                return client.name ~= "tsserver"
+            end, clients)
+        end,
+        bufnr = bufnr,
+    })
+end
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+
 local M = {}
 
 M.setup = function()
@@ -44,15 +58,27 @@ M.setup = function()
     sources = sources,
 
     -- format on save
-    on_attach = function(client)
-      if client.resolved_capabilities.document_formatting then
-        vim.cmd([[
-          augroup LspFormatting
-            autocmd! * <buffer>
-            autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)
-          augroup END
-        ]])
+    on_attach = function(client, bufnr)
+      -- if client.supports_method("textDocument/formatting") then
+      if client.server_capabilities.documentFormattingProvider then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                lsp_formatting(bufnr)
+            end,
+        })
       end
+      -- if client.server_capabilities.document_formatting then
+      --   vim.cmd([[
+      --     augroup LspFormatting
+      --       autocmd! * <buffer>
+      --       autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
+      --     augroup END
+      --   ]])
+      -- end
+      -- formatting_sync(nil, 2000)
       -- if client.supports_method("textDocument/formatting") then
       -- -- wrap in an augroup to prevent duplicate autocmds
       -- vim.cmd([[

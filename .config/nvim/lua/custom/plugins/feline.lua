@@ -5,7 +5,7 @@ end
 
 local gps = require("nvim-gps")
 local package = require("package-info")
-local colors = require("colors").get()
+local colors = require("base16").get_colors("base_30") -- require("colors").get()
 local lsp = require "feline.providers.lsp"
 local lsp_severity = vim.diagnostic.severity
 -- local config = require("core.utils").load_config().plugins.options.statusline

@@ -1,30 +1,35 @@
 local M = {}
 
--- M.setup_lsp = function(attach, capabilities)
---    local lspconfig = require "lspconfig"
-
---    lspconfig.tsserver.setup {
---       on_attach = function(client, bufnr)
---          client.resolved_capabilities.document_formatting = false
---          vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", {})
---       end,
---    }
-
---    -- lspservers with default config
---    local servers = { "html", "cssls", "bashls", "clangd", "emmet_ls" }
-
---    for _, lsp in ipairs(servers) do
---       lspconfig[lsp].setup {
---          on_attach = attach,
---          capabilities = capabilities,
---          flags = {
---             debounce_text_changes = 150,
---          },
---       }
---    end
--- end
+M.icons = {
+  Class = " ",
+  Color = " ",
+  Constant = " ",
+  Constructor = " ",
+  Enum = "了 ",
+  EnumMember = " ",
+  Field = " ",
+  File = " ",
+  Folder = " ",
+  Function = " ",
+  Interface = "ﰮ ",
+  Keyword = " ",
+  Method = "ƒ ",
+  Module = " ",
+  Property = " ",
+  Snippet = "﬌ ",
+  Struct = " ",
+  Text = " ",
+  Unit = " ",
+  Value = " ",
+  Variable = " ",
+}
 
 M.setup = function()
+  local kinds = vim.lsp.protocol.CompletionItemKind
+  for i, kind in ipairs(kinds) do
+    kinds[i] = M.icons[kind] or kind
+  end
+
   local function lspSymbol(name, icon)
     local hl = "DiagnosticSign" .. name
     vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
@@ -37,8 +42,12 @@ M.setup = function()
 
   vim.diagnostic.config {
     virtual_text = {
-      prefix = "",
+      -- source = "always", -- Or "if_many",
+      prefix = "", -- Could be '●', '▎', 'x'
     },
+    -- float = {
+    --   source = "always", -- Or "if_many",
+    -- },
     signs = true,
     underline = true,
     update_in_insert = false,
@@ -51,16 +60,16 @@ M.setup = function()
     border = "rounded", --single
   })
   -- Fix for Update on Insert
-  --   vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  --     vim.lsp.diagnostic.on_publish_diagnostics,
-  --     {
-  --         underline = true,
-  --         virtual_text = {
-  --             spacing = 5,
-  --             severity_limit = 'Warning',
-  --         },
-  --         update_in_insert = true,
-  --     }
+  -- vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+  --   vim.lsp.diagnostic.on_publish_diagnostics,
+  --   {
+  --       underline = true,
+  --       virtual_text = {
+  --           spacing = 5,
+  --           severity_limit = 'Warning',
+  --       },
+  --       update_in_insert = true,
+  --   }
   -- )
 
   -- suppress error messages from lang servers
