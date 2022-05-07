@@ -261,3 +261,4 @@ PERL_MM_OPT="INSTALL_BASE=/home/dev/perl5"; export PERL_MM_OPT;
 export PATH="$PATH:/opt/mssql-tools/bin"
 . "$HOME/.cargo/env"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+export PATH=$PATH:/home/dev/.spicetify

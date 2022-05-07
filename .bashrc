@@ -214,3 +214,4 @@ export PERL_MM_OPT
 export PATH="$PATH:/opt/mssql-tools/bin"
 . "$HOME/.cargo/env"
 source ~/.bash_completion/alacritty
+export PATH=$PATH:/home/dev/.spicetify
