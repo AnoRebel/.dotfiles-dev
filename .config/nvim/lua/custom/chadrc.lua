@@ -6,7 +6,7 @@ local M = {}
 -- example of changing theme:
 M.ui = {
   theme = "tokyonight", -- gruvchad | onedark
-  transparency = true,
+  -- transparency = true,
 }
 
 local userPlugins = require "custom.plugins" -- path to table
