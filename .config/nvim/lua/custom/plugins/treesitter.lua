@@ -18,17 +18,22 @@ local options = {
     "elixir",
     "erlang",
     "go",
+    "gomod",
+    "graphql",
     "html",
     "http",
     "javascript",
     "json",
+    "jsonc",
     "json5",
     "lua",
     "php",
+    "prisma",
     "python",
     "regex",
     "rust",
     "scss",
+    "svelte",
     "tsx",
     "typescript",
     "vim",
@@ -40,14 +45,14 @@ local options = {
     enable = true
   },
   textsubjects = {
-        enable = true,
-        -- prev_selection = ',', -- (Optional) keymap to select the previous selection
-        -- keymaps = {
-        --     ['.'] = 'textsubjects-smart',
-        --     [';'] = 'textsubjects-container-outer',
-        --     ['i;'] = 'textsubjects-container-inner',
-        -- },
-    },
+    enable = true,
+    -- prev_selection = ',', -- (Optional) keymap to select the previous selection
+    -- keymaps = {
+    --     ['.'] = 'textsubjects-smart',
+    --     [';'] = 'textsubjects-container-outer',
+    --     ['i;'] = 'textsubjects-container-inner',
+    -- },
+  },
   textobjects = {
     select = {
       enable = true,
@@ -56,7 +61,7 @@ local options = {
       lookahead = true,
 
       -- keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
+      -- You can use the capture groups defined in textobjects.scm
       --   ["af"] = "@function.outer",
       --   ["if"] = "@function.inner",
       --   ["ac"] = "@class.outer",
