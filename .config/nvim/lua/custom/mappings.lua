@@ -96,8 +96,9 @@ map("n", "<leader>lg", ":lua require('toggleterm').lazygit_toggle()<CR>", opts)
 
 -- Misc
 map("i", "kj", "<ESC>") -- { noremap = true, silent = true }
-map("n", "<C-a>", "ggVGy<CR>")
-map("i", "<C-a>", "<ESC>ggVGyi<CR>")
+map("n", "<C-a>", "ggVG<CR>")
+map("i", "<C-a>", "<ESC>ggVG<CR>")
+-- map("v", "<C-h>", ":%s/'<,'>/<>/gc")
 -- Resize
 map("n", "<A-Up>", ":resize +2<CR>")
 map("n", "<A-Down>", ":resize -2<CR>")
