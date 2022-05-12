@@ -1,5 +1,5 @@
 local M = {}
-local map = require("core.utils").map
+local map = nvchad.map
 
 M.setup = function()
   -- Diagnostic config

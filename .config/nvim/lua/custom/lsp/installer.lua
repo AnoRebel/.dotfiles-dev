@@ -45,8 +45,8 @@ local handlers = {
 
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if status_ok then
+local stats_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if stats_ok then
   capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
 
@@ -87,7 +87,6 @@ lspconfig.html.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   handlers = handlers,
-  capabilities = require('custom.lsp.servers.html').capabilities,
   settings = require('custom.lsp.servers.html').settings,
 }
 
@@ -112,7 +111,22 @@ lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   handlers = handlers,
-  settings = require("custom.lsp.servers.lua").settings,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim", "use", "nvchad" },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+        },
+        maxPreload = 100000,
+        preloadFileSize = 10000,
+      },
+    },
+  },
+
 }
 
 -- lspconfig.tailwindcss.setup {

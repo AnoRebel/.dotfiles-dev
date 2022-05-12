@@ -74,7 +74,7 @@ local default = {
 M.setup = function(override_flag)
         local gitsigns = require("gitsigns")
         if override_flag then
-                default = require("core.utils").tbl_override_req("gitsigns", default)
+                default = nvchad.tbl_override_req("gitsigns", default)
         end
 
         gitsigns.setup(default)

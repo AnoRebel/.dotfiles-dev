@@ -8,7 +8,7 @@ local package = require("package-info")
 local colors = require("base46").get_colors("base_30") -- require("colors").get()
 local lsp = require "feline.providers.lsp"
 local lsp_severity = vim.diagnostic.severity
--- local config = require("core.utils").load_config().plugins.options.statusline
+-- local config = nvchad.load_config().plugins.options.statusline
 
 local icon_styles = {
   default = {

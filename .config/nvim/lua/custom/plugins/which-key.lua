@@ -141,7 +141,7 @@ local which_k = {
                 },
                 x = {
                         name = "",
-                        -- { ":lua require('core.utils').close_buffer() <CR>", "Close Buffer" },
+                        -- { ":lua nvchad.close_buffer() <CR>", "Close Buffer" },
                         d = { ":Trouble document_diagnostics<CR>", "Document Diagnostics" },
                         l = { ":Trouble loclist<CR>", "Loclist" },
                         w = { ":Trouble workspace_diagnostics<CR>", "Workspace Diagnostics" },
