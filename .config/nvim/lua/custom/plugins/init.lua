@@ -1,77 +1,69 @@
 return {
   -- Overridden
   ["goolord/alpha-nvim"] = {
-      disable = false,
-      config = function()
-         require "plugins.configs.alpha"
-      end,
-   },
-    ["kyazdani42/nvim-tree.lua"] = {
-      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    disable = false,
+    config = function()
+      require "plugins.configs.alpha"
+    end,
+  },
+  ["kyazdani42/nvim-tree.lua"] = {
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
 
-      setup = function()
-         require("core.mappings").nvimtree()
-      end,
+    config = function()
+      require("custom.plugins.nvimtree")
+    end,
+  },
+  ["feline-nvim/feline.nvim"] = {
+    after = "nvim-web-devicons",
+    config = function()
+      require("custom.plugins.feline")
+    end,
+  },
+  ["nvim-telescope/telescope.nvim"] = {
+    requires = { { "nvim-lua/plenary.nvim" } },
+    cmd = "Telescope",
 
-      config = function()
-         require("custom.plugins.nvimtree")
-      end,
-   },
-    ["feline-nvim/feline.nvim"] = {
-      after = "nvim-web-devicons",
-      config = function()
-         require("custom.plugins.feline")
-      end,
-   },
-    ["nvim-telescope/telescope.nvim"] = {
-      requires = { {"nvim-lua/plenary.nvim"} },
-      cmd = "Telescope",
-
-      setup = function()
-         require("core.mappings").telescope()
-      end,
-
-      config = function()
-         require("custom.plugins.telescope")
-      end,
-   },
-   ["lewis6991/gitsigns.nvim"] = {
-      opt = true,
-      config = function()
-         require("custom.plugins.gitsigns").setup()
-      end,
-      setup = function()
-         nvchad.packer_lazy_load "gitsigns.nvim"
-      end,
-   },
-    ["neovim/nvim-lspconfig"] = {
-      module = "lspconfig",
-      opt = true,
-      setup = function()
-         nvchad.packer_lazy_load "nvim-lspconfig"
-         -- reload the current file so lsp actually starts for it
-         vim.defer_fn(function()
-            vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-         end, 0)
-      end,
-      config = function()
-         require("custom.lsp.config").setup()
-      end,
-   },
-    ["nvim-treesitter/nvim-treesitter"] = {
-      event = { "BufRead", "BufNewFile" },
-      run = ":TSUpdate",
-      config = function()
-         require("custom.plugins.treesitter")
-      end,
-   },
-   ["b0o/schemastore.nvim"] = {},
-    ["hrsh7th/nvim-cmp"] = {
-      after = "friendly-snippets",
-      config = function()
-         require "custom.plugins.cmp"
-      end,
-   },
+    config = function()
+      require("custom.plugins.telescope")
+    end,
+  },
+  ["lewis6991/gitsigns.nvim"] = {
+    opt = true,
+    config = function()
+      require("custom.plugins.gitsigns").setup()
+    end,
+    setup = function()
+      nvchad.packer_lazy_load "gitsigns.nvim"
+    end,
+  },
+  ["neovim/nvim-lspconfig"] = {
+    module = "lspconfig",
+    opt = true,
+    setup = function()
+      nvchad.packer_lazy_load "nvim-lspconfig"
+      -- reload the current file so lsp actually starts for it
+      vim.defer_fn(function()
+        vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+      end, 0)
+    end,
+    config = function()
+      require("custom.lsp.config").setup()
+    end,
+  },
+  ["nvim-treesitter/nvim-treesitter"] = {
+    event = { "BufRead", "BufNewFile" },
+    run = ":TSUpdate",
+    config = function()
+      require("custom.plugins.treesitter")
+    end,
+  },
+  ["b0o/schemastore.nvim"] = {},
+  ["hrsh7th/nvim-cmp"] = {
+    after = "friendly-snippets",
+    config = function()
+      require "custom.plugins.cmp"
+    end,
+  },
   --
   ["nathom/filetype.nvim"] = {},
   ["glepnir/dashboard-nvim"] = {
@@ -97,23 +89,23 @@ return {
     }
   },
   ["nvim-treesitter/nvim-treesitter-refactor"] = {
-      after = {
-          "nvim-treesitter"
-        }
-    },
+    after = {
+      "nvim-treesitter"
+    }
+  },
   ["romgrk/nvim-treesitter-context"] = {
-      config = function()
-        require("treesitter-context").setup {}
-      end,
+    config = function()
+      require("treesitter-context").setup {}
+    end,
   },
   ["windwp/nvim-ts-autotag"] = {
-    
+
     config = function()
       require("nvim-ts-autotag").setup()
     end
   },
   ["rmagatti/goto-preview"] = {
-    
+
     config = function()
       require('goto-preview').setup {}
     end
@@ -121,28 +113,28 @@ return {
   ["JoosepAlviste/nvim-ts-context-commentstring"] = {},
   ["p00f/nvim-ts-rainbow"] = {},
   ["kevinhwang91/nvim-bqf"] = {
-    
+
     ft = "qf",
     config = function()
       require("bqf").setup()
     end
   },
   ["rcarriga/nvim-notify"] = {
-    
+
     config = function()
       require("custom.plugins.notify").setup()
     end,
     event = "BufRead",
   },
   ["akinsho/toggleterm.nvim"] = {
-    
+
     event = "BufWinEnter",
     config = function()
       require("custom.plugins.terminal").setup()
     end,
   },
   ["jose-elias-alvarez/null-ls.nvim"] = {
-    
+
     requires = "nvim-lua/plenary.nvim",
     after = "nvim-lspconfig",
     config = function()
@@ -150,7 +142,7 @@ return {
     end
   },
   ["akinsho/flutter-tools.nvim"] = {
-    
+
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("flutter-tools").setup {}
@@ -158,7 +150,7 @@ return {
     end
   },
   ["ThePrimeagen/refactoring.nvim"] = {
-    
+
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter"
@@ -168,7 +160,7 @@ return {
     end
   },
   ["MunifTanjim/eslint.nvim"] = {
-    
+
     requires = {
       "neovim/nvim-lspconfig",
       "jose-elias-alvarez/null-ls.nvim"
@@ -178,7 +170,7 @@ return {
     -- end
   },
   ["MunifTanjim/prettier.nvim"] = {
-    
+
     requires = {
       "neovim/nvim-lspconfig",
       "jose-elias-alvarez/null-ls.nvim"
@@ -188,7 +180,7 @@ return {
     -- end
   },
   ["David-Kunz/cmp-npm"] = {
-    
+
     requires = {
       "nvim-lua/plenary.nvim"
     },
@@ -198,19 +190,19 @@ return {
     end
   },
   ["hrsh7th/cmp-calc"] = {
-    
+
     after = "cmp-path"
   },
   ["hrsh7th/cmp-buffer"] = {
-    
+
     requires = "hrsh7th/nvim-cmp"
   },
   ["hrsh7th/cmp-cmdline"] = {
-    
+
     requires = "hrsh7th/nvim-cmp"
   },
   ["tzachar/cmp-tabnine"] = {
-    
+
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
     after = "cmp-calc"
@@ -219,21 +211,21 @@ return {
   ["dmitmel/cmp-cmdline-history"] = {},
   ["onsails/lspkind-nvim"] = {},
   ["folke/trouble.nvim"] = {
-    
+
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
       require("custom.plugins.trouble")
     end
   },
   ["windwp/nvim-spectre"] = {
-    
+
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("spectre").setup()
     end
   },
   ["folke/todo-comments.nvim"] = {
-    
+
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("todo-comments").setup {
@@ -243,29 +235,29 @@ return {
       }
     end
   },
-  ["folke/which-key.nvim"] = {
-    
-    config = function()
-      require("custom.plugins.which-key").setup()
-    end,
-    event = "BufWinEnter",
-  },
+  -- ["folke/which-key.nvim"] = {
+  --
+  --   config = function()
+  --     require("custom.plugins.which-key").setup()
+  --   end,
+  --   event = "BufWinEnter",
+  -- },
   ["TimUntersberger/neogit"] = {
-    
+
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("neogit").setup {}
     end
   },
   ["akinsho/git-conflict.nvim"] = {
-    
+
     config = function()
       require("git-conflict").setup()
     end
   },
   ["rhysd/committia.vim"] = {},
   ["yardnsm/vim-import-cost"] = {
-    
+
     run = "npm install --production"
     -- AutoRun
     -- augroup import_cost_auto_run
@@ -286,7 +278,7 @@ return {
   --   "mg979/vim-visual-multi"
   -- ],
   ["SmiteshP/nvim-gps"] = {
-    
+
     config = function()
       require("custom.plugins.gps")
     end,
@@ -294,20 +286,20 @@ return {
   },
   ["folke/lsp-colors.nvim"] = {},
   ["nacro90/numb.nvim"] = {
-    
+
     config = function()
       require("numb").setup()
     end
   },
   ["nvim-telescope/telescope-fzf-native.nvim"] = {
-    
+
     run = "make",
     config = function()
       require("telescope").load_extension("fzf")
     end
   },
   ["xiyaowong/telescope-emoji.nvim"] = {
-    
+
     config = function()
       require("telescope").load_extension("emoji")
     end
@@ -315,44 +307,44 @@ return {
   ["nvim-lua/popup.nvim"] = {},
   ["nvim-lua/plenary.nvim"] = {},
   ["nvim-telescope/telescope-media-files.nvim"] = {
-    
+
     after = "telescope.nvim",
     config = function()
       require("telescope").load_extension("media_files")
     end,
   },
   ["stevearc/dressing.nvim"] = {
-    
+
     requires = "MunifTanjim/nui.nvim",
     config = function()
       require("custom.plugins.dressing")
     end
   },
   ["ellisonleao/glow.nvim"] = {
-    
+
     cmd = "Glow"
   },
   ["sindrets/diffview.nvim"] = {
-    
+
     requires = "nvim-lua/plenary.nvim",
     -- config = function()
     --   require("custom.plugins.diffview")
     -- end
   },
   ["folke/zen-mode.nvim"] = {
-    
+
     config = function()
       require("custom.plugins.zen")
     end,
   },
   ["folke/twilight.nvim"] = {
-    
+
     config = function()
       require("twilight").setup {}
     end,
   },
   ["karb94/neoscroll.nvim"] = {
-    
+
     opt = true,
     config = function()
       require("neoscroll").setup()
@@ -363,7 +355,7 @@ return {
     end,
   },
   ["vuki656/package-info.nvim"] = {
-    
+
     requires = "MunifTanjim/nui.nvim",
     config = function()
       require("custom.plugins.package-info")
@@ -381,27 +373,27 @@ return {
   --   end
   -- },
   ["dstein64/nvim-scrollview"] = {
-    
+
     config = function()
       require("scrollview").setup()
     end
   },
   ["lambdalisue/suda.vim"] = {
-    
+
     config = function()
       -- vim.g.suda#prompt = 'Password: '
       vim.g.suda_smart_edit = 1 -- Automate
     end
   },
   ["kosayoda/nvim-lightbulb"] = {
-    
+
     config = function()
       -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
       require("nvim-lightbulb").setup {}
     end
   },
   ["j-hui/fidget.nvim"] = {
-    
+
     config = function()
       require("fidget").setup {}
     end
