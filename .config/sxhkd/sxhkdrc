@@ -36,6 +36,9 @@ alt + F2
 super + c
     toggleNotify
 
+F12
+    dropterm &
+
 # reload sxhkd
 super + shift + k
 	pkill -USR1 -x sxhkd && \
