@@ -33,14 +33,14 @@ return {
       require("custom.plugins.gitsigns").setup()
     end,
     setup = function()
-      nvchad.packer_lazy_load "gitsigns.nvim"
+      require("core.utils").packer_lazy_load "gitsigns.nvim"
     end,
   },
   ["neovim/nvim-lspconfig"] = {
     module = "lspconfig",
     opt = true,
     setup = function()
-      nvchad.packer_lazy_load "nvim-lspconfig"
+      require("core.utils").packer_lazy_load "nvim-lspconfig"
       -- reload the current file so lsp actually starts for it
       vim.defer_fn(function()
         vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
@@ -351,7 +351,7 @@ return {
     end,
     -- lazy loading
     setup = function()
-      nvchad.packer_lazy_load "neoscroll.nvim"
+      require("core.utils").packer_lazy_load "neoscroll.nvim"
     end,
   },
   ["vuki656/package-info.nvim"] = {

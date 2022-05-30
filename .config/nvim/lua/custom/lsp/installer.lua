@@ -114,7 +114,7 @@ lspconfig.sumneko_lua.setup {
   settings = {
     Lua = {
       diagnostics = {
-        globals = { "vim", "use", "nvchad" },
+        globals = { "vim", "use" },
       },
       workspace = {
         library = {
