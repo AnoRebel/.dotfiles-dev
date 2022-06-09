@@ -5,9 +5,9 @@ local M = {}
 -- make sure you maintain the structure of `core/default_config.lua` here,
 -- example of changing theme:
 M.ui = {
-  theme = "tokyodark", -- gruvchad
+  theme = "tokyodark", -- gruvchad | tokyonight
   -- transparency = true,
-  theme_toggle = { "tokyonight", "tokyodark" }
+  theme_toggle = { "catppuccin", "tokyodark" }
 }
 
 local userPlugins = require "custom.plugins" -- path to table

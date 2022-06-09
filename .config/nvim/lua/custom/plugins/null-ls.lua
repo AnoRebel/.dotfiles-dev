@@ -38,13 +38,11 @@ local sources = {
 
 local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
-        filter = function(clients)
-            -- filter out clients that you don't want to use
-            return vim.tbl_filter(function(client)
-                return client.name ~= "tsserver"
-            end, clients)
-        end,
-        bufnr = bufnr,
+      bufnr = bufnr,
+      filter = function(client)
+        -- filter out clients that you don't want to use
+        return client.name == "null-ls"
+      end,
     })
 end
 
