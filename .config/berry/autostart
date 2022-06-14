@@ -1,11 +1,20 @@
 #!/bin/bash
 
+berryc save_monitor 0 0 # 0 0
+berryc save_monitor 0 1 # 1 1
+berryc save_monitor 0 2 # 2 0
+berryc save_monitor 0 3 # 3 1
+berryc save_monitor 1 4 # 4 0
+berryc save_monitor 1 5 # 5 1
+berryc save_monitor 1 6 # 6 0
+berryc save_monitor 1 7 # 7 1
 
 # Set decoration geometry
 berryc border_width       5
 berryc inner_border_width 3
 berryc title_height       30
-berryc top_gap            30
+#berryc top_gap            30
+berryc edge_gap 			30 10 10 10
 
 # Set decoration colors
 berryc focus_color         292D3E
@@ -19,4 +28,10 @@ berryc text_unfocus_color  eeeeee
 berryc smart_place "true"
 berryc draw_text   "true"
 berryc edge_lock   "true"
-berryc set_font    "Dina-9"
+berryc set_font    "FiraCode NF-10"
+berryc json_status 			"true"
+berryc decorate_new 		"true"
+berryc manage 				Dialog|Toolbar|Menu|Splash|Utility
+
+# Autostart apps
+bash "$HOME"/.config/berry/startups.sh
