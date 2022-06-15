@@ -41,6 +41,7 @@ return {
   ["nvim-treesitter/nvim-treesitter"] = {
     module = "nvim-treesitter",
     cmd = { "TSInstall", "TSUninstall" },
+    after = "base46",
     setup = function()
       require("core.lazy_load").treesitter()
     end,
@@ -186,11 +187,10 @@ return {
     end
   },
   ["hrsh7th/cmp-calc"] = {
-after = "nvim-cmp",
-    after = "cmp-path"
+    after = "nvim-cmp",
   },
   ["hrsh7th/cmp-buffer"] = {
-after = "nvim-cmp",
+    after = "nvim-cmp",
     requires = "hrsh7th/nvim-cmp"
   },
   ["hrsh7th/cmp-cmdline"] = {
@@ -198,9 +198,10 @@ after = "nvim-cmp",
     requires = "hrsh7th/nvim-cmp"
   },
   ["tzachar/cmp-tabnine"] = {
+    opt = true,
+    after = "nvim-cmp",
     run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
-    after = "nvim-cmp"
+    requires = "hrsh7th/nvim-cmp"
   },
   ["hrsh7th/cmp-nvim-lsp-signature-help"] = {
     after = "nvim-cmp",

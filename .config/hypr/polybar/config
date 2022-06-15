@@ -18,31 +18,31 @@ foreground-alt = #90282a36
 alert = #ff5555
 
 [bar/top]
-  ; include-file = /home/luca/.config/polybar/modules/top.ini
+    include-file = ~/.config/hypr/polybar/modules/top.ini
 [bar/bottom]
-    include-file = /home/luca/.config/polybar/modules/bottom.ini
+    include-file = ~/.config/hypr/polybar/modules/bottom.ini
 [bar/center]
-    include-file = /home/luca/.config/polybar/modules/center.ini
+    include-file = ~/.config/hypr/polybar/modules/center.ini
 [bar/topright]
-    include-file = /home/luca/.config/polybar/modules/topright.ini
+    include-file = ~/.config/hypr/polybar/modules/topright.ini
 [module/workspaces]
-    include-file = /home/luca/.config/polybar/modules/workspaces.ini
+    include-file = ~/.config/hypr/polybar/modules/workspaces.ini
 [module/date]
-    include-file = /home/luca/.config/polybar/modules/date.ini
+    include-file = ~/.config/hypr/polybar/modules/date.ini
 [module/ewmh]
-    include-file = /home/luca/.config/polybar/modules/ewmh.ini
+    include-file = ~/.config/hypr/polybar/modules/ewmh.ini
 [module/pulseaudio]
-    include-file = /home/luca/.config/polybar/modules/pulseaudio.ini
+    include-file = ~/.config/hypr/polybar/modules/pulseaudio.ini
 [module/battery]
-    include-file = /home/luca/.config/polybar/modules/battery.ini
+    include-file = ~/.config/hypr/polybar/modules/battery.ini
 [module/temperature]
-    include-file = /home/luca/.config/polybar/modules/temperature.ini
+    include-file = ~/.config/hypr/polybar/modules/temperature.ini
 [module/powermenu]
-    include-file = /home/luca/.config/polybar/modules/powermenu.ini 
+    include-file = ~/.config/hypr/polybar/modules/powermenu.ini 
 [module/polywins]
-    include-file = /home/luca/.config/polybar/modules/polywins.ini 
+    include-file = ~/.config/hypr/polybar/modules/polywins.ini 
 [module/title]
-    include-file = /home/luca/.config/polybar/modules/xwindow.ini
+    include-file = ~/.config/hypr/polybar/modules/xwindow.ini
     
 [module/placeholder]
 # Just a dummy module as polybar always requires at least one amodule

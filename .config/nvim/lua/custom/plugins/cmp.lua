@@ -1,6 +1,5 @@
 -- Requires
 local lspkind = require("lspkind")
-local tabnine = require("cmp_tabnine.config")
 local icons = require("custom.icons")
 
 local cmp_status_ok, cmp = pcall(require, "cmp")
@@ -167,6 +166,8 @@ for _, cmd_type in ipairs({ '?', '@' }) do
     },
   })
 end
+
+local tabnine = require("cmp_tabnine.config")
 
 tabnine:setup({
   max_lines                = 1000;
