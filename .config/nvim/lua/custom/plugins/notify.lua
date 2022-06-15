@@ -47,7 +47,7 @@ function M.setup()
 
   notify.setup(defaults)
   vim.notify = notify
-  require("telescope").load_extension("notify")
+  -- require("telescope").load_extension("notify")
 end
 
 return M

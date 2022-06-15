@@ -22,6 +22,8 @@ local function telescope_live_grep(_)
   start_telescope "live_grep"
 end
 
+require("base46").load_highlight "nvimtree"
+
 local options = {
   auto_reload_on_write = true,
   hijack_unnamed_buffer_when_opening = false,

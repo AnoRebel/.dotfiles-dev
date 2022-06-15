@@ -4,6 +4,10 @@ if not present then
   return
 end
 
+vim.g.theme_switcher_loaded = true
+
+require("base46").load_highlight "telescope"
+
 local options = {
   defaults = {
     vimgrep_arguments = {
@@ -96,7 +100,7 @@ local options = {
 telescope.setup(options)
 
 -- load extensions
-local extensions = { "themes", "terms" }
+local extensions = { "themes", "terms", "fzf", "notify", "flutter", "media_files", "emoji" }
 
 pcall(function()
   for _, ext in ipairs(extensions) do

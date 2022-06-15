@@ -1,7 +1,10 @@
-local telescope = require("telescope")
-local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 local icons = require("custom.icons")
+local ok, telescope = pcall(require, "telescope")
+if not ok then
+  vim.notify("Failed to load Telescope in Trouble")
+  return nil
+end
 
 require("trouble").setup {
   position = "bottom", -- position of the list can be: bottom, top, left, right

@@ -1,5 +1,7 @@
 local M = {}
 
+require("base46").load_highlight "whichkey"
+
 local which_k = {
         setup = {
                 plugins = {

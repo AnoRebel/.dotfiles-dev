@@ -40,6 +40,8 @@ M.setup = function()
     vim.notify = notify
   end
 
+  require("base46").load_highlight "lsp"
+
   -- use lsp formatting if it's available (and if it's good)
   -- otherwise, fall back to null-ls
   local preferred_formatting_clients = "eslint_d"

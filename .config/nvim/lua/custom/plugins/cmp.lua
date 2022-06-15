@@ -15,6 +15,8 @@ end
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
+require("base46").load_highlight "cmp"
+
 -- Utils
 local check_backspace = function()
   local col = vim.fn.col "." - 1

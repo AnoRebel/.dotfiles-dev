@@ -1,6 +1,7 @@
 return {
   -- Overridden
   ["goolord/alpha-nvim"] = {
+      after = "base46",
     disable = false,
     config = function()
       require "plugins.configs.alpha"
@@ -13,12 +14,6 @@ return {
       require("custom.plugins.nvimtree")
     end,
   },
-  ["feline-nvim/feline.nvim"] = {
-    after = "nvim-web-devicons",
-    config = function()
-      require("custom.plugins.feline")
-    end,
-  },
   ["nvim-telescope/telescope.nvim"] = {
     requires = { { "nvim-lua/plenary.nvim" } },
     cmd = "Telescope",
@@ -29,29 +24,26 @@ return {
   },
   ["lewis6991/gitsigns.nvim"] = {
     opt = true,
+    setup = function()
+      require("core.lazy_load").gitsigns()
+    end,
     config = function()
       require("custom.plugins.gitsigns").setup()
-    end,
-    setup = function()
-      require("core.utils").packer_lazy_load "gitsigns.nvim"
     end,
   },
   ["neovim/nvim-lspconfig"] = {
     module = "lspconfig",
-    opt = true,
-    setup = function()
-      require("core.utils").packer_lazy_load "nvim-lspconfig"
-      -- reload the current file so lsp actually starts for it
-      vim.defer_fn(function()
-        vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-      end, 0)
-    end,
+    after = "nvim-lsp-installer",
     config = function()
       require("custom.lsp.config").setup()
     end,
   },
   ["nvim-treesitter/nvim-treesitter"] = {
-    event = { "BufRead", "BufNewFile" },
+    module = "nvim-treesitter",
+    cmd = { "TSInstall", "TSUninstall" },
+    setup = function()
+      require("core.lazy_load").treesitter()
+    end,
     run = ":TSUpdate",
     config = function()
       require("custom.plugins.treesitter")
@@ -73,7 +65,11 @@ return {
   },
   ["antoinemadec/FixCursorHold.nvim"] = {},
   ["williamboman/nvim-lsp-installer"] = {
+    opt = true,
     requires = "neovim/nvim-lspconfig",
+    setup = function()
+      require("core.lazy_load").on_file_open()
+    end,
     config = function()
       require("custom.lsp.installer")
     end
@@ -146,7 +142,7 @@ return {
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("flutter-tools").setup {}
-      require("telescope").load_extension("flutter")
+      -- require("telescope").load_extension("flutter")
     end
   },
   ["ThePrimeagen/refactoring.nvim"] = {
@@ -190,25 +186,28 @@ return {
     end
   },
   ["hrsh7th/cmp-calc"] = {
-
+after = "nvim-cmp",
     after = "cmp-path"
   },
   ["hrsh7th/cmp-buffer"] = {
-
+after = "nvim-cmp",
     requires = "hrsh7th/nvim-cmp"
   },
   ["hrsh7th/cmp-cmdline"] = {
-
+    after = "nvim-cmp",
     requires = "hrsh7th/nvim-cmp"
   },
   ["tzachar/cmp-tabnine"] = {
-
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
-    after = "cmp-calc"
+    after = "nvim-cmp"
   },
-  ["hrsh7th/cmp-nvim-lsp-signature-help"] = {},
-  ["dmitmel/cmp-cmdline-history"] = {},
+  ["hrsh7th/cmp-nvim-lsp-signature-help"] = {
+    after = "nvim-cmp",
+  },
+  ["dmitmel/cmp-cmdline-history"] = {
+    after = "nvim-cmp",
+  },
   ["onsails/lspkind-nvim"] = {},
   ["folke/trouble.nvim"] = {
 
@@ -294,24 +293,24 @@ return {
   ["nvim-telescope/telescope-fzf-native.nvim"] = {
 
     run = "make",
-    config = function()
-      require("telescope").load_extension("fzf")
-    end
+    -- config = function()
+    --   require("telescope").load_extension("fzf")
+    -- end
   },
   ["xiyaowong/telescope-emoji.nvim"] = {
 
-    config = function()
-      require("telescope").load_extension("emoji")
-    end
+    -- config = function()
+    --   require("telescope").load_extension("emoji")
+    -- end
   },
   ["nvim-lua/popup.nvim"] = {},
   ["nvim-lua/plenary.nvim"] = {},
   ["nvim-telescope/telescope-media-files.nvim"] = {
 
     after = "telescope.nvim",
-    config = function()
-      require("telescope").load_extension("media_files")
-    end,
+    -- config = function()
+    --   require("telescope").load_extension("media_files")
+    -- end,
   },
   ["stevearc/dressing.nvim"] = {
 
@@ -344,14 +343,9 @@ return {
     end,
   },
   ["karb94/neoscroll.nvim"] = {
-
     opt = true,
     config = function()
       require("neoscroll").setup()
-    end,
-    -- lazy loading
-    setup = function()
-      require("core.utils").packer_lazy_load "neoscroll.nvim"
     end,
   },
   ["vuki656/package-info.nvim"] = {

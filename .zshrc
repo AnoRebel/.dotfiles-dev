@@ -103,6 +103,7 @@ zsh-completions
 zsh-syntax-highlighting
 dotbare
 bgnotify
+web-search
 sudo
 pipenv
 zsh-interactive-cd)

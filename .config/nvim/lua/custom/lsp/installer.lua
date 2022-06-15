@@ -35,6 +35,16 @@ end
 local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+  -- if client.supports_method "textDocument/signatureHelp" then
+  --     vim.api.nvim_create_autocmd({ "CursorHoldI" }, {
+  --        pattern = "*",
+  --        group = vim.api.nvim_create_augroup("LspSignature", {}),
+  --        callback = function()
+  --           vim.lsp.buf.signature_help()
+  --        end,
+  --     })
+  --  end
+
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 

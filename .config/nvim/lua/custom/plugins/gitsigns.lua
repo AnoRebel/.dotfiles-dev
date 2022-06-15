@@ -1,5 +1,7 @@
 local M = {}
 
+require("base46").load_highlight "git"
+
 local default = {
   signs = {
     add = {
