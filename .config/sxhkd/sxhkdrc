@@ -268,7 +268,7 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 # https://github.com/acrisci/playerctl/
 XF86Audio{Play,Next,Prev,Stop}
     playerctl {play-pause && \
-    notify-send.py "playback control" -u low -i media-playback-start 'Player' 'Play/Pause Toggled',next && \
+    notify-send.py -u low -i media-playback-start 'Player' 'Play/Pause Toggled',next && \
     notify-send.py -u low -i media-playback-forward 'Player' 'Next',previous && \
     notify-send.py -u low -i media-playback-backward 'Player' 'Previous',stop && \
     notify-send.py -u low -i media-playback-stop 'Player' 'Stopped'}
