@@ -1,10 +1,10 @@
 local trouble = require("trouble.providers.telescope")
 local icons = require("custom.icons")
-local ok, telescope = pcall(require, "telescope")
-if not ok then
-  vim.notify("Failed to load Telescope in Trouble")
-  return nil
-end
+-- local ok, telescope = pcall(require, "telescope")
+-- if not ok then
+--   vim.notify("Failed to load Telescope in Trouble")
+--   return nil
+-- end
 
 require("trouble").setup {
   position = "bottom", -- position of the list can be: bottom, top, left, right
@@ -53,12 +53,12 @@ require("trouble").setup {
   },
   use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
   -- Lua
-  telescope.setup {
-    defaults = {
-      mappings = {
-        i = { ["<c-t>"] = trouble.open_with_trouble },
-        n = { ["<c-t>"] = trouble.open_with_trouble },
-      },
-    },
-  }
+  -- telescope.setup {
+  --   defaults = {
+  --     mappings = {
+  --       i = { ["<c-t>"] = trouble.open_with_trouble },
+  --       n = { ["<c-t>"] = trouble.open_with_trouble },
+  --     },
+  --   },
+  -- }
 }

@@ -1,61 +1,43 @@
 return {
   -- Overridden
   ["goolord/alpha-nvim"] = {
-      after = "base46",
     disable = false,
-    config = function()
-      require "plugins.configs.alpha"
-    end,
   },
   ["kyazdani42/nvim-tree.lua"] = {
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-
     config = function()
       require("custom.plugins.nvimtree")
     end,
   },
   ["nvim-telescope/telescope.nvim"] = {
-    requires = { { "nvim-lua/plenary.nvim" } },
-    cmd = "Telescope",
-
     config = function()
       require("custom.plugins.telescope")
     end,
   },
   ["lewis6991/gitsigns.nvim"] = {
-    opt = true,
-    setup = function()
-      require("core.lazy_load").gitsigns()
-    end,
     config = function()
       require("custom.plugins.gitsigns").setup()
     end,
   },
   ["neovim/nvim-lspconfig"] = {
-    module = "lspconfig",
-    after = "nvim-lsp-installer",
     config = function()
       require("custom.lsp.config").setup()
     end,
   },
   ["nvim-treesitter/nvim-treesitter"] = {
-    module = "nvim-treesitter",
-    cmd = { "TSInstall", "TSUninstall" },
-    after = "base46",
-    setup = function()
-      require("core.lazy_load").treesitter()
-    end,
-    run = ":TSUpdate",
     config = function()
       require("custom.plugins.treesitter")
     end,
   },
   ["b0o/schemastore.nvim"] = {},
-  ["hrsh7th/nvim-cmp"] = {
-    after = "friendly-snippets",
+  -- ["hrsh7th/nvim-cmp"] = {
+  --   config = function()
+  --     require "custom.plugins.cmp"
+  --   end,
+  -- },
+  ["williamboman/nvim-lsp-installer"] = {
     config = function()
-      require "custom.plugins.cmp"
-    end,
+      require("custom.lsp.installer")
+    end
   },
   --
   ["nathom/filetype.nvim"] = {},
@@ -65,16 +47,7 @@ return {
     end
   },
   ["antoinemadec/FixCursorHold.nvim"] = {},
-  ["williamboman/nvim-lsp-installer"] = {
-    opt = true,
-    requires = "neovim/nvim-lspconfig",
-    setup = function()
-      require("core.lazy_load").on_file_open()
-    end,
-    config = function()
-      require("custom.lsp.installer")
-    end
-  },
+  
   ["nvim-treesitter/nvim-treesitter-textobjects"] = {
     after = {
       "nvim-treesitter"
