@@ -1,36 +1,35 @@
 #! /bin/bash
 
 # Keybindings
-pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x sxhkd >/dev/null || sxhkd &
 
 # Autostart
 ~/.config/bspwm/autostart.sh
 #feh --bg-fill ~/Pictures/kyojin.jpg &
 
 # Functions
-multimonitors()
-{
-   start_from=1
-   monitors_connected=$(bspc query -M | wc -l)
-   per_monitor=$(( 8 / monitors_connected ))
-   for monitor in $(bspc query -M); do
-      bspc monitor $monitor -d $(seq $start_from $(( start_from + per_monitor -
-      1)))
-      start_from=$(( start_from + per_monitor ))
-   done
+multimonitors() {
+	start_from=1
+	monitors_connected=$(bspc query -M | wc -l)
+	per_monitor=$((8 / monitors_connected))
+	for monitor in $(bspc query -M); do
+		bspc monitor $monitor -d $(seq $start_from $((start_from + per_monitor - \
+		1)))
+		start_from=$((start_from + per_monitor))
+	done
 }
 
-multibar()
-{
-   #pkill polybar
-   #while pgrep -x polybar >/dev/null; do sleep 1; done
-   killall -q polybar
-   while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-   xrandr -q | awk '/ connected / {print $1}' | while read -r monitor _; do
-      #polybar -r "$monitor" &
-      echo "---" | tee -a /tmp/polybar_${monitor}.log
-      polybar -r $monitor 2>&1 | tee -a /tmp/polybar_${monitor}.log & disown
-   done
+multibar() {
+	#pkill polybar
+	#while pgrep -x polybar >/dev/null; do sleep 1; done
+	killall -q polybar
+	while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+	xrandr -q | awk '/ connected / {print $1}' | while read -r monitor _; do
+		#polybar -r "$monitor" &
+		echo "---" | tee -a /tmp/polybar_${monitor}.log
+		polybar -r $monitor 2>&1 | tee -a /tmp/polybar_${monitor}.log &
+		disown
+	done
 }
 
 # Setting up monitors
@@ -44,34 +43,34 @@ bspc monitor VGA-1 -d 5 6 7 8
 #multibar &
 
 # Coloring
-bspc config normal_border_color		      "#282A36"
-bspc config active_border_color	        "#44475A"
-bspc config focused_border_color	      "#6272A4"
-bspc config presel_feedback_color	      "#5e81ac"
+bspc config normal_border_color "#282A36"
+bspc config active_border_color "#44475A"
+bspc config focused_border_color "#6272A4"
+bspc config presel_feedback_color "#5e81ac"
 #bspc config urgent_border_color 	      "#dd2727"
 
 # Config
-#bspc config border_radius                 6
-bspc config border_width                  1
-bspc config window_gap                    6
-bspc config top_padding                   2
-bspc config bottom_padding                2
-bspc config -m VGA-1 bottom_padding       30
-bspc config -m DP-1 top_padding         30
-bspc config left_padding                  2
-bspc config right_padding                 2
-bspc config single_monocle                true
-bspc config click_to_focus                button1
-bspc config split_ratio                   0.55
-bspc config borderless_monocle            true
-bspc config gapless_monocle               true
-bspc config focus_follows_pointer         true
-bspc config remove_disabled_monitors      true
-bspc config merge_overlapping_monitors    true
-bspc config pointer_modifier              mod4
-bspc config pointer_action1               move
-bspc config pointer_action2               resize_side
-bspc config pointer_action3               resize_corner
+bspc config border_radius 7
+bspc config border_width 1
+bspc config window_gap 6
+bspc config top_padding 2
+bspc config bottom_padding 2
+bspc config -m VGA-1 bottom_padding 30
+bspc config -m DP-1 top_padding 30
+bspc config left_padding 2
+bspc config right_padding 2
+bspc config single_monocle true
+bspc config click_to_focus button1
+bspc config split_ratio 0.55
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config focus_follows_pointer true
+bspc config remove_disabled_monitors true
+bspc config merge_overlapping_monitors true
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
 
 # Rules
 bspc rule -a Gimp state=floating follow=on
@@ -125,11 +124,11 @@ bspc rule -a Thunderbird desktop="^7" follow=on focus=on
 bspc rule -a thunderbird desktop="^7" follow=on focus=on
 
 # Special Rules
-declare -a settings=(Lxappearance Lxtask Lxrandr Arandr \
-System-config-printer.py Pavucontrol Exo-helper-1)
+declare -a settings=(Lxappearance Lxtask Lxrandr Arandr
+	System-config-printer.py Pavucontrol Exo-helper-1)
 for i in ${settings[@]}; do
-   bspc rule -a $i desktop='^6' state=floating follow=on focus=on; done
+	bspc rule -a $i desktop='^6' state=floating follow=on focus=on
+done
 
 #open Funny Java Things
 wmname LG3D &
-

@@ -10,8 +10,6 @@ M.ui = {
   theme_toggle = { "catppuccin", "tokyodark" }
 }
 
-local lspkind = require("lspkind")
-local userPlugins = require "custom.plugins" -- path to table
 local icons = require("custom.icons")
 local source_mapping = {
   buffer      = icons.buffer .. '[BUF]',
@@ -27,7 +25,6 @@ local source_mapping = {
 }
 
 M.plugins = {
-  user = userPlugins,
   override = {
     ["hrsh7th/nvim-cmp"] = {
       sources = {
@@ -43,6 +40,7 @@ M.plugins = {
       },
       formatting = {
         format = function(entry, vim_item)
+          local lspkind = require("lspkind")
           vim_item.kind = lspkind.symbolic(vim_item.kind, { with_text = true })
           local menu = source_mapping[entry.source.name]
           local maxwidth = 50
@@ -61,6 +59,13 @@ M.plugins = {
       },
     },
   },
+  user = require "custom.plugins",
+}
+
+M.options = {
+  user = function()
+    vim.g.did_load_filetypes = 1 -- 0 | 1
+  end,
 }
 
 return M
