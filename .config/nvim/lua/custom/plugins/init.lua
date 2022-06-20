@@ -251,12 +251,44 @@ return {
   --   "mg979/vim-visual-multi"
   -- ],
   ["SmiteshP/nvim-gps"] = {
-
     config = function()
       require("custom.plugins.gps")
     end,
     after = "nvim-treesitter"
   },
+  -- ["feline-nvim/feline.nvim"] = {
+  --   after = {"nvim-gps", "package-info.nvim"},
+  --   config = function ()
+  --     local gps = require("nvim-gps")
+  --     local package = require("package-info")
+  --     local location = {
+  --       provider = function()
+  --         return gps.get_location()
+  --       end,
+  --       enabled = function()
+  --         return gps.is_available()
+  --       end,
+  --     }
+  --     local package_info = {
+  --       provider = function()
+  --         return package.get_status()
+  --       end,
+  --     }
+  --     require("feline").winbar.setup({
+  --       -- components = {
+  --       --   active = {
+  --       --     {
+  --       --       location,
+  --       --     },
+  --       --     {},
+  --       --     {
+  --       --       package_info,
+  --       --     }
+  --       --   }
+  --       -- },
+  --     })
+  --   end
+  -- },
   ["folke/lsp-colors.nvim"] = {},
   ["nacro90/numb.nvim"] = {
 
