@@ -1,4 +1,4 @@
-local map = nvchad.map
+local map = vim.keymap.set
 
 map("n", "<leader>te", ":Telescope <CR>")
 map("n", "<leader>fp", ":Telescope media_files <CR>")
@@ -72,7 +72,7 @@ map("i", "<A-u>", "<ESC>viwUi", { noremap = true })
 map("n", "<leader>u", ":UndotreeShow<CR>", { noremap = true })
 
 -- Symbol Outline
-map("n", "<F8>", ":SymbolsOutline<CR>")
+map("n", "<F8>", ":SymbolsOutline<CR>", { silent = true, noremap = true })
 
 -- Glow
 map("n", "<leader>p", ":Glow<CR>")
@@ -94,6 +94,7 @@ map("n", "<leader>gg", ":lua require('toggleterm').gitui_toggle()<CR>")
 map("n", "<leader>lg", ":lua require('toggleterm').lazygit_toggle()<CR>")
 
 -- Misc
+map("i", "jk", "<ESC>", { silent = true, noremap = true })
 map("n", "<C-a>", "ggVG<CR>")
 map("i", "<C-a>", "<ESC>ggVG<CR>")
 -- map("v", "<C-h>", ":%s/'<,'>/<>/gc")
