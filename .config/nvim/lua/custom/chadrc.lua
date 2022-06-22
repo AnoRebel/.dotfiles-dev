@@ -66,6 +66,9 @@ M.options = {
   user = function()
     vim.o.guifont = "JetBrainsMono Nerd Font:h11" -- "FiraCode Nerd Font:h11"
     vim.g.did_load_filetypes = 1 -- 0 | 1
+    vim.g.markdown_fenced_languages = {
+      "ts=typescript"
+    }
   end,
 }
 

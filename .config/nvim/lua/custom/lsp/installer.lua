@@ -44,6 +44,7 @@ local on_attach = function(client, bufnr)
   --        end,
   --     })
   --  end
+  require "illuminate".on_attach(client)
 
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
@@ -73,6 +74,30 @@ lspconfig.cssls.setup {
   settings = require('custom.lsp.servers.css').settings,
 }
 
+lspconfig.dartls.setup {
+  on_attach = on_attach,
+  handlers = handlers,
+  capabilities = capabilities,
+}
+
+lspconfig.denols.setup {
+  on_attach = on_attach,
+  handlers = handlers,
+  capabilities = capabilities,
+}
+
+lspconfig.dotls.setup {
+  on_attach = on_attach,
+  handlers = handlers,
+  capabilities = capabilities,
+}
+
+lspconfig.emmet_ls.setup {
+  on_attach = on_attach,
+  handlers = handlers,
+  capabilities = capabilities,
+}
+
 lspconfig.eslint.setup {
   root_dir = lspconfig.util.root_pattern(".eslintrc", ".eslintrc.js", ".eslintrc.json"),
   on_attach = function(client, bufnr)
@@ -87,6 +112,12 @@ lspconfig.eslint.setup {
   settings = require('custom.lsp.servers.eslint').settings,
 }
 
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  handlers = handlers,
+}
+
 lspconfig.graphql.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -98,6 +129,12 @@ lspconfig.html.setup {
   capabilities = capabilities,
   handlers = handlers,
   settings = require('custom.lsp.servers.html').settings,
+}
+
+lspconfig.intelephense.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  handlers = handlers,
 }
 
 lspconfig.jsonls.setup {
@@ -136,16 +173,19 @@ lspconfig.sumneko_lua.setup {
       },
     },
   },
-
 }
 
+lspconfig.sqlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  handlers = handlers,
+}
+
+require("custom.lsp.servers.tailwind")
 -- lspconfig.tailwindcss.setup {
---   capabilities = require('lsp.servers.tsserver').capabilities,
---   filetypes = require('lsp.servers.tailwindcss').filetypes,
+--   on_attach = on_attach,
+--   capabilities = capabilities,
 --   handlers = handlers,
---   init_options = require('lsp.servers.tailwindcss').init_options,
---   on_attach = require('lsp.servers.tailwindcss').on_attach,
---   settings = require('lsp.servers.tailwindcss').settings,
 -- }
 
 lspconfig.tsserver.setup {

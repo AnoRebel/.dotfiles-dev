@@ -47,7 +47,7 @@ return {
     end
   },
   ["antoinemadec/FixCursorHold.nvim"] = {},
-  
+  ["RRethy/vim-illuminate"] = {},
   ["nvim-treesitter/nvim-treesitter-textobjects"] = {
     after = {
       "nvim-treesitter"

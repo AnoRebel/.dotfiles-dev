@@ -14,7 +14,7 @@ require'lspconfig'.tailwindcss.setup {
   capabilities = capabilities,
   on_attach = function (client, bufnr)
     if client.server_capabilities.colorProvider then
-        require"lsp/documentcolors".buf_attach(bufnr)
+        require"custom.lsp.documentcolors".buf_attach(bufnr)
     end
   end,
   cmd = { "tailwindcss-language-server", "--stdio" },
