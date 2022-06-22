@@ -80,11 +80,11 @@ lspconfig.dartls.setup {
   capabilities = capabilities,
 }
 
-lspconfig.denols.setup {
-  on_attach = on_attach,
-  handlers = handlers,
-  capabilities = capabilities,
-}
+-- lspconfig.denols.setup {
+--   on_attach = on_attach,
+--   handlers = handlers,
+--   capabilities = capabilities,
+-- }
 
 lspconfig.dotls.setup {
   on_attach = on_attach,
