@@ -35,7 +35,7 @@ local options = {
     "dashboard",
     "alpha",
   },
-  hijack_cursor = false,
+  hijack_cursor = true,
   update_cwd = false,
   diagnostics = {
     enable = true,
@@ -52,6 +52,7 @@ local options = {
     timeout = 200,
   },
   view = {
+    adaptive_size = true,
     width = 25,
     hide_root_folder = false,
     mappings = {
@@ -66,6 +67,9 @@ local options = {
         { key = "tg", action = "telescope_live_grep", action_cb = telescope_live_grep },
       },
     },
+  },
+  filesystem_watchers = {
+    enable = true,
   },
   filters = {
     custom = { "node_modules", ".cache" },
