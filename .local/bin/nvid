@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+~/neovide/target/release/neovide --multigrid --
