@@ -392,6 +392,9 @@ return {
       require("nvim-lightbulb").setup {}
     end
   },
+  ["kevinhwang91/nvim-ufo"] = {
+    requires = "kevinhwang91/promise-async",
+  },
   ["j-hui/fidget.nvim"] = {
 
     config = function()

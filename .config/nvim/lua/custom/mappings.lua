@@ -5,10 +5,18 @@ map("n", "<leader>te", ":Telescope <CR>", opts)
 map("n", "<leader>fp", ":Telescope media_files <CR>", opts)
 map("n", "<leader>q", ":q <CR>", opts)
 
+map("n", "zR", require("ufo").openAllFolds)
+map("n", "zM", require("ufo").closeAllFolds)
+
 -- LSP
 map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+map("n", "K", function ()
+  local winid = require('ufo').peekFoldedLinesUnderCursor()
+  if not winid then
+    vim.lsp.buf.hover()
+  end
+end, opts)
 map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 map("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 map("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)

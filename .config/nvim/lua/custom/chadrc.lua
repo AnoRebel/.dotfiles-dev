@@ -64,8 +64,14 @@ M.plugins = {
 
 M.options = {
   user = function()
+    --- Folds
+    vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+    vim.wo.foldcolumn = "1"
+    vim.wo.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+    vim.wo.foldenable = true
+    ---
     vim.o.guifont = "JetBrainsMono Nerd Font:h11" -- "FiraCode Nerd Font:h11"
-    vim.g.neovide_transparency = 0.7 -- 0.8
+    -- vim.g.neovide_transparency = 0.7 -- 0.8
     vim.g.neovide_floating_blur_amount_x = 0.3 -- 2.0
     vim.g.neovide_floating_blur_amount_y = 0.3 -- 2.0
     vim.g.neovide_scroll_animation_length = 0.3
