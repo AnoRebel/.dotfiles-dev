@@ -23,6 +23,11 @@ return {
       require("custom.lsp.config").setup()
     end,
   },
+  -- ["WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"] = {
+  --   config = function ()
+  --     require("toggle_lsp_diagnostics").init()
+  --   end
+  -- },
   ["nvim-treesitter/nvim-treesitter"] = {
     config = function()
       require("custom.plugins.treesitter")
@@ -34,11 +39,15 @@ return {
   --     require "custom.plugins.cmp"
   --   end,
   -- },
-  ["williamboman/nvim-lsp-installer"] = {
+  ["williamboman/mason.nvim"] = {
     config = function()
       require("custom.lsp.installer")
     end
   },
+  ["williamboman/mason-lspconfig.nvim"] = {
+    requires = {"williamboman/mason.nvim", "neovim/nvim-lspconfig"},
+  },
+  -- ["WhoIsSethDaniel/mason-tool-installer.nvim"] = {},
   --
   ["nathom/filetype.nvim"] = {},
   ["glepnir/dashboard-nvim"] = {
@@ -117,6 +126,11 @@ return {
     config = function()
       require("flutter-tools").setup {}
       -- require("telescope").load_extension("flutter")
+    end
+  },
+  ["b0o/incline.nvim"] = {
+    config = function ()
+      require("incline").setup()
     end
   },
   ["ThePrimeagen/refactoring.nvim"] = {

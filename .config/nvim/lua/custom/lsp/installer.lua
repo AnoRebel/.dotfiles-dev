@@ -1,9 +1,18 @@
-require("nvim-lsp-installer").setup {}
 local lspconfig = require("lspconfig")
 
-local status_ok, lsp_installer_servers = pcall(require, 'nvim-lsp-installer.servers')
-if status_ok then
-  for _, server in ipairs {
+require("mason").setup({
+  ui = {
+  border = "rounded",
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
+    }
+  }
+})
+
+require("mason-lspconfig").setup({
+  ensure_installed = {
     "bashls",
     "cssls",
     "dartls",
@@ -22,15 +31,9 @@ if status_ok then
     "tailwindcss",
     "tsserver",
     "volar",
-  } do
-    local ok, server_name = lsp_installer_servers.get_server(server)
-    if ok then
-      if not server_name:is_installed() then
-        server_name:install()
-      end
-    end
-  end
-end
+  },
+  automatic_installation = false,
+})
 
 local foldHandler = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}
