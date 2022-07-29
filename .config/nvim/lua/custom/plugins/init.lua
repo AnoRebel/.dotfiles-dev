@@ -3,6 +3,14 @@ return {
   ["goolord/alpha-nvim"] = {
     disable = false,
   },
+  ["kyazdani42/nvim-web-devicons"] = {
+    module = "nvim-web-devicons",
+    requires = { "NvChad/ui" },
+    after = {"ui"},
+    config = function()
+      require("custom.plugins.devicons")
+    end,
+  },
   ["kyazdani42/nvim-tree.lua"] = {
     config = function()
       require("custom.plugins.nvimtree")
