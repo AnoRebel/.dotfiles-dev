@@ -67,6 +67,7 @@ M.options = {
     --- Folds
     vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
     vim.wo.foldcolumn = "1"
+    vim.wo.foldlevelstart = 99 -- Trying to fix ufo closing all folds on escape insert mode
     vim.wo.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
     vim.wo.foldenable = true
     ---

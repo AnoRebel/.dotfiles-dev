@@ -1,16 +1,5 @@
 local lspconfig = require("lspconfig")
 
-require("mason").setup({
-  ui = {
-  border = "rounded",
-    icons = {
-      package_installed = "✓",
-      package_pending = "➜",
-      package_uninstalled = "✗"
-    }
-  }
-})
-
 require("mason-lspconfig").setup({
   ensure_installed = {
     "bashls",
@@ -34,6 +23,8 @@ require("mason-lspconfig").setup({
   },
   automatic_installation = false,
 })
+
+require("custom.lsp.config").setup()
 
 local foldHandler = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}

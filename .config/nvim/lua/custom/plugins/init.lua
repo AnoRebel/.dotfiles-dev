@@ -3,14 +3,6 @@ return {
   ["goolord/alpha-nvim"] = {
     disable = false,
   },
-  ["kyazdani42/nvim-web-devicons"] = {
-    module = "nvim-web-devicons",
-    requires = { "NvChad/ui" },
-    after = {"ui"},
-    config = function()
-      require("custom.plugins.devicons")
-    end,
-  },
   ["kyazdani42/nvim-tree.lua"] = {
     config = function()
       require("custom.plugins.nvimtree")
@@ -28,7 +20,7 @@ return {
   },
   ["neovim/nvim-lspconfig"] = {
     config = function()
-      require("custom.lsp.config").setup()
+      require("custom.lsp.installer")
     end,
   },
   -- ["WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"] = {
@@ -48,8 +40,19 @@ return {
   --   end,
   -- },
   ["williamboman/mason.nvim"] = {
+    event = { "BufEnter" },
+    -- event = { "VimEnter", "BufEnter", "BufWinEnter" },
     config = function()
-      require("custom.lsp.installer")
+      require("mason").setup({
+        ui = {
+        border = "rounded",
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+          }
+        }
+      })
     end
   },
   ["williamboman/mason-lspconfig.nvim"] = {
