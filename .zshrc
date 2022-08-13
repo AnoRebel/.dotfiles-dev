@@ -5,6 +5,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias wetha='curl -s "http://wttr.in/~Dar-es-salaam" | head -n 38'
 alias zenji='curl -s "http://wttr.in/~Zanzibar" | head -n 38'
@@ -241,7 +251,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 . $HOME/z/z.sh
 
-eval "$(pipenv --completion)"
+# eval "$(pipenv --completion)"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 

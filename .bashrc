@@ -1,3 +1,13 @@
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ]; then
+	PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ]; then
+	PATH="$HOME/.local/bin:$PATH"
+fi
+
 alias wetha='curl -s "http://wttr.in/~Dar-es-salaam" | head -n 38'
 alias chuga='curl -s "http://wttr.in/~Arusha" | head -n 38'
 
