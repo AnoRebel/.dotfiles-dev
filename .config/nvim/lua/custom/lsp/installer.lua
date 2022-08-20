@@ -66,7 +66,7 @@ local on_attach = function(client, bufnr)
   --        end,
   --     })
   --  end
-  require "illuminate".on_attach(client)
+  -- require "illuminate".on_attach(client)
   require("ufo").setup({ fold_virt_text_handler = foldHandler })
 
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")

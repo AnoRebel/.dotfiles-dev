@@ -221,7 +221,7 @@ export PERL_MM_OPT
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f "/home/dev/.ghcup/env" ] && source "/home/dev/.ghcup/env" # ghcup-env
 
-export PATH="$PATH:/opt/mssql-tools/bin"
+export PATH="$PATH:/opt/mssql-tools18/bin"
 . "$HOME/.cargo/env"
 source ~/.bash_completion/alacritty
 export PATH=$PATH:/home/dev/.spicetify

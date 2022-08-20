@@ -269,7 +269,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/dev/perl5"; export PERL_MM_OPT;
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH="$PATH:/opt/mssql-tools/bin"
+export PATH="$PATH:/opt/mssql-tools18/bin"
 . "$HOME/.cargo/env"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 export PATH=$PATH:/home/dev/.spicetify
