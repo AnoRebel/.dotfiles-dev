@@ -1,9 +1,20 @@
 local map = vim.keymap.set
 local opts = { silent = true, noremap = true };
+local function amap(mode, lhs, rhs)
+  local mapd = vim.tbl_filter(function (x)
+                  return x.lhs == lhs end, vim.api.nvim_get_keymap(mode))[1]
+  if not mapd then return end
+  map(mode, lhs, mapd.rhs..rhs)
+end
 
 map("n", "<leader>te", ":Telescope <CR>", opts)
 map("n", "<leader>fp", ":Telescope media_files <CR>", opts)
 map("n", "<leader>q", ":q <CR>", opts)
+
+amap("n", "n", ":Beacon<CR>")
+amap("n", "N", ":Beacon<CR>")
+amap("n", "*", ":Beacon<CR>")
+amap("n", "#", ":Beacon<CR>")
 
 map("n", "zR", require("ufo").openAllFolds)
 map("n", "zM", require("ufo").closeAllFolds)

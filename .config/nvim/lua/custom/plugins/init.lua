@@ -68,6 +68,7 @@ return {
   },
   ["antoinemadec/FixCursorHold.nvim"] = {},
   ["RRethy/vim-illuminate"] = {},
+  ["DanilaMihailov/beacon.nvim"] = {},
   ["nvim-treesitter/nvim-treesitter-textobjects"] = {
     after = {
       "nvim-treesitter"
