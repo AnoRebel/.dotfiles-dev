@@ -11,8 +11,8 @@ fi
 alias wetha='curl -s "http://wttr.in/~Dar-es-salaam" | head -n 38'
 alias chuga='curl -s "http://wttr.in/~Arusha" | head -n 38'
 
-alias pgadmin='cd ~/adminer ; nohup php -S 127.0.0.1:3066 &>logs & ;
-brave-browser 127.0.0.1:3066 & ; cd'
+alias pgadmin='cd ~/adminer ; nohup php -S 127.0.0.1:3066 &>logs & ; brave-browser 127.0.0.1:3066 & ; cd'
+alias lg="lazygit"
 
 alias lampp='sudo /opt/lampp/./manager-linux-x64.run'
 # alias lampp="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY/opt/lampp/manager-linux-x64.run &"
