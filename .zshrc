@@ -12,7 +12,7 @@ fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+  PATH="$HOME/.local/bin:$PATH"
 fi
 
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -20,7 +20,7 @@ alias wetha='curl -s "http://wttr.in/~Dar-es-salaam" | head -n 38'
 alias zenji='curl -s "http://wttr.in/~Zanzibar" | head -n 38'
 
 alias pgadmin='cd ~/adminer ; nohup php -S 127.0.0.1:3066 &>logs & ; brave-browser 127.0.0.1:3066 & ; cd'
-alias lg ="lazygit"
+alias lg="lazygit"
 
 # alias lampp='sudo /opt/lampp/./manager-linux-x64.run'
 alias lampp="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /opt/lampp/manager-linux-x64.run &"
