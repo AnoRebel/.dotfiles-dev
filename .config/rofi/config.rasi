@@ -1,1 +1,2 @@
-@theme "/usr/local/share/rofi/themes/lb.rasi"
+//@theme "/usr/local/share/rofi/themes/lb.rasi"
+@theme "/home/dev/.config/rofi/themes/arcdark.rasi"
