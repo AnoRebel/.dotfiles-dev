@@ -1,3 +1,18 @@
+local icons = require("custom.icons")
+
+local source_mapping = {
+  buffer      = icons.buffer .. '[BUF]',
+  calc        = icons.calculator,
+  cmp_tabnine = icons.light .. '[TB9]',
+  luasnip     = icons.snippet,
+  npm         = icons.terminal .. '[NPM]',
+  nvim_lsp    = icons.paragraph .. '[LSP]',
+  nvim_lua    = icons.bomb,
+  path        = icons.folderOpen2,
+  treesitter  = icons.tree,
+  zsh         = icons.terminal .. '[ZSH]',
+}
+
 return {
   -- Overridden
   ["goolord/alpha-nvim"] = {
@@ -34,11 +49,40 @@ return {
     end,
   },
   ["b0o/schemastore.nvim"] = {},
-  -- ["hrsh7th/nvim-cmp"] = {
-  --   config = function()
-  --     require "custom.plugins.cmp"
-  --   end,
-  -- },
+  ["hrsh7th/nvim-cmp"] = {
+    override_options = {
+      sources = {
+        { name = 'luasnip' },
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lsp_signature_help' },
+        { name = 'cmp_tabnine', max_item_count = 3 },
+        { name = 'buffer', keyword_length = 5 },
+        { name = 'path' },
+        { name = 'npm' },
+        { name = 'calc' },
+        { name = 'nvim_lua' },
+      },
+      formatting = {
+        format = function(entry, vim_item)
+          local lspkind = require("lspkind")
+          vim_item.kind = lspkind.symbolic(vim_item.kind, { with_text = true })
+          local menu = source_mapping[entry.source.name]
+          local maxwidth = 50
+
+          if entry.source.name == 'cmp_tabnine' then
+            if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+              menu = menu .. '[' .. entry.completion_item.data.detail .. ']'
+            end
+          end
+
+          vim_item.menu = menu
+          vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
+
+          return vim_item
+        end
+      },
+    },
+  },
   ["williamboman/mason.nvim"] = {
     event = { "BufEnter" },
     -- event = { "VimEnter", "BufEnter", "BufWinEnter" },
