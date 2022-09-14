@@ -192,7 +192,7 @@ return {
 
       local diagnostic_map = {}
       diagnostic_map[vim.diagnostic.severity.ERROR] = { "✗", guifg = "red" }
-      diagnostic_map[vim.diagnostic.severity.WARN] = { "!", guifg = "orange" }
+      diagnostic_map[vim.diagnostic.severity.WARN] = { "", guifg = "orange" }
       diagnostic_map[vim.diagnostic.severity.INFO] = { "", guifg = "green" }
       diagnostic_map[vim.diagnostic.severity.HINT] = { "", guifg = "blue" }
 
@@ -229,7 +229,7 @@ return {
             { " " },
             { filename },
             { " " },
-            { modified, guifg = "grey" },
+            { modified, guifg = "orange" },
           }
         end,
       })
@@ -514,7 +514,9 @@ return {
   ["j-hui/fidget.nvim"] = {
 
     config = function()
-      require("fidget").setup {}
+      require("fidget").setup {
+        text = { spinner = "moon" }
+      }
     end
   }
 }
