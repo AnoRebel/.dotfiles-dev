@@ -85,7 +85,7 @@ capabilities.textDocument.foldingRange = {
 }
 local stats_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if stats_ok then
-  capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  capabilities = cmp_nvim_lsp.default_capabilities()
 end
 
 lspconfig.bashls.setup {
