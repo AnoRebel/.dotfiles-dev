@@ -556,5 +556,6 @@ return {
         text = { spinner = "moon" }
       }
     end
-  }
+  },
+  ["metakirby5/codi.vim"] = {},
 }
