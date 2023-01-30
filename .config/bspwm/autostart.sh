@@ -7,6 +7,7 @@ is_running() {
 }
 
 feh --bg-fill ~/Pictures/kyojin.jpg &
+xsetroot -cursor_name left_ptr
 
 # Wait to let the X-Session start up correctly
 sleep 1

@@ -1,3 +1,4 @@
+please
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -25,7 +26,6 @@ alias lg="lazygit"
 # alias lampp='sudo /opt/lampp/./manager-linux-x64.run'
 alias lampp="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /opt/lampp/manager-linux-x64.run &"
 
-alias please="sudo"
 alias icat="kitty +kitten icat"
 alias d="kitty +kitten diff"
 
@@ -142,6 +142,7 @@ bgnotify
 web-search
 sudo
 pipenv
+poetry
 zsh-interactive-cd)
 
 source $ZSH/oh-my-zsh.sh
@@ -278,6 +279,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 . $HOME/z/z.sh
 
 # eval "$(pipenv --completion)"
+eval "$(thefuck --alias fuck)"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
@@ -298,6 +300,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/dev/perl5"; export PERL_MM_OPT;
 export PATH="$PATH:/opt/mssql-tools18/bin"
 . "$HOME/.cargo/env"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+autoload -Uz compinit && compinit
 export PATH=$PATH:/home/dev/.spicetify
 
 # Bun
