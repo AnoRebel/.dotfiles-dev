@@ -1,16 +1,16 @@
-local icons = require("custom.icons")
+local icons = require "custom.icons"
 
 local source_mapping = {
-  buffer      = icons.buffer .. '[BUF]',
-  calc        = icons.calculator,
-  cmp_tabnine = icons.light .. '[TB9]',
-  luasnip     = icons.snippet,
-  npm         = icons.terminal .. '[NPM]',
-  nvim_lsp    = icons.paragraph .. '[LSP]',
-  nvim_lua    = icons.bomb,
-  path        = icons.folderOpen2,
-  treesitter  = icons.tree,
-  zsh         = icons.terminal .. '[ZSH]',
+  buffer = icons.buffer .. "[BUF]",
+  calc = icons.calculator,
+  cmp_tabnine = icons.light .. "[TB9]",
+  luasnip = icons.snippet,
+  npm = icons.terminal .. "[NPM]",
+  nvim_lsp = icons.paragraph .. "[LSP]",
+  nvim_lua = icons.bomb,
+  path = icons.folderOpen2,
+  treesitter = icons.tree,
+  zsh = icons.terminal .. "[ZSH]",
 }
 
 return {
@@ -20,12 +20,12 @@ return {
   },
   ["kyazdani42/nvim-tree.lua"] = {
     config = function()
-      require("custom.plugins.nvimtree")
+      require "custom.plugins.nvimtree"
     end,
   },
   ["nvim-telescope/telescope.nvim"] = {
     config = function()
-      require("custom.plugins.telescope")
+      require "custom.plugins.telescope"
     end,
   },
   ["lewis6991/gitsigns.nvim"] = {
@@ -35,7 +35,7 @@ return {
   },
   ["neovim/nvim-lspconfig"] = {
     config = function()
-      require("custom.lsp.installer")
+      require "custom.lsp.installer"
     end,
   },
   -- ["WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"] = {
@@ -45,33 +45,33 @@ return {
   -- },
   ["nvim-treesitter/nvim-treesitter"] = {
     config = function()
-      require("custom.plugins.treesitter")
+      require "custom.plugins.treesitter"
     end,
   },
   ["b0o/schemastore.nvim"] = {},
   ["hrsh7th/nvim-cmp"] = {
     override_options = {
       sources = {
-        { name = 'luasnip' },
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lsp_signature_help' },
-        { name = 'cmp_tabnine', max_item_count = 3 },
-        { name = 'buffer', keyword_length = 5 },
-        { name = 'path' },
-        { name = 'npm' },
-        { name = 'calc' },
-        { name = 'nvim_lua' },
+        { name = "luasnip" },
+        { name = "nvim_lsp" },
+        { name = "nvim_lsp_signature_help" },
+        { name = "cmp_tabnine", max_item_count = 3 },
+        { name = "buffer", keyword_length = 5 },
+        { name = "path" },
+        { name = "npm" },
+        { name = "calc" },
+        { name = "nvim_lua" },
       },
       formatting = {
         format = function(entry, vim_item)
-          local lspkind = require("lspkind")
+          local lspkind = require "lspkind"
           vim_item.kind = lspkind.symbolic(vim_item.kind, { with_text = true })
           local menu = source_mapping[entry.source.name]
           local maxwidth = 50
 
-          if entry.source.name == 'cmp_tabnine' then
+          if entry.source.name == "cmp_tabnine" then
             if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-              menu = menu .. '[' .. entry.completion_item.data.detail .. ']'
+              menu = menu .. "[" .. entry.completion_item.data.detail .. "]"
             end
           end
 
@@ -79,7 +79,7 @@ return {
           vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
 
           return vim_item
-        end
+        end,
       },
     },
   },
@@ -87,46 +87,46 @@ return {
     event = { "BufEnter" },
     -- event = { "VimEnter", "BufEnter", "BufWinEnter" },
     config = function()
-      require("mason").setup({
+      require("mason").setup {
         ui = {
-        border = "rounded",
+          border = "rounded",
           icons = {
             package_installed = "✓",
             package_pending = "➜",
-            package_uninstalled = "✗"
-          }
-        }
-      })
-    end
+            package_uninstalled = "✗",
+          },
+        },
+      }
+    end,
   },
   ["williamboman/mason-lspconfig.nvim"] = {
-    requires = {"williamboman/mason.nvim", "neovim/nvim-lspconfig"},
+    requires = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
   },
   -- ["WhoIsSethDaniel/mason-tool-installer.nvim"] = {},
   --
   ["nathom/filetype.nvim"] = {},
   ["glepnir/dashboard-nvim"] = {
     config = function()
-      require("custom.plugins.dashboard")
-    end
+      require "custom.plugins.dashboard"
+    end,
   },
   ["antoinemadec/FixCursorHold.nvim"] = {},
   ["RRethy/vim-illuminate"] = {},
   ["DanilaMihailov/beacon.nvim"] = {},
   ["nvim-treesitter/nvim-treesitter-textobjects"] = {
     after = {
-      "nvim-treesitter"
-    }
+      "nvim-treesitter",
+    },
   },
   ["RRethy/nvim-treesitter-textsubjects"] = {
     after = {
-      "nvim-treesitter"
-    }
+      "nvim-treesitter",
+    },
   },
   ["nvim-treesitter/nvim-treesitter-refactor"] = {
     after = {
-      "nvim-treesitter"
-    }
+      "nvim-treesitter",
+    },
   },
   ["romgrk/nvim-treesitter-context"] = {
     config = function()
@@ -137,13 +137,13 @@ return {
 
     config = function()
       require("nvim-ts-autotag").setup()
-    end
+    end,
   },
   ["rmagatti/goto-preview"] = {
 
     config = function()
-      require('goto-preview').setup {}
-    end
+      require("goto-preview").setup {}
+    end,
   },
   ["JoosepAlviste/nvim-ts-context-commentstring"] = {},
   ["p00f/nvim-ts-rainbow"] = {},
@@ -152,7 +152,7 @@ return {
     ft = "qf",
     config = function()
       require("bqf").setup()
-    end
+    end,
   },
   ["rcarriga/nvim-notify"] = {
 
@@ -174,7 +174,7 @@ return {
     after = "nvim-lspconfig",
     config = function()
       require("custom.plugins.null-ls").setup()
-    end
+    end,
   },
   ["akinsho/flutter-tools.nvim"] = {
 
@@ -182,11 +182,11 @@ return {
     config = function()
       require("flutter-tools").setup {}
       -- require("telescope").load_extension("flutter")
-    end
+    end,
   },
   ["b0o/incline.nvim"] = {
     after = { "nvim-web-devicons" },
-    config = function ()
+    config = function()
       local get_icon_color = require("nvim-web-devicons").get_icon_color
       local get_buf_option = vim.api.nvim_buf_get_option
 
@@ -217,7 +217,7 @@ return {
           return { filetype_icon, guifg = color }
         end
       end
-      require("incline").setup({
+      require("incline").setup {
         debounce_threshold = { falling = 500, rising = 250 },
         render = function(props)
           local bufname = vim.api.nvim_buf_get_name(props.buf)
@@ -232,24 +232,24 @@ return {
             { modified, guifg = "orange" },
           }
         end,
-      })
-    end
+      }
+    end,
   },
   ["ThePrimeagen/refactoring.nvim"] = {
 
     requires = {
       "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter"
+      "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-      require("refactoring").setup({})
-    end
+      require("refactoring").setup {}
+    end,
   },
   ["MunifTanjim/eslint.nvim"] = {
 
     requires = {
       "neovim/nvim-lspconfig",
-      "jose-elias-alvarez/null-ls.nvim"
+      "jose-elias-alvarez/null-ls.nvim",
     },
     -- config = function()
     --   require("custom.plugins.eslint")
@@ -259,7 +259,7 @@ return {
 
     requires = {
       "neovim/nvim-lspconfig",
-      "jose-elias-alvarez/null-ls.nvim"
+      "jose-elias-alvarez/null-ls.nvim",
     },
     -- config = function()
     --   require("custom.plugins.prettier")
@@ -268,29 +268,29 @@ return {
   ["David-Kunz/cmp-npm"] = {
 
     requires = {
-      "nvim-lua/plenary.nvim"
+      "nvim-lua/plenary.nvim",
     },
     after = "nvim-cmp",
     config = function()
-      require("custom.plugins.cmp-npm")
-    end
+      require "custom.plugins.cmp-npm"
+    end,
   },
   ["hrsh7th/cmp-calc"] = {
     after = "nvim-cmp",
   },
   ["hrsh7th/cmp-buffer"] = {
     after = "nvim-cmp",
-    requires = "hrsh7th/nvim-cmp"
+    requires = "hrsh7th/nvim-cmp",
   },
   ["hrsh7th/cmp-cmdline"] = {
     after = "nvim-cmp",
-    requires = "hrsh7th/nvim-cmp"
+    requires = "hrsh7th/nvim-cmp",
   },
   ["tzachar/cmp-tabnine"] = {
     opt = true,
     after = "nvim-cmp",
     run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp"
+    requires = "hrsh7th/nvim-cmp",
   },
   ["hrsh7th/cmp-nvim-lsp-signature-help"] = {
     after = "nvim-cmp",
@@ -303,15 +303,15 @@ return {
 
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("custom.plugins.trouble")
-    end
+      require "custom.plugins.trouble"
+    end,
   },
   ["windwp/nvim-spectre"] = {
 
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("spectre").setup()
-    end
+    end,
   },
   ["folke/todo-comments.nvim"] = {
 
@@ -322,7 +322,7 @@ return {
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
       }
-    end
+    end,
   },
   -- ["folke/which-key.nvim"] = {
   --
@@ -336,18 +336,18 @@ return {
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("neogit").setup {}
-    end
+    end,
   },
   ["akinsho/git-conflict.nvim"] = {
 
     config = function()
       require("git-conflict").setup()
-    end
+    end,
   },
   ["rhysd/committia.vim"] = {},
   ["yardnsm/vim-import-cost"] = {
 
-    run = "npm install --production"
+    run = "npm install --production",
     -- AutoRun
     -- augroup import_cost_auto_run
     --   autocmd!
@@ -368,9 +368,9 @@ return {
   -- ],
   ["SmiteshP/nvim-gps"] = {
     config = function()
-      require("custom.plugins.gps")
+      require "custom.plugins.gps"
     end,
-    after = "nvim-treesitter"
+    after = "nvim-treesitter",
   },
   -- ["feline-nvim/feline.nvim"] = {
   --   after = {"nvim-gps", "package-info.nvim"},
@@ -410,7 +410,7 @@ return {
 
     config = function()
       require("numb").setup()
-    end
+    end,
   },
   ["nvim-telescope/telescope-fzf-native.nvim"] = {
 
@@ -438,12 +438,12 @@ return {
 
     requires = "MunifTanjim/nui.nvim",
     config = function()
-      require("custom.plugins.dressing")
-    end
+      require "custom.plugins.dressing"
+    end,
   },
   ["ellisonleao/glow.nvim"] = {
 
-    cmd = "Glow"
+    cmd = "Glow",
   },
   ["sindrets/diffview.nvim"] = {
 
@@ -455,7 +455,7 @@ return {
   ["folke/zen-mode.nvim"] = {
 
     config = function()
-      require("custom.plugins.zen")
+      require "custom.plugins.zen"
     end,
   },
   ["folke/twilight.nvim"] = {
@@ -474,8 +474,8 @@ return {
 
     requires = "MunifTanjim/nui.nvim",
     config = function()
-      require("custom.plugins.package-info")
-    end
+      require "custom.plugins.package-info"
+    end,
   },
   -- ["lukas-reineke/virt-column.nvim"] = {
   --   config = function()
@@ -489,62 +489,62 @@ return {
   --   end
   -- },
   ["kevinhwang91/nvim-hlslens"] = {
-    config = function ()
-      require('hlslens').setup({
+    config = function()
+      require("hlslens").setup {
         override_lens = function(render, posList, nearest, idx, relIdx)
           local sfw = vim.v.searchforward == 1
           local indicator, text, chunks
           local absRelIdx = math.abs(relIdx)
           if absRelIdx > 1 then
-            indicator = ('%d%s'):format(absRelIdx, sfw ~= (relIdx > 1) and '▲' or '▼')
+            indicator = ("%d%s"):format(absRelIdx, sfw ~= (relIdx > 1) and "▲" or "▼")
           elseif absRelIdx == 1 then
-            indicator = sfw ~= (relIdx == 1) and '▲' or '▼'
+            indicator = sfw ~= (relIdx == 1) and "▲" or "▼"
           else
-            indicator = ''
+            indicator = ""
           end
 
           local lnum, col = unpack(posList[idx])
           if nearest then
             local cnt = #posList
-            if indicator ~= '' then
-              text = ('[%s %d/%d]'):format(indicator, idx, cnt)
+            if indicator ~= "" then
+              text = ("[%s %d/%d]"):format(indicator, idx, cnt)
             else
-              text = ('[%d/%d]'):format(idx, cnt)
+              text = ("[%d/%d]"):format(idx, cnt)
             end
-            chunks = {{' ', 'Ignore'}, {text, 'HlSearchLensNear'}}
+            chunks = { { " ", "Ignore" }, { text, "HlSearchLensNear" } }
           else
-            text = ('[%s %d]'):format(indicator, idx)
-            chunks = {{' ', 'Ignore'}, {text, 'HlSearchLens'}}
+            text = ("[%s %d]"):format(indicator, idx)
+            chunks = { { " ", "Ignore" }, { text, "HlSearchLens" } }
           end
           render.setVirt(0, lnum - 1, col - 1, chunks, nearest)
-        end
-      })
+        end,
+      }
     end,
   },
   ["petertriho/nvim-scrollbar"] = {
     after = { "nvim-hlslens" },
     config = function()
-      require("scrollbar").setup({
+      require("scrollbar").setup {
         handlers = {
           search = true, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
         },
-      })
+      }
       require("scrollbar.handlers.search").setup()
-    end
+    end,
   },
   ["lambdalisue/suda.vim"] = {
 
     config = function()
       -- vim.g.suda#prompt = 'Password: '
       vim.g.suda_smart_edit = 1 -- Automate
-    end
+    end,
   },
   ["kosayoda/nvim-lightbulb"] = {
 
     config = function()
       -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
       require("nvim-lightbulb").setup {}
-    end
+    end,
   },
   ["kevinhwang91/nvim-ufo"] = {
     requires = "kevinhwang91/promise-async",
@@ -553,9 +553,73 @@ return {
 
     config = function()
       require("fidget").setup {
-        text = { spinner = "moon" }
+        text = { spinner = "moon" },
       }
-    end
+    end,
   },
   ["metakirby5/codi.vim"] = {},
+  ["Exafunction/codeium.vim"] = {
+    config = function()
+      local whichkey_exists, wk = pcall(require, "which-key")
+      if whichkey_exists then
+        wk.register({
+          ["<M-p>"] = {
+            function()
+              return vim.fn["codeium#CycleCompletions"](-1)
+            end,
+            "Codeium: Previous Suggestion",
+          },
+        }, { mode = "i" })
+        wk.register({
+          ["<M-n>"] = {
+            function()
+              return vim.fn["codeium#CycleCompletions"](1)
+            end,
+            "Codeium: Next Suggestion",
+          },
+        }, { mode = "i" })
+        wk.register({
+          ["<M-a>"] = {
+            function()
+              return vim.fn["codeium#Accept"]()
+            end,
+            "Codeium: Accept Suggestion",
+          },
+        }, { mode = "i" })
+        wk.register({
+          ["<M-Space>"] = {
+            function()
+              return vim.fn["codeium#Complete"]()
+            end,
+            "Codeium: Trigger Suggestions",
+          },
+        }, { mode = "i" })
+        wk.register({
+          ["<M-Bslash>"] = {
+            function()
+              return vim.fn["codeium#Clear"]()
+            end,
+            "Codeium: Clear Suggestions",
+          },
+        }, { mode = "i" })
+      else
+        -- Change '<C-g>' here to any keycode you like.
+        vim.keymap.set("i", "<M-a>", function()
+          return vim.fn["codeium#Accept"]()
+        end, { expr = true, desc = "Codeium: Accept Suggestion" })
+        vim.keymap.set("i", "<M-n>", function()
+          return vim.fn["codeium#CycleCompletions"](1)
+        end, { expr = true, desc = "Codeium: Next Suggestion" })
+        vim.keymap.set("i", "<M-p>", function()
+          return vim.fn["codeium#CycleCompletions"](-1)
+        end, { expr = true, desc = "Codeium: Previous Suggestion" })
+        vim.keymap.set("i", "<M-Space>", function()
+          return vim.fn["codeium#Complete"]()
+        end, { expr = true, desc = "Codeium: Trigger Suggestions" })
+        vim.keymap.set("i", "<M-Bslash>", function()
+          return vim.fn["codeium#Clear"]()
+        end, { expr = true, desc = "Codeium: Clear Suggestions" })
+      end
+    end,
+  },
 }

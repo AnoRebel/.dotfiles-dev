@@ -29,8 +29,10 @@ alias lampp="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /opt/lampp/manag
 alias icat="kitty +kitten icat"
 alias d="kitty +kitten diff"
 
-alias zshrc='nvim ~/.zshrc'
-alias vimrc='nvim ~/.vimrc'
+alias zshrc='avim ~/.zshrc'
+alias vimrc='avim ~/.vimrc'
+alias bashrc='avim ~/.bashrc'
+alias avimrc='avim ~/.local/share/anonvim/avim/init.lua'
 
 alias py='python3'
 alias py2='python2'
@@ -50,6 +52,20 @@ export DOTBARE_TREE="$HOME"
 # Markdown reader
 mdr () {
   pandoc $1 | lynx -stdin
+}
+
+rga-fzf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+	echo "opening $file" &&
+	xdg-open "$file"
 }
 
 #
