@@ -23,7 +23,7 @@ sleep 1
 [[ $(is_running 'mate-power-manager') ]] || mate-power-manager &
 
 #[[ $(is_running 'compton') ]] || /usr/bin/compton &
-[[ $(is_running 'picom') ]] || picom --config ~/.config/picom/picom.conf --experimental-backends &
+[[ $(is_running 'picom') ]] || picom --config ~/.config/picom/picom.conf &
 
 # Polkit agent for password prompts
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &

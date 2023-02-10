@@ -244,8 +244,8 @@ control + alt + s
 super + {_,control + }b
     #polybar-msg -p $(pidof polybar) cmd {toggle,restart}
     notify-send.py -i /usr/share/icons/Papirus-Dark/24x24/apps/administration.svg "Polybar" {"Toggling bar(s)","Restarting bar(s)"} && \
-    for bar in $(pidof polybar); do
-        polybar-msg -p $bar cmd {toggle,restart}
+    for bar in $(pidof polybar); do \
+        polybar-msg -p $bar cmd {toggle,restart} \
     done
 
 control + Print
@@ -290,5 +290,5 @@ XF86{Close,Display}
     {bspc node -c,displayselect}
 
 XF86WLAN
-    sudo -A systemctl restart NetworkManager
+    systemctl restart NetworkManager
 
