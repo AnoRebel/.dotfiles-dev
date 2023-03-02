@@ -218,6 +218,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 . $HOME/z/z.sh
 
 eval "$(pipenv --completion)"
+eval "$(register-python-argcomplete pipx)"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 

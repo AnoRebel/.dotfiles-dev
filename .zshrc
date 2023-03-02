@@ -113,18 +113,18 @@ function bgnotify_formatted {
 # us       start underline
 # ue       stop underline
 
-function man() {
-	env \
-		LESS_TERMCAP_md=$(tput bold; tput setaf 4) \
-		LESS_TERMCAP_me=$(tput sgr0) \
-		LESS_TERMCAP_mb=$(tput blink) \
-		LESS_TERMCAP_us=$(tput setaf 2) \
-		LESS_TERMCAP_ue=$(tput sgr0) \
-		LESS_TERMCAP_so=$(tput smso) \
-		LESS_TERMCAP_se=$(tput rmso) \
-		PAGER="${commands[less]:-$PAGER}" \
-		man "$@"
-}
+# function man() {
+# 	env \
+# 		LESS_TERMCAP_md=$(tput bold; tput setaf 4) \
+# 		LESS_TERMCAP_me=$(tput sgr0) \
+# 		LESS_TERMCAP_mb=$(tput blink) \
+# 		LESS_TERMCAP_us=$(tput setaf 2) \
+# 		LESS_TERMCAP_ue=$(tput sgr0) \
+# 		LESS_TERMCAP_so=$(tput smso) \
+# 		LESS_TERMCAP_se=$(tput rmso) \
+# 		PAGER="${commands[less]:-$PAGER}" \
+# 		man "$@"
+# }
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -137,7 +137,7 @@ cfg-zsh-history() { $EDITOR $HISTFILE ;}
 # }}}
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/dev/.oh-my-zsh
+export ZSH=/home/dev/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -153,15 +153,31 @@ plugins=(git
 zsh-autosuggestions
 zsh-completions
 zsh-syntax-highlighting
+fzf
+adb
 dotbare
 bgnotify
 web-search
-sudo
+golang
 pipenv
 poetry
-zsh-interactive-cd)
+flutter
+npm
+yarn
+gitignore
+web-search
+command-not-found
+colored-man-pages
+sudo
+zsh-interactive-cd
+aliases)
+# thefuck
 
 source $ZSH/oh-my-zsh.sh
+
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+autoload -Uz compinit && compinit
+autoload -U bashcompinit && bashcompinit
 
 # Dotbare completions
 _dotbare_completion_cmd
@@ -295,6 +311,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 . $HOME/z/z.sh
 
 # eval "$(pipenv --completion)"
+eval "$(register-python-argcomplete pipx)"
 eval "$(thefuck --alias fuck)"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -315,8 +332,6 @@ PERL_MM_OPT="INSTALL_BASE=/home/dev/perl5"; export PERL_MM_OPT;
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="$PATH:/opt/mssql-tools18/bin"
 . "$HOME/.cargo/env"
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-autoload -Uz compinit && compinit
 export PATH=$PATH:/home/dev/.spicetify
 
 # Bun

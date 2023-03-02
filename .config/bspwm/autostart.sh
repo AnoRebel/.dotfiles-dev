@@ -40,6 +40,9 @@ sleep 1
 # Color filter
 [[ $(is_running 'redshift-gtk') ]] || redshift-gtk &
 
+# Playerctl Daemon
+playerctld daemon
+
 #clipit &
 
 numlockx on &
