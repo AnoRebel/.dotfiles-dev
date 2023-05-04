@@ -14,6 +14,9 @@ sleep 1
 
 ~/.config/polybar/launch_bspwm.sh
 
+# Notification daemon
+[[ $(is_running 'deadd-notification-center') ]] || deadd-notification-center &
+
 # Network manager
 [[ $(is_running 'nm-applet') ]] || nm-applet &
 
@@ -49,12 +52,10 @@ numlockx on &
 
 # [[ $(is_running 'ulauncher') ]] || ulauncher &
 
-[[ $(is_running 'deadd-notification-center') ]] || deadd-notification-center &
-
 unclutter &
 #ibus-daemon --xim --daemonize $
 
-[[ $(is_running 'kdeconnect-indicator') ]] || kdeconnect-indicator &
+# [[ $(is_running 'kdeconnect-indicator') ]] || kdeconnect-indicator &
 
 # conky -c ~/.config/bspwm/scripts/system-overview &
 # conky -c ~/.config/bspwm/scripts/system-shortcuts &

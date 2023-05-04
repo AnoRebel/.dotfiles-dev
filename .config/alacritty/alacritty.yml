@@ -434,20 +434,33 @@ live_config_reload: true
 # a no-op if you do not wish to receive input characters for that binding.
 key_bindings:
     # (Windows, Linux, and BSD only)
-  - { key: V,        mods: Control|Shift, action: Paste            }
-  - { key: C,        mods: Control|Shift, action: Copy             }
-  - { key: Insert,   mods: Shift,         action: PasteSelection   }
-  - { key: Key0,     mods: Control,       action: ResetFontSize    }
-  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  - { key: V,         mods: Control|Shift, action: Paste            }
+  - { key: C,         mods: Control|Shift, action: Copy             }
+  - { key: Insert,    mods: Shift,         action: PasteSelection   }
+  - { key: Key0,      mods: Control,       action: ResetFontSize    }
+  - { key: Equals,    mods: Control,       action: IncreaseFontSize }
   - { key: Plus,      mods: Control,       action: IncreaseFontSize }
-  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  - { key: Minus,     mods: Control,       action: DecreaseFontSize }
 
-  - { key: Paste,                    action: Paste                            }
-  - { key: Copy,                     action: Copy                             }
-  - { key: L,         mods: Control, action: ClearLogNotice                   }
-  - { key: L,         mods: Control, chars: "\x0c"                            }
-  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
-  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
-  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
-  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
+  - { key: Paste,                          action: Paste                            }
+  - { key: Copy,                           action: Copy                             }
+  - { key: L,         mods: Control,       action: ClearLogNotice                   }
+  - { key: L,         mods: Control,       chars: "\x0c"                            }
+  - { key: PageUp,    mods: Shift,         action: ScrollPageUp,   mode: ~Alt       }
+  - { key: PageDown,  mods: Shift,         action: ScrollPageDown, mode: ~Alt       }
+  - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt       }
+  - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt       }
+
+  - { key: H,         mods: Control|Shift, chars: "\x1b[72;6u"       }
+  - { key: J,         mods: Control|Shift, chars: "\x1b[74;6u"       }
+  - { key: K,         mods: Control|Shift, chars: "\x1b[75;6u"       }
+  - { key: L,         mods: Control|Shift, chars: "\x1b[76;6u"       }
+
+  - { key: I,         mods: Control,       chars: "\x1b[105;5u"       }
+
+  - { key: Period,    mods: Control,       chars: "\x1b[46;5u"       }
+  - { key: Comma,     mods: Control,       chars: "\x1b[44;5u"       }
+  - { key: Semicolon, mods: Control,       chars: "\x1b[59;5u"       }
+
+  - { key: Return,    mods: Shift,         chars: "\x1b[13;2u"       }
 

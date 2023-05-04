@@ -49,6 +49,18 @@ alias aptremove="sudo apt remove"
 export DOTBARE_DIR="$HOME/.dotfiles"
 export DOTBARE_TREE="$HOME"
 
+function nvims() {
+  configs=("default" "AstroNvim" "CosmicNvim" "DoomNvim" "KickStart" "NvIDE")
+  config=$(printf "%s\n" "${configs[@]}" | fzf --prompt=" Neovim Config  " --height=50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+
 # Markdown reader
 mdr () {
   pandoc $1 | lynx -stdin

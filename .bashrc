@@ -34,6 +34,18 @@ alias aptupg="sudo apt upgrade"
 alias aptinstall="sudo apt install"
 alias aptremove="sudo apt remove"
 
+function nvims() {
+	configs=("default" "AstroNvim" "CosmicNvim" "DoomNvim" "KickStart" "NvIDE")
+	config=$(printf "%s\n" "${configs[@]}" | fzf --prompt=" Neovim Config  " --height=50% --layout=reverse --border --exit-0)
+	if [[ -z $config ]]; then
+		echo "Nothing selected"
+		return 0
+	elif [[ $config == "default" ]]; then
+		config=""
+	fi
+	NVIM_APPNAME=$config nvim $@
+}
+
 # Markdown reader
 mdr() {
 	pandoc $1 | lynx -stdin
@@ -217,7 +229,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 . $HOME/z/z.sh
 
-eval "$(pipenv --completion)"
+# eval "$(pipenv --completion)"
 eval "$(register-python-argcomplete pipx)"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
