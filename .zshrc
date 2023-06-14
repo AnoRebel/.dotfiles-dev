@@ -50,7 +50,7 @@ export DOTBARE_DIR="$HOME/.dotfiles"
 export DOTBARE_TREE="$HOME"
 
 function nvims() {
-  configs=("default" "AstroNvim" "CosmicNvim" "DoomNvim" "KickStart" "NvIDE")
+  configs=("default" "AstroNvim" "CosmicNvim" "DoomNvim" "KickStart" "LazyVim" "NvIDE")
   config=$(printf "%s\n" "${configs[@]}" | fzf --prompt=" Neovim Config  " --height=50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"

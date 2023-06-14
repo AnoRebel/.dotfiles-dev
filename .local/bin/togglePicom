@@ -5,7 +5,7 @@ if pgrep picom &>/dev/null; then
     pkill picom &
 else
     notify-send -i display "Picom" "Turning on Picom"
-    picom --config ~/.config/picom/picom.conf --experimental-backends &
+    picom --config ~/.config/picom/picom.conf &
 fi
 
 exit 0
